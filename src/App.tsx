@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navigation from './navigation/Navigation'
+import AddReactionIcon from '@mui/icons-material/AddReaction';
+import SpeedIcon from '@mui/icons-material/Speed';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,10 +12,10 @@ function App() {
       <Navigation />
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          <SpeedIcon fontSize="large" color="primary"/>
         </a>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <AddReactionIcon fontSize="large" color="secondary"/>
         </a>
       </div>
       <h1>Vite + React</h1>
