@@ -5,7 +5,9 @@ Tools Index
 - [pnpm](https://pnpm.io/installation)
 - [vite](https://vitejs.dev/guide/)
 
-Built with React
+Built with
+- React
+- [MUI](https://mui.com/)
 
 ## Development
 

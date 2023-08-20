@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-elements-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
