@@ -1,11 +1,18 @@
 import './Navigation.css';
 import { useEffect, useState } from "react";
 import { DESKTOP_WIDTH_PX } from "../constants";
-import { IconButton } from '@mui/material';
+import { IconButton, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
+import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
+
+interface NavigationItem {
+  text: string,
+  icon: JSX.Element,
+  href: string,
+}
 
 function Navigation() {
   const [expanded, setIsExpanded] = useState(false)
@@ -19,6 +26,24 @@ function Navigation() {
 
   const toggleExpanded = () => setIsExpanded(!expanded)
 
+  const menuItems: NavigationItem[] = [
+    {
+      text: "Home",
+      icon: <HomeIcon fontSize="large" color="primary" />,
+      href: "#home",
+    },
+    {
+      text: "Pre-University Projects",
+      icon: <VideogameAssetIcon fontSize="large" color="primary" />,
+      href: "#pre-university-projects",
+    },
+    {
+      text: "Autonomous Robotic Vehicle Project (ARVP)",
+      icon: <SailingIcon fontSize="large" color="primary" />,
+      href: "#arvp",
+    }
+  ];
+
   return (
     <div className="navigation">
       {
@@ -30,18 +55,18 @@ function Navigation() {
       {
         (isDesktop || expanded) &&
         <div className="navigation-elements-container">
-          <IconButton size="large">
-            <HomeIcon fontSize="large" color="primary" />
-            <a href="#Home">Home</a>
-          </IconButton>
-          <IconButton size="large">
-            <VideogameAssetIcon fontSize="large" color="primary" />
-            <a href="#PreUniversityProjects">Pre-University Projects</a>
-          </IconButton>
-          <IconButton size="large">
-            <SailingIcon fontSize="large" color="primary" />
-            <a href="#ARVP">ARVP</a>
-          </IconButton>
+          <List>
+            {
+              menuItems.map((navigationItem, index) => (
+                <ListItemButton key={index} component="a" href={navigationItem.href}>
+                  <ListItemIcon>
+                    {navigationItem.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={navigationItem.text} />
+                </ListItemButton>
+              ))
+            }
+          </List>
         </div>
       }
     </div>
