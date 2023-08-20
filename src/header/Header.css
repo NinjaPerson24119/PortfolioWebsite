@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  gap: 64px;
+}
+
+.banner > h1, h2 {
+  margin: 0;
+}
+
+.header-links {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
