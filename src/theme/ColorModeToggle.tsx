@@ -8,7 +8,11 @@ export function ColorModeToggle() {
   const colorModeContext = useContext<ColorModeContextProps>(ColorModeContext);
   return (
     <IconButton onClick={colorModeContext.toggleColorMode}>
-      {colorModeContext.colorMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      {colorModeContext.colorMode === 'dark' ? (
+        <Brightness7Icon />
+      ) : (
+        <Brightness4Icon />
+      )}
     </IconButton>
   );
 }

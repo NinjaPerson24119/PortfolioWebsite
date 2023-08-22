@@ -5,8 +5,8 @@ import { IconButton } from '@mui/material';
 import { ColorModeToggle } from '../theme/ColorModeToggle';
 
 interface HeaderLink {
-  icon: JSX.Element,
-  href: string,
+  icon: JSX.Element;
+  href: string;
 }
 
 export function Header() {
@@ -18,7 +18,7 @@ export function Header() {
     {
       icon: <LinkedInIcon fontSize="large" color="primary" />,
       href: 'https://www.linkedin.com/in/nwengel',
-    }
+    },
   ];
 
   return (
@@ -28,15 +28,13 @@ export function Header() {
         <h2>Software Developer</h2>
       </div>
       <div className="header-links">
-        {
-          headerLinks.map((headerLink, index) => (
-            <IconButton key={index} size="large" href={headerLink.href}>
-              {headerLink.icon}
-            </IconButton>
-          ))
-        }
+        {headerLinks.map((headerLink, index) => (
+          <IconButton key={index} size="large" href={headerLink.href}>
+            {headerLink.icon}
+          </IconButton>
+        ))}
       </div>
-      <ColorModeToggle/>
+      <ColorModeToggle />
     </div>
   );
 }

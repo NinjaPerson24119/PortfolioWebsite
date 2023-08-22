@@ -9,9 +9,9 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
 
 interface NavigationItem {
-  text: string,
-  icon: JSX.Element,
-  href: string,
+  text: string;
+  icon: JSX.Element;
+  href: string;
 }
 
 export function Navigation() {
@@ -19,7 +19,8 @@ export function Navigation() {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= DESKTOP_WIDTH_PX);
+    const handleResize = () =>
+      setIsDesktop(window.innerWidth >= DESKTOP_WIDTH_PX);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
@@ -41,34 +42,32 @@ export function Navigation() {
       text: 'Autonomous Robotic Vehicle Project (ARVP)',
       icon: <SailingIcon fontSize="large" color="primary" />,
       href: '#arvp',
-    }
+    },
   ];
 
   return (
     <div className="navigation">
-      {
-        !isDesktop &&
+      {!isDesktop && (
         <IconButton size="large" onClick={toggleExpanded}>
           <MenuIcon className="menu-button" fontSize="large" color="primary" />
         </IconButton>
-      }
-      {
-        (isDesktop || expanded) &&
+      )}
+      {(isDesktop || expanded) && (
         <div className="navigation-elements-container">
           <List>
-            {
-              menuItems.map((navigationItem, index) => (
-                <ListItemButton key={index} component="a" href={navigationItem.href}>
-                  <ListItemIcon>
-                    {navigationItem.icon}
-                  </ListItemIcon>
-                  <ListItemText primary={navigationItem.text}/>
-                </ListItemButton>
-              ))
-            }
+            {menuItems.map((navigationItem, index) => (
+              <ListItemButton
+                key={index}
+                component="a"
+                href={navigationItem.href}
+              >
+                <ListItemIcon>{navigationItem.icon}</ListItemIcon>
+                <ListItemText primary={navigationItem.text} />
+              </ListItemButton>
+            ))}
           </List>
         </div>
-      }
+      )}
     </div>
   );
 }

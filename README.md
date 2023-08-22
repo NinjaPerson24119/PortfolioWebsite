@@ -1,6 +1,7 @@
 # Portfolio Website
 
 Tools Index
+
 - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [pnpm](https://pnpm.io/installation)
 - [vite](https://vitejs.dev/guide/)
@@ -8,6 +9,7 @@ Tools Index
 - [eslint](https://eslint.org/docs/latest/use/getting-started)
 
 Built with
+
 - React
 - [MUI](https://mui.com/)
 
@@ -17,6 +19,7 @@ Start the server
 `npx vite`
 
 # Linting / Reformatting
+
 `npx eslint src`
 
 # React + TypeScript + Vite

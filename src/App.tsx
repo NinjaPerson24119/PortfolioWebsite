@@ -10,17 +10,25 @@ import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './theme/color-mode-context';
 
 export function App() {
-  const copyright = <p className="copyright">Copyright © 2023 Nicholas Wengel. All rights reserved.</p>;
+  const copyright = (
+    <p className="copyright">
+      Copyright © 2023 Nicholas Wengel. All rights reserved.
+    </p>
+  );
   const dummyBodyText = <p>Some text for a document</p>;
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [colorMode, setColorMode] = useState<ColorMode>(prefersDarkMode ? 'dark' : 'light');
-  const colorModeContext = useMemo(() => (
-    {
+  const [colorMode, setColorMode] = useState<ColorMode>(
+    prefersDarkMode ? 'dark' : 'light',
+  );
+  const colorModeContext = useMemo(
+    () => ({
       colorMode: colorMode,
-      toggleColorMode: () => setColorMode(colorMode === 'dark' ? 'light' : 'dark'),
-    }
-  ), [colorMode]);
+      toggleColorMode: () =>
+        setColorMode(colorMode === 'dark' ? 'light' : 'dark'),
+    }),
+    [colorMode],
+  );
   const theme = useMemo(() => CreateTheme(colorMode), [colorMode]);
 
   return (
@@ -32,7 +40,8 @@ export function App() {
             header={<Header />}
             navigation={<Navigation />}
             footer={copyright}
-            body={dummyBodyText} />
+            body={dummyBodyText}
+          />
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>

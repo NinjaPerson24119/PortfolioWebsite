@@ -3,7 +3,8 @@
   gap: 64px;
 }
 
-.banner > h1, h2 {
+.banner > h1,
+h2 {
   margin: 0;
 }
 
