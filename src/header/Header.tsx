@@ -13,18 +13,18 @@ export function Header() {
   const headerLinks: HeaderLink[] = [
     {
       icon: <GitHubIcon fontSize="large" color="primary" />,
-      href: "https://github.com/NinjaPerson24119",
+      href: 'https://github.com/NinjaPerson24119',
     },
     {
       icon: <LinkedInIcon fontSize="large" color="primary" />,
-      href: "https://www.linkedin.com/in/nwengel",
+      href: 'https://www.linkedin.com/in/nwengel',
     }
-  ]
+  ];
 
   return (
     <div className="header">
       <div className="banner">
-        <h1>Nicholas Wengel's Portfolio</h1>
+        <h1>Nicholas Wengel&apos;s Portfolio</h1>
         <h2>Software Developer</h2>
       </div>
       <div className="header-links">
@@ -38,5 +38,5 @@ export function Header() {
       </div>
       <ColorModeToggle/>
     </div>
-  )
+  );
 }

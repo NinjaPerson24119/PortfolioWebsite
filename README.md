@@ -14,6 +14,9 @@ Built with
 Start the server
 `npx vite`
 
+# Linting / Reformatting
+`npx eslint src`
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

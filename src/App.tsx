@@ -1,8 +1,8 @@
-import './App.css'
+import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { CreateTheme } from './theme/theme'
-import { Navigation } from './navigation/Navigation'
+import { CreateTheme } from './theme/theme';
+import { Navigation } from './navigation/Navigation';
 import { Layout } from './layout/Layout';
 import { Header } from './header/Header';
 import { useMemo, useState } from 'react';
@@ -10,8 +10,8 @@ import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './theme/color-mode-context';
 
 export function App() {
-  const copyright = <p className="copyright">Copyright © 2023 Nicholas Wengel. All rights reserved.</p>
-  const dummyBodyText = <p>Some text for a document</p>
+  const copyright = <p className="copyright">Copyright © 2023 Nicholas Wengel. All rights reserved.</p>;
+  const dummyBodyText = <p>Some text for a document</p>;
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [colorMode, setColorMode] = useState<ColorMode>(prefersDarkMode ? 'dark' : 'light');
@@ -36,5 +36,5 @@ export function App() {
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>
-  )
+  );
 }

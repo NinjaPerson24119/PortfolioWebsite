@@ -1,6 +1,6 @@
 import './Navigation.css';
-import { useEffect, useState } from "react";
-import { DESKTOP_WIDTH_PX } from "../constants";
+import { useEffect, useState } from 'react';
+import { DESKTOP_WIDTH_PX } from '../constants';
 import { IconButton, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -15,32 +15,32 @@ interface NavigationItem {
 }
 
 export function Navigation() {
-  const [expanded, setIsExpanded] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [expanded, setIsExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= DESKTOP_WIDTH_PX);
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  })
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
 
-  const toggleExpanded = () => setIsExpanded(!expanded)
+  const toggleExpanded = () => setIsExpanded(!expanded);
 
   const menuItems: NavigationItem[] = [
     {
-      text: "Home",
+      text: 'Home',
       icon: <HomeIcon fontSize="large" color="primary" />,
-      href: "#home",
+      href: '#home',
     },
     {
-      text: "Pre-University Projects",
+      text: 'Pre-University Projects',
       icon: <VideogameAssetIcon fontSize="large" color="primary" />,
-      href: "#pre-university-projects",
+      href: '#pre-university-projects',
     },
     {
-      text: "Autonomous Robotic Vehicle Project (ARVP)",
+      text: 'Autonomous Robotic Vehicle Project (ARVP)',
       icon: <SailingIcon fontSize="large" color="primary" />,
-      href: "#arvp",
+      href: '#arvp',
     }
   ];
 
@@ -70,5 +70,5 @@ export function Navigation() {
         </div>
       }
     </div>
-  )
+  );
 }
