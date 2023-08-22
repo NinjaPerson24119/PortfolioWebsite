@@ -62,7 +62,7 @@ function Navigation() {
                   <ListItemIcon>
                     {navigationItem.icon}
                   </ListItemIcon>
-                  <ListItemText primary={navigationItem.text} />
+                  <ListItemText primary={navigationItem.text}/>
                 </ListItemButton>
               ))
             }

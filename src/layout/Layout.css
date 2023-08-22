@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  background-color: black;
+  background-color: grey;
   border-bottom: 1px solid #ccc;
 }
 
@@ -42,6 +42,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-basis: 50px;
   min-height: 50px;
   margin-top: 32px;
 }
