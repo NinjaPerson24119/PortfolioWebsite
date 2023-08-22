@@ -10,3 +10,6 @@ nvm use node
 # install pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
+
+# install fonts
+sudo apt install fonts-roboto
