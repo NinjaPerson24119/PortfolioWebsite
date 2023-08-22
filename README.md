@@ -4,6 +4,8 @@ Tools Index
 - [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - [pnpm](https://pnpm.io/installation)
 - [vite](https://vitejs.dev/guide/)
+- [prettier](https://prettier.io/docs/en/install.html)
+- [eslint](https://eslint.org/docs/latest/use/getting-started)
 
 Built with
 - React
