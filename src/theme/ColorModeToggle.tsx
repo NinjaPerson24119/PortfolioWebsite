@@ -4,7 +4,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useContext } from "react";
 import { ColorModeContext, ColorModeContextProps } from "./color-mode-context";
 
-function ColorModeToggle() {
+export function ColorModeToggle() {
   const colorModeContext = useContext<ColorModeContextProps>(ColorModeContext);
   return (
     <IconButton onClick={colorModeContext.toggleColorMode}>
@@ -12,5 +12,3 @@ function ColorModeToggle() {
     </IconButton>
   )
 }
-
-export default ColorModeToggle;

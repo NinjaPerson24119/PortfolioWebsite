@@ -8,7 +8,7 @@ interface LayoutProps {
   body: ReactNode;
 }
 
-function Layout({ header, navigation, footer, body }: LayoutProps) {
+export function Layout({ header, navigation, footer, body }: LayoutProps) {
   return (
     <div>
       <div className="header">{header}</div>
@@ -22,5 +22,3 @@ function Layout({ header, navigation, footer, body }: LayoutProps) {
     </div>
   );
 }
-
-export default Layout;

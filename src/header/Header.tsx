@@ -2,14 +2,14 @@ import './Header.css';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { IconButton } from '@mui/material';
-import ColorModeToggle from '../theme/ColorModeToggle';
+import { ColorModeToggle } from '../theme/ColorModeToggle';
 
 interface HeaderLink {
   icon: JSX.Element,
   href: string,
 }
 
-function Header() {
+export function Header() {
   const headerLinks: HeaderLink[] = [
     {
       icon: <GitHubIcon fontSize="large" color="primary" />,
@@ -40,5 +40,3 @@ function Header() {
     </div>
   )
 }
-
-export default Header;

@@ -14,7 +14,7 @@ interface NavigationItem {
   href: string,
 }
 
-function Navigation() {
+export function Navigation() {
   const [expanded, setIsExpanded] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
 
@@ -72,5 +72,3 @@ function Navigation() {
     </div>
   )
 }
-
-export default Navigation;
