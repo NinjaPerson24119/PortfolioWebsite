@@ -24,7 +24,7 @@ export function Header() {
   return (
     <div className="header">
       <div className="banner">
-        <h1>Nicholas Wengel&apos;s Portfolio</h1>
+        <h1>Nicholas Wengel</h1>
         <h2>Software Developer</h2>
       </div>
       <div className="header-links">
