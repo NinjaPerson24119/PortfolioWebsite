@@ -1,4 +1,5 @@
 import './App.css'
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { CreateTheme } from './theme/theme'
 import { Navigation } from './navigation/Navigation'
@@ -15,7 +16,7 @@ export function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [colorMode, setColorMode] = useState<ColorMode>(prefersDarkMode ? 'dark' : 'light');
   const colorModeContext = useMemo(() => (
-    { 
+    {
       colorMode: colorMode,
       toggleColorMode: () => setColorMode(colorMode === 'dark' ? 'light' : 'dark'),
     }
@@ -23,14 +24,17 @@ export function App() {
   const theme = useMemo(() => CreateTheme(colorMode), [colorMode]);
 
   return (
-    <ColorModeContext.Provider value={colorModeContext}>
-      <ThemeProvider theme={theme}>
-        <Layout
-          header={<Header />}
-          navigation={<Navigation />}
-          footer={copyright}
-          body={dummyBodyText} />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <>
+      <CssBaseline />
+      <ColorModeContext.Provider value={colorModeContext}>
+        <ThemeProvider theme={theme}>
+          <Layout
+            header={<Header />}
+            navigation={<Navigation />}
+            footer={copyright}
+            body={dummyBodyText} />
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </>
   )
 }
