@@ -26,7 +26,11 @@ export function Header() {
   return (
     <div className="header">
       <div className="banner">
-        <Avatar alt="Nicholas Wengel" src={avatarImage} sx={{ width: 128, height: 128 }} />
+        <Avatar
+          alt="Nicholas Wengel"
+          src={avatarImage}
+          sx={{ width: 128, height: 128 }}
+        />
         <h1>Nicholas Wengel</h1>
         <h2>Software Developer</h2>
       </div>

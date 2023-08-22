@@ -1,4 +1,4 @@
-import './Navigation.css';
+import './Navigation.scss';
 import { useEffect, useState } from 'react';
 import { DESKTOP_WIDTH_PX } from '../constants';
 import { IconButton, List } from '@mui/material';
