@@ -1,13 +1,21 @@
 import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { CreateTheme } from './theme/theme';
 import { Navigation } from './navigation/Navigation';
 import { Layout } from './layout/Layout';
 import { Header } from './header/Header';
 import { useMemo, useState } from 'react';
 import { useMediaQuery } from '@mui/material';
-import { ColorMode, ColorModeContext } from './theme/color-mode-context';
+import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
+import { Theme, createTheme } from '@mui/material/styles';
+
+export function CreateTheme(colorMode: ColorMode): Theme {
+  return createTheme({
+    palette: {
+      mode: colorMode,
+    },
+  });
+}
 
 export function App() {
   const copyright = (
@@ -33,7 +41,9 @@ export function App() {
 
   return (
     <>
+      {/*https://github.com/mui/material-ui/blob/master/packages/mui-material/src/CssBaseline/CssBaseline.js*/}
       <CssBaseline />
+
       <ColorModeContext.Provider value={colorModeContext}>
         <ThemeProvider theme={theme}>
           <Layout
