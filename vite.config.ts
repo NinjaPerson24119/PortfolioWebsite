@@ -10,13 +10,13 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       plugins: [react()],
       build: {
         sourcemap: true,
-      }
-    }
+      },
+    };
   } else {
     // command === 'build'
     return {
       // build specific config
       plugins: [react()],
-    }
+    };
   }
-})
+});
