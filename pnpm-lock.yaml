@@ -47,7 +47,7 @@ devDependencies:
     specifier: ^3.3.2
     version: 3.3.2(vite@4.4.9)
   eslint:
-    specifier: ^8.45.0
+    specifier: ^8.47.0
     version: 8.47.0
   eslint-plugin-react:
     specifier: ^7.33.2

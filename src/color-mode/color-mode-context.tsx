@@ -7,5 +7,5 @@ export interface ColorModeContextProps {
 }
 export const ColorModeContext = createContext<ColorModeContextProps>({
   colorMode: 'dark',
-  toggleColorMode: () => {},
+  toggleColorMode: () => undefined,
 });
