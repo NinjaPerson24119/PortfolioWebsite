@@ -8,6 +8,7 @@ Tools Index
 - [prettier](https://prettier.io/docs/en/install.html)
 - [eslint](https://eslint.org/docs/latest/use/getting-started)
 - [husky](https://typicode.github.io/husky/)
+- [woff2](https://github.com/google/woff2)
 
 Built with
 
