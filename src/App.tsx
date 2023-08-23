@@ -1,4 +1,3 @@
-import './App.scss';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { Navigation } from './navigation/Navigation';
@@ -8,6 +7,7 @@ import { useMemo, useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 export function CreateTheme(colorMode: ColorMode): Theme {
   return createTheme({
@@ -18,12 +18,7 @@ export function CreateTheme(colorMode: ColorMode): Theme {
 }
 
 export function App() {
-  const copyright = (
-    <p className="copyright">
-      Copyright © 2023 Nicholas Wengel. All rights reserved.
-    </p>
-  );
-  const dummyBodyText = <p>Some text for a document</p>;
+  const { t } = useTranslation();
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [colorMode, setColorMode] = useState<ColorMode>(
@@ -49,8 +44,8 @@ export function App() {
           <Layout
             header={<Header />}
             navigation={<Navigation />}
-            footer={copyright}
-            body={dummyBodyText}
+            footer={<p>{t('COPYRIGHT')}</p>}
+            body={<p>{t('PLACEHOLDER_TEXT')}</p>}
           />
         </ThemeProvider>
       </ColorModeContext.Provider>

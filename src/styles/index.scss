@@ -1,6 +1,6 @@
-@use './styles/css_reset';
-@use './styles/fonts';
-@import './styles/colors';
+@use './css_reset';
+@use './fonts';
+@import './colors';
 
 :root {
   font-family: Roboto, Inter, system-ui, Helvetica, Arial, sans-serif;

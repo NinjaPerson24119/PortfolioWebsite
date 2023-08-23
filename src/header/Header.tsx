@@ -5,6 +5,8 @@ import { IconButton } from '@mui/material';
 import { ColorModeToggle } from '../color-mode/ColorModeToggle';
 import { Avatar } from '@mui/material';
 import avatarImage from '../assets/images/avatar.jpeg';
+import { useTranslation } from 'react-i18next';
+import { SOCIAL_URLS } from '../constants';
 
 interface HeaderLink {
   icon: JSX.Element;
@@ -12,14 +14,15 @@ interface HeaderLink {
 }
 
 export function Header() {
+  const { t } = useTranslation();
   const headerLinks: HeaderLink[] = [
     {
       icon: <GitHubIcon fontSize="large" color="primary" />,
-      href: 'https://github.com/NinjaPerson24119',
+      href: SOCIAL_URLS.GITHUB,
     },
     {
       icon: <LinkedInIcon fontSize="large" color="primary" />,
-      href: 'https://www.linkedin.com/in/nwengel',
+      href: SOCIAL_URLS.LINKEDIN,
     },
   ];
 
@@ -27,12 +30,12 @@ export function Header() {
     <div className="header">
       <div className="banner">
         <Avatar
-          alt="Nicholas Wengel"
+          alt={t('FULL_NAME')}
           src={avatarImage}
           sx={{ width: 128, height: 128 }}
         />
-        <h1>Nicholas Wengel</h1>
-        <h2>Software Developer</h2>
+        <h1>{t('FULL_NAME')}</h1>
+        <h2>{t('HEADLINE')}</h2>
       </div>
       <div className="header-links">
         {headerLinks.map((headerLink, index) => (
