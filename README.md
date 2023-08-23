@@ -9,6 +9,8 @@ Tools Index
 - [eslint](https://eslint.org/docs/latest/use/getting-started)
 - [husky](https://typicode.github.io/husky/)
 - [woff2](https://github.com/google/woff2)
+- [i18next](https://www.i18next.com/)
+  - [react-i18next](https://react.i18next.com/)
 
 Built with
 
