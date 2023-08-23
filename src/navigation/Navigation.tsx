@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
+import { ROUTES } from '../constants';
 
 interface NavigationItem {
   text: string;
@@ -31,17 +32,17 @@ export function Navigation() {
     {
       text: 'Home',
       icon: <HomeIcon fontSize="large" color="primary" />,
-      href: '#home',
+      href: ROUTES.HOME,
     },
     {
       text: 'Pre-University Projects',
       icon: <VideogameAssetIcon fontSize="large" color="primary" />,
-      href: '#pre-university-projects',
+      href: ROUTES.PRE_UNIVERSITY_PROJECTS,
     },
     {
       text: 'Autonomous Robotic Vehicle Project (ARVP)',
       icon: <SailingIcon fontSize="large" color="primary" />,
-      href: '#arvp',
+      href: ROUTES.ARVP,
     },
   ];
 
