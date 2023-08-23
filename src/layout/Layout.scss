@@ -1,3 +1,11 @@
+$desktop-breakpoint: 768px;
+
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
 .header {
   width: 100%;
   background-color: grey;
@@ -8,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
   }
 }
@@ -17,14 +25,14 @@
   width: 100%;
   min-height: 100px;
   background-color: green;
-  @media (min-width: 768px) {
+  @media (min-width: $desktop-breakpoint) {
     width: 400px;
     height: 100%;
     border-right: 1px solid #ccc;
   }
 }
 
-.content {
+.content-container {
   display: flex;
   flex-direction: column;
   overflow: auto;

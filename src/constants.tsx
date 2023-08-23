@@ -6,7 +6,9 @@ export const SOCIAL_URLS = {
 };
 
 export const ROUTES = {
-  HOME: '',
-  PRE_UNIVERSITY_PROJECTS: '#pre-university-projects',
-  ARVP: '#arvp',
+  ROOT: '/',
+  SUBROUTES: {
+    PRE_UNIVERSITY_PROJECTS: 'pre-university-projects',
+    ARVP: 'arvp',
+  },
 };

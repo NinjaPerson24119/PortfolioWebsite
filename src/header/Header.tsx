@@ -7,9 +7,9 @@ import { Avatar } from '@mui/material';
 import avatarImage from '../assets/images/avatar.jpeg';
 import { useTranslation } from 'react-i18next';
 import { SOCIAL_URLS } from '../constants';
-
+import React from 'react';
 interface HeaderLink {
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   href: string;
 }
 

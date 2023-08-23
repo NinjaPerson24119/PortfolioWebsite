@@ -5,19 +5,19 @@ interface LayoutProps {
   header: ReactNode;
   navigation: ReactNode;
   footer: ReactNode;
-  body: ReactNode;
+  content: ReactNode;
 }
 
-export function Layout({ header, navigation, footer, body }: LayoutProps) {
+export function Layout({ header, navigation, footer, content }: LayoutProps) {
   return (
-    <div>
-      <div className="header">{header}</div>
-      <div className="layout-below-header">
+    <div className="layout">
+      <div className='sidebar'>
+        <div className="header">{header}</div>
         <div className="navigation">{navigation}</div>
-        <div className="content">
-          <div className="body">{body}</div>
-          <div className="footer">{footer}</div>
-        </div>
+      </div>
+      <div className="content-container">
+        <div className="content">{content}</div>
+        <div className="footer">{footer}</div>
       </div>
     </div>
   );

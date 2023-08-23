@@ -3,13 +3,15 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Navigation } from './navigation/Navigation';
 import { Layout } from './layout/Layout';
 import { Header } from './header/Header';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, ReactNode } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { DESKTOP_WIDTH_PX, ROUTES } from './constants';
 
-export function CreateTheme(colorMode: ColorMode): Theme {
+function createCustomTheme(colorMode: ColorMode): Theme {
   return createTheme({
     palette: {
       mode: colorMode,
@@ -32,7 +34,42 @@ export function App() {
     }),
     [colorMode],
   );
-  const theme = useMemo(() => CreateTheme(colorMode), [colorMode]);
+  const theme = useMemo(() => createCustomTheme(colorMode), [colorMode]);
+
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const handleResize = () =>
+      setIsDesktop(window.innerWidth >= DESKTOP_WIDTH_PX);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
+
+  const layoutWithContent = (content: ReactNode) => (
+    <Layout
+      header={<Header />}
+      navigation={<Navigation collapsible={!isDesktop} />}
+      footer={<p>{t('COPYRIGHT')}</p>}
+      content={content}
+    />
+  );
+
+  const router = createBrowserRouter([
+    {
+      path: ROUTES.ROOT,
+      element: layoutWithContent(<p>{t('PLACEHOLDER_TEXT')}</p>),
+      errorElement: <p>404 Error</p>,
+      children: [
+        {
+          path: ROUTES.SUBROUTES.PRE_UNIVERSITY_PROJECTS,
+          element: layoutWithContent(<p>Pre-University</p>),
+        },
+        {
+          path: ROUTES.SUBROUTES.ARVP,
+          element: layoutWithContent(<p>ARVP</p>),
+        },
+      ],
+    },
+  ]);
 
   return (
     <>
@@ -41,12 +78,7 @@ export function App() {
 
       <ColorModeContext.Provider value={colorModeContext}>
         <ThemeProvider theme={theme}>
-          <Layout
-            header={<Header />}
-            navigation={<Navigation />}
-            footer={<p>{t('COPYRIGHT')}</p>}
-            body={<p>{t('PLACEHOLDER_TEXT')}</p>}
-          />
+          <RouterProvider router={router} />
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>
