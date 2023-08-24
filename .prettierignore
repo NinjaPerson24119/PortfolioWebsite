@@ -2,3 +2,5 @@ public
 package.json
 pnpm-lock.yaml
 *.md
+.husky/
+.prettierignore
