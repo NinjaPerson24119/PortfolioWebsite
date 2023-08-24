@@ -1,5 +1,5 @@
 import './Navigation.scss';
-import { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { IconButton, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -7,6 +7,7 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
 import { ROUTES } from '../constants';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 
 interface NavigationItem {
   text: string;
@@ -50,16 +51,35 @@ export function Navigation(props: NavigationProps) {
       {(!props.collapsible || expanded) && (
         <div className="navigation-elements-container">
           <List>
-            {menuItems.map((navigationItem, index) => (
-              <ListItemButton
-                key={index}
-                component="a"
-                href={navigationItem.href}
-              >
-                <ListItemIcon>{navigationItem.icon}</ListItemIcon>
-                <ListItemText primary={navigationItem.text} />
-              </ListItemButton>
-            ))}
+            {menuItems.map((navigationItem, index) => {
+              const to = navigationItem.href;
+              const CustomNavLink = useMemo(
+                () =>
+                  React.forwardRef<
+                    HTMLAnchorElement,
+                    Omit<NavLinkProps, 'to'> & { href: NavLinkProps['to'] }
+                  >(function NavLink(props, ref) {
+                    const { href, ...other } = props;
+                    return (
+                      <NavLink
+                        ref={ref}
+                        to={href}
+                        className={(isActive) =>
+                          isActive ? 'navigation-item-active' : ''
+                        }
+                        {...other}
+                      />
+                    );
+                  }),
+                [to],
+              );
+              return (
+                <ListItemButton key={index} href={to} component={CustomNavLink}>
+                  <ListItemIcon>{navigationItem.icon}</ListItemIcon>
+                  <ListItemText primary={navigationItem.text} />
+                </ListItemButton>
+              );
+            })}
           </List>
         </div>
       )}

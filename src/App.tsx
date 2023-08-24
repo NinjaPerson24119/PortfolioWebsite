@@ -44,28 +44,31 @@ export function App() {
     return () => window.removeEventListener('resize', handleResize);
   });
 
-  const layoutWithContent = (content: ReactNode) => (
+  const layout = (
     <Layout
       header={<Header />}
       navigation={<Navigation collapsible={!isDesktop} />}
       footer={<p>{t('COPYRIGHT')}</p>}
-      content={content}
     />
   );
 
   const router = createBrowserRouter([
     {
       path: ROUTES.ROOT,
-      element: layoutWithContent(<p>{t('PLACEHOLDER_TEXT')}</p>),
+      element: layout,
       errorElement: <p>404 Error</p>,
       children: [
         {
+          index: true,
+          element: <p>Home</p>,
+        },
+        {
           path: ROUTES.SUBROUTES.PRE_UNIVERSITY_PROJECTS,
-          element: layoutWithContent(<p>Pre-University</p>),
+          element: <p>Pre-University</p>,
         },
         {
           path: ROUTES.SUBROUTES.ARVP,
-          element: layoutWithContent(<p>ARVP</p>),
+          element: <p>ARVP</p>,
         },
       ],
     },
