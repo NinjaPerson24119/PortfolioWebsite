@@ -1,5 +1,5 @@
 import './Navigation.scss';
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { IconButton, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -19,25 +19,42 @@ interface NavigationProps {
   collapsible: boolean;
 }
 
+const CustomNavLink = React.forwardRef<
+  HTMLAnchorElement,
+  Omit<NavLinkProps, 'to'> & { href: NavLinkProps['to'] }
+>(function CustomNavLink(props, ref) {
+  const { href, className, ...other } = props;
+  return (
+    <NavLink
+      ref={ref}
+      to={href}
+      className={({ isActive }) =>
+        `${className as string} ${isActive ? 'navigation-item-active' : ''}`
+      }
+      {...other}
+    />
+  );
+});
+
 export function Navigation(props: NavigationProps) {
   const [expanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(!expanded);
 
   const menuItems: NavigationItem[] = [
     {
-      text: 'Home',
+      text: 'Overview',
       icon: <HomeIcon fontSize="large" color="primary" />,
-      href: ROUTES.ROOT,
+      href: ROUTES.OVERVIEW,
     },
     {
       text: 'Pre-University Projects',
       icon: <VideogameAssetIcon fontSize="large" color="primary" />,
-      href: ROUTES.SUBROUTES.PRE_UNIVERSITY_PROJECTS,
+      href: ROUTES.PRE_UNIVERSITY_PROJECTS,
     },
     {
       text: 'Autonomous Robotic Vehicle Project (ARVP)',
       icon: <SailingIcon fontSize="large" color="primary" />,
-      href: ROUTES.SUBROUTES.ARVP,
+      href: ROUTES.ARVP,
     },
   ];
 
@@ -52,29 +69,12 @@ export function Navigation(props: NavigationProps) {
         <div className="navigation-elements-container">
           <List>
             {menuItems.map((navigationItem, index) => {
-              const to = navigationItem.href;
-              const CustomNavLink = useMemo(
-                () =>
-                  React.forwardRef<
-                    HTMLAnchorElement,
-                    Omit<NavLinkProps, 'to'> & { href: NavLinkProps['to'] }
-                  >(function NavLink(props, ref) {
-                    const { href, ...other } = props;
-                    return (
-                      <NavLink
-                        ref={ref}
-                        to={href}
-                        className={(isActive) =>
-                          isActive ? 'navigation-item-active' : ''
-                        }
-                        {...other}
-                      />
-                    );
-                  }),
-                [to],
-              );
               return (
-                <ListItemButton key={index} href={to} component={CustomNavLink}>
+                <ListItemButton
+                  key={index}
+                  href={navigationItem.href}
+                  component={CustomNavLink}
+                >
                   <ListItemIcon>{navigationItem.icon}</ListItemIcon>
                   <ListItemText primary={navigationItem.text} />
                 </ListItemButton>

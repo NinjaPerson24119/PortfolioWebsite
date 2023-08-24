@@ -3,12 +3,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import { Navigation } from './navigation/Navigation';
 import { Layout } from './layout/Layout';
 import { Header } from './header/Header';
-import { useMemo, useState, useEffect, ReactNode } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { DESKTOP_WIDTH_PX, ROUTES } from './constants';
 
 function createCustomTheme(colorMode: ColorMode): Theme {
@@ -54,23 +54,27 @@ export function App() {
 
   const router = createBrowserRouter([
     {
-      path: ROUTES.ROOT,
+      path: '/',
       element: layout,
       errorElement: <p>404 Error</p>,
       children: [
         {
-          index: true,
+          path: ROUTES.OVERVIEW,
           element: <p>Home</p>,
         },
         {
-          path: ROUTES.SUBROUTES.PRE_UNIVERSITY_PROJECTS,
+          path: ROUTES.PRE_UNIVERSITY_PROJECTS,
           element: <p>Pre-University</p>,
         },
         {
-          path: ROUTES.SUBROUTES.ARVP,
+          path: ROUTES.ARVP,
           element: <p>ARVP</p>,
         },
       ],
+    },
+    {
+      path: '*',
+      element: <Navigate to={ROUTES.OVERVIEW} />
     },
   ]);
 
