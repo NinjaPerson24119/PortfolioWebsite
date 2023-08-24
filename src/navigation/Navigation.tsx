@@ -7,7 +7,7 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
 import { ROUTES } from '../constants';
-import { NavLink, NavLinkProps, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface NavigationItem {
   text: string;
@@ -18,23 +18,6 @@ interface NavigationItem {
 interface NavigationProps {
   collapsible: boolean;
 }
-
-const CustomNavLink = React.forwardRef<
-  HTMLAnchorElement,
-  Omit<NavLinkProps, 'to'> & { href: NavLinkProps['to'] }
->(function CustomNavLink(props, ref) {
-  const { href, className, ...other } = props;
-  return (
-    <NavLink
-      ref={ref}
-      to={href}
-      className={({ isActive }) =>
-        `${className as string} ${isActive ? 'navigation-item-active' : ''}`
-      }
-      {...other}
-    />
-  );
-});
 
 export function Navigation(props: NavigationProps) {
   const [expanded, setIsExpanded] = useState(false);
@@ -74,8 +57,8 @@ export function Navigation(props: NavigationProps) {
               return (
                 <ListItemButton
                   key={index}
-                  href={navigationItem.href}
-                  component={CustomNavLink}
+                  to={navigationItem.href}
+                  component={Link}
                 >
                   <ListItemIcon>{navigationItem.icon}</ListItemIcon>
                   <ListItemText primary={navigationItem.text} />
