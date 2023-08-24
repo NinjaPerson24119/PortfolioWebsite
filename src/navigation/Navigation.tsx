@@ -79,7 +79,7 @@ export function Navigation(props: NavigationProps) {
                 >
                   <ListItemIcon>{navigationItem.icon}</ListItemIcon>
                   <ListItemText primary={navigationItem.text} />
-                  {location.pathname.includes(navigationItem.href) && (
+                  {location.pathname === `/${navigationItem.href}` && (
                     <p>Active Route</p>
                   )}
                 </ListItemButton>
