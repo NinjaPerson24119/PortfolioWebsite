@@ -8,7 +8,11 @@ import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from 'react-router-dom';
 import { DESKTOP_WIDTH_PX, ROUTES } from './constants';
 
 function createCustomTheme(colorMode: ColorMode): Theme {
@@ -74,7 +78,7 @@ export function App() {
     },
     {
       path: '*',
-      element: <Navigate to={ROUTES.OVERVIEW} />
+      element: <Navigate to={ROUTES.OVERVIEW} />,
     },
   ]);
 

@@ -7,7 +7,7 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
 import { ROUTES } from '../constants';
-import { NavLink, NavLinkProps } from 'react-router-dom';
+import { NavLink, NavLinkProps, useLocation } from 'react-router-dom';
 
 interface NavigationItem {
   text: string;
@@ -39,6 +39,8 @@ const CustomNavLink = React.forwardRef<
 export function Navigation(props: NavigationProps) {
   const [expanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(!expanded);
+
+  const location = useLocation();
 
   const menuItems: NavigationItem[] = [
     {
@@ -77,6 +79,11 @@ export function Navigation(props: NavigationProps) {
                 >
                   <ListItemIcon>{navigationItem.icon}</ListItemIcon>
                   <ListItemText primary={navigationItem.text} />
+                  {
+                    (location.pathname.includes(navigationItem.href)) && (
+                      <p>Active Route</p>
+                    )
+                  }
                 </ListItemButton>
               );
             })}
