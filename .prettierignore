@@ -1,6 +1,10 @@
 public
+.husky/
+
+.prettierignore
+.gitignore
+
 package.json
 pnpm-lock.yaml
+
 *.md
-.husky/
-.prettierignore

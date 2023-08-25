@@ -8,6 +8,7 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
 import { ROUTES } from '../constants';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface NavigationItem {
   text: string;
@@ -20,6 +21,8 @@ interface NavigationProps {
 }
 
 export function Navigation(props: NavigationProps) {
+  const { t } = useTranslation();
+
   const [expanded, setIsExpanded] = useState(false);
   const toggleExpanded = () => setIsExpanded(!expanded);
 
@@ -27,17 +30,17 @@ export function Navigation(props: NavigationProps) {
 
   const menuItems: NavigationItem[] = [
     {
-      text: 'Overview',
+      text: t('NAVIGATION.OVERVIEW'),
       icon: <HomeIcon fontSize="large" color="primary" />,
       href: ROUTES.OVERVIEW,
     },
     {
-      text: 'Pre-University Projects',
+      text: t('NAVIGATION.PRE_UNIVERSITY_PROJECTS'),
       icon: <VideogameAssetIcon fontSize="large" color="primary" />,
       href: ROUTES.PRE_UNIVERSITY_PROJECTS,
     },
     {
-      text: 'Autonomous Robotic Vehicle Project (ARVP)',
+      text: t('NAVIGATION.ARVP'),
       icon: <SailingIcon fontSize="large" color="primary" />,
       href: ROUTES.ARVP,
     },

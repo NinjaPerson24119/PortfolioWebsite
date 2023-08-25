@@ -2,5 +2,10 @@
   "FULL_NAME": "Nicholas Wengel",
   "HEADLINE": "Software Developer",
   "COPYRIGHT": "Copyright © 2023 Nicholas Wengel. All rights reserved.",
-  "PLACEHOLDER_TEXT": "Placeholder text. Ipsum lorem."
+  "PLACEHOLDER_TEXT": "Placeholder text. Ipsum lorem.",
+  "NAVIGATION": {
+    "OVERVIEW": "Overview",
+    "PRE_UNIVERSITY_PROJECTS": "Pre-University Projects",
+    "ARVP": "Autonomous Robotics Vehicle Project (ARVP)"
+  }
 }
