@@ -8,12 +8,9 @@ import { useMediaQuery } from '@mui/material';
 import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from 'react-router-dom';
-import { DESKTOP_WIDTH_PX, ROUTES } from './constants';
+import { RouterProvider } from 'react-router-dom';
+import { DESKTOP_WIDTH_PX } from './constants';
+import { GenerateRouter } from './routing';
 
 function createCustomTheme(colorMode: ColorMode): Theme {
   return createTheme({
@@ -23,9 +20,16 @@ function createCustomTheme(colorMode: ColorMode): Theme {
   });
 }
 
+export const ROUTES = {
+  OVERVIEW: 'overview',
+  PRE_UNIVERSITY_PROJECTS: 'pre-university-projects',
+  ARVP: 'arvp',
+};
+
 export function App() {
   const { t } = useTranslation();
 
+  // theming
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [colorMode, setColorMode] = useState<ColorMode>(
     prefersDarkMode ? 'dark' : 'light',
@@ -40,6 +44,7 @@ export function App() {
   );
   const theme = useMemo(() => createCustomTheme(colorMode), [colorMode]);
 
+  // routing
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
     const handleResize = () =>
@@ -47,7 +52,6 @@ export function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
-
   const layout = (
     <Layout
       header={<Header />}
@@ -55,32 +59,7 @@ export function App() {
       footer={<p>{t('COPYRIGHT')}</p>}
     />
   );
-
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: layout,
-      errorElement: <p>404 Error</p>,
-      children: [
-        {
-          path: ROUTES.OVERVIEW,
-          element: <p>Home</p>,
-        },
-        {
-          path: ROUTES.PRE_UNIVERSITY_PROJECTS,
-          element: <p>Pre-University</p>,
-        },
-        {
-          path: ROUTES.ARVP,
-          element: <p>ARVP</p>,
-        },
-      ],
-    },
-    {
-      path: '*',
-      element: <Navigate to={ROUTES.OVERVIEW} />,
-    },
-  ]);
+  const router = useMemo(() => GenerateRouter(layout), [layout]);
 
   return (
     <>
