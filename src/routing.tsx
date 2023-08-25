@@ -4,6 +4,9 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import React from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { i18n } from './i18n';
+import { ARVP } from './pages/ARVP';
+import { Overview } from './pages/Overview';
+import { PreUniversityProjects } from './pages/PreUniversityProjects';
 
 const DEFAULT_PAGE_URL = 'overview';
 
@@ -19,19 +22,19 @@ export const NavigationItems: NavigationItem[] = [
     text: i18n.t('NAVIGATION.OVERVIEW'),
     icon: <HomeIcon fontSize="large" color="primary" />,
     href: DEFAULT_PAGE_URL,
-    component: <p>Overview</p>,
+    component: <Overview />,
   },
   {
     text: i18n.t('NAVIGATION.PRE_UNIVERSITY_PROJECTS'),
     icon: <VideogameAssetIcon fontSize="large" color="primary" />,
     href: 'pre-university-projects',
-    component: <p>Pre-University Projects</p>,
+    component: <PreUniversityProjects />,
   },
   {
     text: i18n.t('NAVIGATION.ARVP'),
     icon: <SailingIcon fontSize="large" color="primary" />,
     href: 'arvp',
-    component: <p>ARVP</p>,
+    component: <ARVP />,
   },
 ];
 
