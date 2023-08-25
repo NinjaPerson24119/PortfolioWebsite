@@ -1,15 +1,15 @@
+import { useMediaQuery } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { Navigation } from './navigation/Navigation';
-import { Layout } from './layout/Layout';
-import { Header } from './header/Header';
-import { useMemo, useState, useEffect } from 'react';
-import { useMediaQuery } from '@mui/material';
-import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { Theme, createTheme } from '@mui/material/styles';
+import { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider } from 'react-router-dom';
+import { ColorMode, ColorModeContext } from './color-mode/color-mode-context';
 import { DESKTOP_WIDTH_PX } from './constants';
+import { Header } from './header/Header';
+import { Layout } from './layout/Layout';
+import { Navigation } from './navigation/Navigation';
 import { GenerateRouter } from './routing';
 
 function createCustomTheme(colorMode: ColorMode): Theme {

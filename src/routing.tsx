@@ -1,9 +1,9 @@
-import React from 'react';
-import { i18n } from './i18n';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
+import React from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { i18n } from './i18n';
 
 const DEFAULT_PAGE_URL = 'overview';
 

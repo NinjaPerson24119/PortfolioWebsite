@@ -1,13 +1,14 @@
-import './Header.scss';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { IconButton } from '@mui/material';
-import { ColorModeToggle } from '../color-mode/ColorModeToggle';
 import { Avatar } from '@mui/material';
-import avatarImage from '../assets/images/avatar.jpeg';
-import { useTranslation } from 'react-i18next';
-import { SOCIAL_URLS } from '../constants';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import avatarImage from '../assets/images/avatar.jpeg';
+import { ColorModeToggle } from '../color-mode/ColorModeToggle';
+import { SOCIAL_URLS } from '../constants';
+import './Header.scss';
+
 interface HeaderLink {
   icon: React.JSX.Element;
   href: string;

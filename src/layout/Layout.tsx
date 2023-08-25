@@ -1,6 +1,6 @@
-import './Layout.scss';
 import { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
+import './Layout.scss';
 
 interface LayoutProps {
   header: ReactNode;
