@@ -29,5 +29,6 @@ module.exports = {
     semi: ['error', 'always'],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
+    'no-duplicate-imports': 'error',
   },
 };
