@@ -5,8 +5,8 @@ import { Avatar } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import avatarImage from '../assets/images/avatar.jpeg';
-import { ColorModeToggle } from '../color-mode/ColorModeToggle';
 import { SOCIAL_URLS } from '../constants';
+import { ColorModeToggle } from '../theme/ColorModeToggle';
 import './Header.scss';
 
 interface HeaderLink {

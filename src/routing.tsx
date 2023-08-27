@@ -44,10 +44,11 @@ export const NavigationItems: NavigationItem[] = [
 
 export interface LayoutProps {
   content: React.ReactNode;
-  children?: React.ReactNode;
 }
 
-export function GenerateRouter(Layout: React.ComponentType<LayoutProps>) {
+export function GenerateRouter(
+  Layout: React.ComponentType<React.PropsWithChildren<LayoutProps>>,
+) {
   const NotFoundPage = () => {
     return (
       <Layout
