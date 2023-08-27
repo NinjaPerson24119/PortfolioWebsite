@@ -7,5 +7,12 @@
     "OVERVIEW": "Overview",
     "PRE_UNIVERSITY_PROJECTS": "Pre-University Projects",
     "ARVP": "Autonomous Robotics Vehicle Project (ARVP)"
+  },
+  "NOT_FOUND_PAGE": {
+    "HEADER": "Page not found"
+  },
+  "ERROR_PAGE": {
+    "HEADER": "Something went wrong!",
+    "SUBHEADER": "Try again later."
   }
 }

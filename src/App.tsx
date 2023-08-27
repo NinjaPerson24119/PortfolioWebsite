@@ -10,7 +10,7 @@ import { DESKTOP_WIDTH_PX } from './constants';
 import { Header } from './header/Header';
 import { Layout } from './layout/Layout';
 import { Navigation } from './navigation/Navigation';
-import { GenerateRouter } from './routing';
+import { GenerateRouter, LayoutProps } from './routing';
 
 function createCustomTheme(colorMode: ColorMode): Theme {
   return createTheme({
@@ -52,11 +52,12 @@ export function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
-  const layout = (
+  const layout = ({ content }: LayoutProps) => (
     <Layout
       header={<Header />}
       navigation={<Navigation collapsible={!isDesktop} />}
       footer={<p>{t('COPYRIGHT')}</p>}
+      content={content}
     />
   );
   const router = useMemo(() => GenerateRouter(layout), [layout]);

@@ -10,7 +10,7 @@ import { SOCIAL_URLS } from '../constants';
 import './Header.scss';
 
 interface HeaderLink {
-  icon: React.JSX.Element;
+  icon: React.ReactNode;
   href: string;
 }
 

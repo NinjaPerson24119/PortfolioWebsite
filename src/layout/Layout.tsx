@@ -1,25 +1,23 @@
 import { ReactNode } from 'react';
-import { Outlet } from 'react-router-dom';
 import './Layout.scss';
 
 interface LayoutProps {
   header: ReactNode;
   navigation: ReactNode;
   footer: ReactNode;
+  content: ReactNode;
 }
 
-export function Layout({ header, navigation, footer }: LayoutProps) {
+export function Layout({ ...props }: LayoutProps) {
   return (
     <div className="layout">
       <div className="sidebar">
-        <div className="header">{header}</div>
-        <div className="navigation">{navigation}</div>
+        <div className="header">{props.header}</div>
+        <div className="navigation">{props.navigation}</div>
       </div>
       <div className="content-container">
-        <div className="content">
-          <Outlet />
-        </div>
-        <div className="footer">{footer}</div>
+        <div className="content">{props.content}</div>
+        <div className="footer">{props.footer}</div>
       </div>
     </div>
   );
