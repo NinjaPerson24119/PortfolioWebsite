@@ -1,7 +1,6 @@
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { IconButton } from '@mui/material';
-import { Avatar } from '@mui/material';
+import { IconButton, Avatar } from '@mui/material';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import avatarImage from '../assets/images/avatar.jpeg';

@@ -1,6 +1,11 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton, List } from '@mui/material';
-import { ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
+import {
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
+  ListItemIcon,
+} from '@mui/material';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationItems } from '../routing';
