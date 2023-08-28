@@ -2,6 +2,8 @@
 
 This is my portfolio website. I built it with React to refresh my knowledge and learn some new things.
 
+Hosted at [https://nicholaswengel.com](https://nicholaswengel.com)
+
 ## Tools
 
 Built with
