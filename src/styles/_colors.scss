@@ -1,5 +1,10 @@
 // dark theme
-$text-dark: #ffffff;
+$primary: #161616;
+$secondary: #d7d7d7;
+$tertiary: #202020;
+$accent: #89a0dc;
+$text-dark: $primary;
+$link: #ffffff;
 $background-dark: #242424;
 
 // light theme
