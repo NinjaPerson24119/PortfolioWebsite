@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Unstable_Grid2';
+import { Grid } from '@mui/material';
 import { ReactNode } from 'react';
 import './Layout.scss';
 
@@ -13,13 +13,13 @@ export function Layout({ ...props }: LayoutProps) {
     <div className="layout">
       <div className="grid-container">
         <Grid container>
-          <Grid xs={3} md={3}>
+          <Grid item xs={3} md={3}>
             {props.navigation}
           </Grid>
-          <Grid xs={6} md={6}>
+          <Grid item xs={6} md={6}>
             {props.content}
           </Grid>
-          <Grid md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
             {/*Spacer*/}
           </Grid>
         </Grid>

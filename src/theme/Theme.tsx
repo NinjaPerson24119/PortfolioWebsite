@@ -3,16 +3,57 @@ import {
   Theme as MUITheme,
   createTheme,
   ThemeProvider,
+  PaletteOptions,
 } from '@mui/material/styles';
 import { useMemo, useState } from 'react';
 import { DESKTOP_WIDTH_PX } from '../constants';
 import { ColorMode, ColorModeContext } from './color-mode-context';
 
+const darkPalette: PaletteOptions = {
+  primary: {
+    light: '#676767',
+    main: '#363636',
+    dark: '#161616',
+    contrastText: '#e5e5e5',
+  },
+  secondary: {
+    light: '#b9c5ea',
+    main: '#89a1dc',
+    dark: '#567ccc',
+    contrastText: '#0040aa',
+  },
+  background: {
+    default: '#363636',
+  },
+  text: {
+    primary: '#ffffff',
+  },
+};
+
+const lightPalette: PaletteOptions = {
+  primary: {
+    light: '#676767',
+    main: '#363636',
+    dark: '#161616',
+    contrastText: '#e5e5e5',
+  },
+  secondary: {
+    light: '#b9c5ea',
+    main: '#89a1dc',
+    dark: '#567ccc',
+    contrastText: '#0040aa',
+  },
+  background: {
+    default: '#ffffff',
+  },
+  text: {
+    primary: '#000000',
+  },
+};
+
 export function createMUITheme(colorMode: ColorMode): MUITheme {
   return createTheme({
-    palette: {
-      mode: colorMode,
-    },
+    palette: colorMode === 'dark' ? darkPalette : lightPalette,
     breakpoints: {
       values: {
         xs: 0,
@@ -46,11 +87,12 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
 
   return (
     <>
-      {/*https://github.com/mui/material-ui/blob/master/packages/mui-material/src/CssBaseline/CssBaseline.js*/}
-      <CssBaseline />
-
       <ColorModeContext.Provider value={colorModeContext}>
-        <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          {/*https://github.com/mui/material-ui/blob/master/packages/mui-material/src/CssBaseline/CssBaseline.js*/}
+          <CssBaseline />
+          {props.children}
+        </ThemeProvider>
       </ColorModeContext.Provider>
     </>
   );
