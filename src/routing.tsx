@@ -2,14 +2,12 @@ import ErrorIcon from '@mui/icons-material/Error';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import React from 'react';
 import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
 import { CenteredBanner } from './centered-banner/CenteredBanner';
 import { i18n } from './i18n';
 import { ARVP } from './pages/ARVP';
 import { Overview } from './pages/Overview';
-import { PreUniversityProjects } from './pages/PreUniversityProjects';
 
 const DEFAULT_PAGE_URL = 'overview';
 
@@ -26,12 +24,6 @@ export const NavigationItems: NavigationItem[] = [
     icon: <HomeIcon fontSize="large" color="primary" />,
     href: DEFAULT_PAGE_URL,
     component: <Overview />,
-  },
-  {
-    text: i18n.t('NAVIGATION.PRE_UNIVERSITY_PROJECTS'),
-    icon: <VideogameAssetIcon fontSize="large" color="primary" />,
-    href: 'pre-university-projects',
-    component: <PreUniversityProjects />,
   },
   {
     text: i18n.t('NAVIGATION.ARVP'),

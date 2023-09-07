@@ -1,40 +1,30 @@
-import { useTheme } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { ReactNode } from 'react';
-import { MediaQueryIsDesktop } from '../theme/Theme';
 import './Layout.scss';
-import { Sidebar } from './Sidebar';
 
 interface LayoutProps {
-  header: ReactNode;
   navigation: ReactNode;
   footer: ReactNode;
   content: ReactNode;
 }
 
 export function Layout({ ...props }: LayoutProps) {
-  const theme = useTheme();
-
-  const leftSidebarDesktop = (
-    <div className="left-sidebar">
-      <Sidebar header={props.header} navigation={props.navigation} />
-    </div>
-  );
-  const headerMobile = (
-    <div className="header-mobile">
-      {props.navigation}
-      {props.header}
-    </div>
-  );
-
   return (
     <div className="layout">
-      {MediaQueryIsDesktop(theme) ? leftSidebarDesktop : headerMobile}
-      <div className="content-container">
-        <div className="content">{props.content}</div>
-        <div className="footer-container">
-          <div className="footer">{props.footer}</div>
-        </div>
+      <div className="grid-container">
+        <Grid container>
+          <Grid xs={3} md={3}>
+            {props.navigation}
+          </Grid>
+          <Grid xs={6} md={6}>
+            {props.content}
+          </Grid>
+          <Grid md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
+            {/*Spacer*/}
+          </Grid>
+        </Grid>
       </div>
+      <div className="footer">{props.footer}</div>
     </div>
   );
 }
