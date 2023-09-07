@@ -1,7 +1,9 @@
 @use './css_reset';
 @use './fonts';
 @import './colors';
-@import './sizes;': root {
+@import './sizes';
+
+:root {
   font-family: Roboto, Inter, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

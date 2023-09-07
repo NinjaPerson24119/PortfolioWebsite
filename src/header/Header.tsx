@@ -1,6 +1,6 @@
 import { Avatar } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import avatarImage from '../assets/images/avatar_jellyfish.jpeg';
+import avatarImage from '../assets/images/avatar-jellyfish.jpeg';
 import './Header.scss';
 
 export function Header() {
