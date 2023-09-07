@@ -89,7 +89,6 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
     <>
       <ColorModeContext.Provider value={colorModeContext}>
         <ThemeProvider theme={theme}>
-          {/*https://github.com/mui/material-ui/blob/master/packages/mui-material/src/CssBaseline/CssBaseline.js*/}
           <CssBaseline />
           {props.children}
         </ThemeProvider>
