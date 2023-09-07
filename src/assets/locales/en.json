@@ -1,7 +1,8 @@
 {
   "FULL_NAME": "Nicholas Wengel",
   "HEADLINE": "Software Developer",
-  "COPYRIGHT": "Copyright © 2023 Nicholas Wengel. All rights reserved.",
+  "COPYRIGHT": "Copyright © 2023 Nicholas Wengel",
+  "BUILT_WITH": "Built with React and Vite",
   "PLACEHOLDER_TEXT": "Placeholder text. Ipsum lorem.",
   "NAVIGATION": {
     "OVERVIEW": "Overview",

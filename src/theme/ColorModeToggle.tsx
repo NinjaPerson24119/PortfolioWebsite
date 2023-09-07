@@ -4,14 +4,21 @@ import { IconButton } from '@mui/material';
 import { useContext } from 'react';
 import { ColorModeContext, ColorModeContextProps } from './color-mode-context';
 
-export function ColorModeToggle() {
+interface ColorModeToggleProps {
+  className?: string;
+}
+
+export function ColorModeToggle(props: ColorModeToggleProps) {
   const colorModeContext = useContext<ColorModeContextProps>(ColorModeContext);
   return (
-    <IconButton onClick={colorModeContext.toggleColorMode}>
+    <IconButton
+      className={props.className}
+      onClick={colorModeContext.toggleColorMode}
+    >
       {colorModeContext.colorMode === 'dark' ? (
-        <Brightness7Icon />
+        <Brightness7Icon fontSize="large" color="primary" />
       ) : (
-        <Brightness4Icon />
+        <Brightness4Icon fontSize="large" color="primary" />
       )}
     </IconButton>
   );

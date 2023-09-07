@@ -1,5 +1,7 @@
+import { Typography } from '@mui/material';
+
 function Overview() {
-  return <p>Overview</p>;
+  return <Typography variant="body1">Overview</Typography>;
 }
 
 export { Overview };

@@ -1,5 +1,7 @@
+import { Typography } from '@mui/material';
+
 function ARVP() {
-  return <p>ARVP</p>;
+  return <Typography variant="body1">ARVP</Typography>;
 }
 
 export { ARVP };

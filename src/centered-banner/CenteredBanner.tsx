@@ -1,5 +1,5 @@
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import './CenteredBanner.scss';
+import styles from './CenteredBanner.module.scss';
 
 interface CenteredBannerProps {
   hero: React.ReactNode;
@@ -9,8 +9,8 @@ interface CenteredBannerProps {
 
 function CenteredBanner({ ...props }: CenteredBannerProps) {
   return (
-    <div className="container">
-      <div className="column">
+    <div className={styles.container}>
+      <div className={styles.column}>
         <SentimentVeryDissatisfiedIcon />
         <h1>{props.header}</h1>
         {props.subheader && <h2>{props.subheader}</h2>}

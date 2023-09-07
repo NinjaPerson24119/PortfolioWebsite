@@ -1,7 +1,16 @@
 @use './css_reset';
-@use './fonts';
-@import './colors';
-@import './sizes';
+@use './roboto';
+
+$header-1: 48px;
+$header-2: 36px;
+
+$header-1-mobile: 30px;
+$header-2-mobile: 18px;
+
+$body: 16px;
+$body-small: 14px;
+
+$icon: 36px;
 
 :root {
   font-family: Roboto, Inter, system-ui, Helvetica, Arial, sans-serif;
@@ -15,19 +24,9 @@
   -webkit-text-size-adjust: 100%;
 
   color-scheme: light dark;
-
-  color: $text-dark;
-  background-color: $background-dark;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: $text-light;
-    background-color: $background-light;
-  }
 }

@@ -5,12 +5,13 @@ import {
   ListItemIcon,
   useTheme,
   Box,
+  Typography,
 } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationItems } from '../routing';
 import { MediaQueryIsDesktop } from '../theme/Theme';
 import { IconsBar } from './IconsBar';
-import './Navigation.scss';
+import styles from './Navigation.module.scss';
 
 export function Navigation() {
   const location = useLocation();
@@ -18,9 +19,12 @@ export function Navigation() {
   const isMobile = !MediaQueryIsDesktop(theme);
 
   return (
-    <Box className="navigation" sx={isMobile ? { bgcolor: '#00FF00' } : {}}>
+    <Box
+      className={styles.navigation}
+      sx={isMobile ? { bgcolor: '#00FF00' } : {}}
+    >
       <IconsBar />
-      <div className="navigation-elements-container">
+      <div className={styles.navigationElementsContainer}>
         <List>
           {NavigationItems.map((navigationItem, index) => {
             return (
@@ -32,7 +36,7 @@ export function Navigation() {
                 <ListItemIcon>{navigationItem.icon}</ListItemIcon>
                 <ListItemText primary={navigationItem.text} />
                 {location.pathname === `/${navigationItem.href}` && (
-                  <p>TODO: Active Route</p>
+                  <Typography variant="body1">ACTIVE</Typography>
                 )}
               </ListItemButton>
             );

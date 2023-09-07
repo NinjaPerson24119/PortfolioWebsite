@@ -7,7 +7,7 @@ import React from 'react';
 import { SOCIAL_URLS, PUBLIC_EMAIL } from '../constants';
 import { ColorModeToggle } from '../theme/ColorModeToggle';
 import { MediaQueryIsDesktop } from '../theme/Theme';
-import './IconsBar.scss';
+import styles from './IconsBar.module.scss';
 
 interface HeaderLink {
   icon: React.ReactNode;
@@ -37,7 +37,7 @@ export function IconsBar() {
 
   return (
     <>
-      <div className="header-links">
+      <div className={styles.headerLinks}>
         {headerLinks.map((headerLink, index) => (
           <IconButton key={index} size="large" href={headerLink.href}>
             {headerLink.icon}
@@ -49,7 +49,7 @@ export function IconsBar() {
           </IconButton>
         )}
       </div>
-      <ColorModeToggle />
+      <ColorModeToggle className={styles.colorModeToggle} />
     </>
   );
 }

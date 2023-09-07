@@ -4,6 +4,7 @@ import {
   createTheme,
   ThemeProvider,
   PaletteOptions,
+  responsiveFontSizes,
 } from '@mui/material/styles';
 import { useMemo, useState } from 'react';
 import { DESKTOP_WIDTH_PX } from '../constants';
@@ -23,7 +24,7 @@ const darkPalette: PaletteOptions = {
     contrastText: '#0040aa',
   },
   background: {
-    default: '#363636',
+    default: '#111111',
   },
   text: {
     primary: '#ffffff',
@@ -83,7 +84,10 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
     }),
     [colorMode],
   );
-  const theme = useMemo(() => createMUITheme(colorMode), [colorMode]);
+  const theme = useMemo(() => {
+    const t = createMUITheme(colorMode);
+    return responsiveFontSizes(t);
+  }, [colorMode]);
 
   return (
     <>
