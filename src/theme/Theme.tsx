@@ -24,7 +24,7 @@ const darkPalette: PaletteOptions = {
     contrastText: '#0040aa',
   },
   background: {
-    default: '#111111',
+    default: '#222222',
   },
   text: {
     primary: '#ffffff',

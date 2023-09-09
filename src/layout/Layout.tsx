@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import { ReactNode } from 'react';
 import styles from './Layout.module.scss';
 
@@ -17,7 +17,7 @@ export function Layout({ ...props }: LayoutProps) {
             {props.navigation}
           </Grid>
           <Grid item xs={12} md={6}>
-            {props.content}
+            <Box sx={{ margin: '16px' }}>{props.content}</Box>
           </Grid>
         </Grid>
       </div>
