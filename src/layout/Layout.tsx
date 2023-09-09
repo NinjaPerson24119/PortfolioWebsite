@@ -11,16 +11,25 @@ interface LayoutProps {
 export function Layout({ ...props }: LayoutProps) {
   return (
     <div className={styles.layout}>
-      <div className={styles.gridContainer}>
-        <Grid container direction="row-reverse" justifyContent="flex-start">
-          <Grid item xs={12} md={3}>
-            {props.navigation}
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box sx={{ margin: '16px' }}>{props.content}</Box>
-          </Grid>
+      <Grid
+        container
+        direction="row-reverse"
+        justifyContent="flex-start"
+        sx={{ flexGrow: 1 }}
+      >
+        <Grid item xs={12} md={3}>
+          {props.navigation}
         </Grid>
-      </div>
+        <Grid item xs={12} md={6}>
+          <Box
+            sx={{
+              margin: '16px',
+            }}
+          >
+            {props.content}
+          </Box>
+        </Grid>
+      </Grid>
       <div className={styles.footerContainer}>{props.footer}</div>
     </div>
   );

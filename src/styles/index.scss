@@ -12,6 +12,12 @@ $body-small: 14px;
 
 $icon: 36px;
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 :root {
   font-family: Roboto, Inter, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
