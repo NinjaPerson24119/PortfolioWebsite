@@ -12,6 +12,7 @@ import styles from './IconsBar.module.scss';
 interface HeaderLink {
   icon: React.ReactNode;
   href: string;
+  newTab?: boolean;
 }
 
 const headerLinks: HeaderLink[] = [
@@ -22,10 +23,12 @@ const headerLinks: HeaderLink[] = [
   {
     icon: <LinkedInIcon fontSize="large" color="primary" />,
     href: SOCIAL_URLS.LINKEDIN,
+    newTab: true,
   },
   {
     icon: <GitHubIcon fontSize="large" color="primary" />,
     href: SOCIAL_URLS.GITHUB,
+    newTab: true,
   },
 ];
 
@@ -39,7 +42,12 @@ export function IconsBar() {
     <>
       <div className={styles.headerLinks}>
         {headerLinks.map((headerLink, index) => (
-          <IconButton key={index} size="large" href={headerLink.href}>
+          <IconButton
+            key={index}
+            size="large"
+            href={headerLink.href}
+            target={headerLink.newTab ? '_blank' : undefined}
+          >
             {headerLink.icon}
           </IconButton>
         ))}
