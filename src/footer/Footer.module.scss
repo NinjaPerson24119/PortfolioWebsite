@@ -10,8 +10,5 @@
   justify-content: center;
   padding: 16px;
 
-  $mobile-exclusive: br.$desktop-width - 1px;
-  @media (max-width: $mobile-exclusive) {
-    @include sh.shadow-mixin(-1);
-  }
+  @include sh.shadow-mixin(-1);
 }
