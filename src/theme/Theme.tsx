@@ -28,6 +28,7 @@ const darkPalette: PaletteOptions = {
   },
   text: {
     primary: '#ffffff',
+    link: '#ffffff',
   },
 };
 
@@ -49,6 +50,7 @@ const lightPalette: PaletteOptions = {
   },
   text: {
     primary: '#000000',
+    link: '#000000',
   },
 };
 

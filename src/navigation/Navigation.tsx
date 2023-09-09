@@ -36,11 +36,15 @@ export function Navigation() {
                   component={Link}
                   sx={{
                     borderRight: routeActive
-                      ? `2px solid ${theme.palette.text.primary}`
+                      ? `2px solid ${theme.palette.text.link}`
                       : undefined,
                   }}
                 >
-                  <ListItemIcon>{navigationItem.icon}</ListItemIcon>
+                  <ListItemIcon>
+                    <span style={{ color: theme.palette.text.link }}>
+                      {navigationItem.icon}
+                    </span>
+                  </ListItemIcon>
                   <ListItemText primary={navigationItem.text} />
                 </ListItemButton>
               );

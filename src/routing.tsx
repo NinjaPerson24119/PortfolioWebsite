@@ -21,13 +21,13 @@ export interface NavigationItem {
 export const NavigationItems: NavigationItem[] = [
   {
     text: i18n.t('NAVIGATION.OVERVIEW'),
-    icon: <HomeIcon fontSize="large" color="primary" />,
+    icon: <HomeIcon fontSize="large" />,
     href: DEFAULT_PAGE_URL,
     component: <Overview />,
   },
   {
     text: i18n.t('NAVIGATION.ARVP'),
-    icon: <SailingIcon fontSize="large" color="primary" />,
+    icon: <SailingIcon fontSize="large" />,
     href: 'arvp',
     component: <ARVP />,
   },

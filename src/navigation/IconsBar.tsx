@@ -15,28 +15,37 @@ interface HeaderLink {
   newTab?: boolean;
 }
 
-const headerLinks: HeaderLink[] = [
-  {
-    icon: <EmailIcon fontSize="large" color="primary" />,
-    href: 'mailto:' + PUBLIC_EMAIL,
-  },
-  {
-    icon: <LinkedInIcon fontSize="large" color="primary" />,
-    href: SOCIAL_URLS.LINKEDIN,
-    newTab: true,
-  },
-  {
-    icon: <GitHubIcon fontSize="large" color="primary" />,
-    href: SOCIAL_URLS.GITHUB,
-    newTab: true,
-  },
-];
-
 export function IconsBar() {
   const theme = useTheme();
   const openMenu = () => {
     console.log('TODO: open menu');
   };
+
+  const headerLinks: HeaderLink[] = [
+    {
+      icon: (
+        <EmailIcon fontSize="large" sx={{ color: theme.palette.text.link }} />
+      ),
+      href: 'mailto:' + PUBLIC_EMAIL,
+    },
+    {
+      icon: (
+        <LinkedInIcon
+          fontSize="large"
+          sx={{ color: theme.palette.text.link }}
+        />
+      ),
+      href: SOCIAL_URLS.LINKEDIN,
+      newTab: true,
+    },
+    {
+      icon: (
+        <GitHubIcon fontSize="large" sx={{ color: theme.palette.text.link }} />
+      ),
+      href: SOCIAL_URLS.GITHUB,
+      newTab: true,
+    },
+  ];
 
   return (
     <>
@@ -54,7 +63,10 @@ export function IconsBar() {
         ))}
         {!MediaQueryIsDesktop(theme) && (
           <IconButton size="large" onClick={openMenu}>
-            <MenuIcon fontSize="large" color="primary" />
+            <MenuIcon
+              fontSize="large"
+              sx={{ color: theme.palette.text.link }}
+            />
           </IconButton>
         )}
       </div>
