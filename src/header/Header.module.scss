@@ -1,4 +1,11 @@
 .header {
   display: flex;
-  gap: 64px;
+  gap: 16px;
+  align-items: center;
+}
+
+.headerTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }

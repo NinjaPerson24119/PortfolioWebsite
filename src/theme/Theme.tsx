@@ -4,7 +4,6 @@ import {
   createTheme,
   ThemeProvider,
   PaletteOptions,
-  responsiveFontSizes,
 } from '@mui/material/styles';
 import { useMemo, useState } from 'react';
 import { DESKTOP_WIDTH_PX } from '../constants';
@@ -88,7 +87,20 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
   );
   const theme = useMemo(() => {
     const t = createMUITheme(colorMode);
-    return responsiveFontSizes(t);
+    t.typography.htmlFontSize = 16;
+    t.typography.h1 = {
+      fontSize: '3rem',
+      [t.breakpoints.down('md')]: {
+        fontSize: '2.25rem',
+      },
+    };
+    t.typography.h2 = {
+      fontSize: '1.25rem',
+      [t.breakpoints.down('md')]: {
+        fontSize: '1.125rem',
+      },
+    };
+    return t;
   }, [colorMode]);
 
   return (

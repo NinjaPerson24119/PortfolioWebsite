@@ -9,12 +9,12 @@ export function Header() {
 
   return (
     <div className={styles.header}>
-      <div className={styles.banner}>
-        <Avatar
-          alt={t('FULL_NAME')}
-          src={avatarImage}
-          sx={{ width: avatarSize, height: avatarSize }}
-        />
+      <Avatar
+        alt={t('FULL_NAME')}
+        src={avatarImage}
+        sx={{ width: avatarSize, height: avatarSize }}
+      />
+      <div className={styles.headerTextContainer}>
         <Typography variant="h1">{t('FULL_NAME')}</Typography>
         <Typography variant="h2">{t('HEADLINE')}</Typography>
       </div>

@@ -1,17 +1,6 @@
 @use './css_reset';
 @use './roboto';
 
-$header-1: 48px;
-$header-2: 36px;
-
-$header-1-mobile: 30px;
-$header-2-mobile: 18px;
-
-$body: 16px;
-$body-small: 14px;
-
-$icon: 36px;
-
 html,
 body,
 #root {
@@ -22,6 +11,7 @@ body,
   font-family: Roboto, Inter, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 16px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -33,6 +23,5 @@ body,
 }
 
 h1 {
-  font-size: 3.2em;
   line-height: 1.1;
 }
