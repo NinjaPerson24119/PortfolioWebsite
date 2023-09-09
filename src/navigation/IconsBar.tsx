@@ -41,6 +41,7 @@ export function IconsBar() {
   return (
     <>
       <div className={styles.headerLinks}>
+        <ColorModeToggle className={styles.colorModeToggle} />
         {headerLinks.map((headerLink, index) => (
           <IconButton
             key={index}
@@ -57,7 +58,6 @@ export function IconsBar() {
           </IconButton>
         )}
       </div>
-      <ColorModeToggle className={styles.colorModeToggle} />
     </>
   );
 }

@@ -5,7 +5,6 @@ import {
   ListItemIcon,
   useTheme,
   Box,
-  Typography,
 } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationItems } from '../routing';
@@ -21,28 +20,34 @@ export function Navigation() {
   return (
     <Box
       className={styles.navigation}
-      sx={isMobile ? { bgcolor: '#00FF00' } : {}}
+      sx={isMobile ? { bgcolor: theme.palette.primary.main } : {}}
     >
       <IconsBar />
-      <div className={styles.navigationElementsContainer}>
-        <List>
-          {NavigationItems.map((navigationItem, index) => {
-            return (
-              <ListItemButton
-                key={index}
-                to={navigationItem.href}
-                component={Link}
-              >
-                <ListItemIcon>{navigationItem.icon}</ListItemIcon>
-                <ListItemText primary={navigationItem.text} />
-                {location.pathname === `/${navigationItem.href}` && (
-                  <Typography variant="body1">ACTIVE</Typography>
-                )}
-              </ListItemButton>
-            );
-          })}
-        </List>
-      </div>
+      {!isMobile && (
+        <div className={styles.navigationElementsContainer}>
+          <List>
+            {NavigationItems.map((navigationItem, index) => {
+              const routeActive =
+                location.pathname === `/${navigationItem.href}`;
+              return (
+                <ListItemButton
+                  key={index}
+                  to={navigationItem.href}
+                  component={Link}
+                  sx={{
+                    borderRight: routeActive
+                      ? `2px solid ${theme.palette.text.primary}`
+                      : undefined,
+                  }}
+                >
+                  <ListItemIcon>{navigationItem.icon}</ListItemIcon>
+                  <ListItemText primary={navigationItem.text} />
+                </ListItemButton>
+              );
+            })}
+          </List>
+        </div>
+      )}
     </Box>
   );
 }
