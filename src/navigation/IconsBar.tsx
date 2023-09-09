@@ -16,13 +16,13 @@ interface HeaderLink {
   newTab?: boolean;
 }
 
-export function IconsBar() {
+interface IconsBarProps {
+  toggleNavigation?: () => void;
+}
+
+export function IconsBar({ ...props }: IconsBarProps) {
   const theme = useTheme();
   const isMobile = !MediaQueryIsDesktop(theme);
-
-  const openMenu = () => {
-    console.log('TODO: open menu');
-  };
 
   const headerLinks: HeaderLink[] = [
     {
@@ -73,7 +73,7 @@ export function IconsBar() {
       {isMobile && (
         <>
           <Divider />
-          <IconButton size="large" onClick={openMenu}>
+          <IconButton size="large" onClick={props.toggleNavigation}>
             <MenuIcon
               fontSize="large"
               sx={{ color: theme.palette.text.link }}

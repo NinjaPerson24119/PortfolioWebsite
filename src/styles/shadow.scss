@@ -1,4 +1,4 @@
 @mixin shadow-mixin($y-multiplier) {
-  $y: $y-multiplier * 4px;
+  $y: $y-multiplier * 2px;
   box-shadow: 0px $y 8px 8px rgba(0, 0, 0, 0.5);
 }
