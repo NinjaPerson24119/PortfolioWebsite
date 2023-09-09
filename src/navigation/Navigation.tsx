@@ -22,7 +22,7 @@ export function Navigation() {
       className={styles.navigation}
       sx={isMobile ? { bgcolor: theme.palette.primary.main } : {}}
     >
-      <IconsBar sx={{ width: '100%' }} />
+      <IconsBar />
       {!isMobile && (
         <div className={styles.navigationElementsContainer}>
           <List>

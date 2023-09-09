@@ -18,6 +18,8 @@ interface HeaderLink {
 
 export function IconsBar() {
   const theme = useTheme();
+  const isMobile = !MediaQueryIsDesktop(theme);
+
   const openMenu = () => {
     console.log('TODO: open menu');
   };
@@ -68,7 +70,7 @@ export function IconsBar() {
           {headerLink.icon}
         </IconButton>
       ))}
-      {!MediaQueryIsDesktop(theme) && (
+      {isMobile && (
         <>
           <Divider />
           <IconButton size="large" onClick={openMenu}>
