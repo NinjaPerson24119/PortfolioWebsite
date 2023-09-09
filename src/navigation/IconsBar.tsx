@@ -1,3 +1,4 @@
+import CircleIcon from '@mui/icons-material/Circle';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -47,29 +48,37 @@ export function IconsBar() {
     },
   ];
 
+  const Divider = () => (
+    <CircleIcon
+      sx={{ color: theme.palette.text.link, fontSize: '8px' }}
+    ></CircleIcon>
+  );
+
   return (
-    <>
-      <div className={styles.headerLinks}>
-        <ColorModeToggle className={styles.colorModeToggle} />
-        {headerLinks.map((headerLink, index) => (
-          <IconButton
-            key={index}
-            size="large"
-            href={headerLink.href}
-            target={headerLink.newTab ? '_blank' : undefined}
-          >
-            {headerLink.icon}
-          </IconButton>
-        ))}
-        {!MediaQueryIsDesktop(theme) && (
+    <div className={styles.headerLinks}>
+      <ColorModeToggle className={styles.colorModeToggle} />
+      <Divider />
+      {headerLinks.map((headerLink, index) => (
+        <IconButton
+          key={index}
+          size="large"
+          href={headerLink.href}
+          target={headerLink.newTab ? '_blank' : undefined}
+        >
+          {headerLink.icon}
+        </IconButton>
+      ))}
+      {!MediaQueryIsDesktop(theme) && (
+        <>
+          <Divider />
           <IconButton size="large" onClick={openMenu}>
             <MenuIcon
               fontSize="large"
               sx={{ color: theme.palette.text.link }}
             />
           </IconButton>
-        )}
-      </div>
-    </>
+        </>
+      )}
+    </div>
   );
 }

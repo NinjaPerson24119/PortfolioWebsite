@@ -1,6 +1,21 @@
+@use '../styles/breakpoints.scss' as br;
+
 .headerLinks {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  padding: 16px;
+
+  @media (min-width: br.$desktop-width) {
+    width: auto;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.headerLinks > * {
+  padding: 0px !important;
 }
