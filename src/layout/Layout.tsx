@@ -1,6 +1,5 @@
-import { Grid, useTheme } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ReactNode } from 'react';
-import { MediaQueryIsDesktop } from '../theme/Theme';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
@@ -10,20 +9,15 @@ interface LayoutProps {
 }
 
 export function Layout({ ...props }: LayoutProps) {
-  const theme = useTheme();
-  const isMobile = !MediaQueryIsDesktop(theme);
   return (
     <div className={styles.layout}>
       <div className={styles.gridContainer}>
-        <Grid container>
-          <Grid item md={3} sx={{ display: { xs: 'none', md: 'block' } }}>
-            {/*Spacer*/}
-          </Grid>
-          <Grid item xs={1} md={6}>
-            {props.content}
-          </Grid>
-          <Grid item xs={1} md={3} sx={{ order: isMobile ? 0 : undefined }}>
+        <Grid container direction="row-reverse" justifyContent="flex-start">
+          <Grid item xs={12} md={3}>
             {props.navigation}
+          </Grid>
+          <Grid item xs={12} md={6}>
+            {props.content}
           </Grid>
         </Grid>
       </div>
