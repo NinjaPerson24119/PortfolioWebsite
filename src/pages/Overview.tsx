@@ -10,7 +10,7 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import yolactAnimation from '../assets/images/arvp/yolact.webp';
 import { Header } from '../header/Header';
@@ -58,10 +58,16 @@ function Overview() {
 
   const [experienceTab, setExperienceTab] = useState(0);
 
-  const tabsStyles = {
-    borderRight: isDesktop ? 2 : 0,
-    borderColor: 'divider',
-  };
+  const tabsStyles = useMemo(
+    () => ({
+      borderRight: isDesktop ? 2 : 0,
+      borderColor: 'divider',
+      '.MuiTab-root:not(.Mui-selected)': {
+        color: theme.palette.text.primary,
+      },
+    }),
+    [isDesktop, theme],
+  );
 
   return (
     <Box className={styles.container}>
