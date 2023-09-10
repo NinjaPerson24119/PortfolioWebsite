@@ -1,3 +1,5 @@
+@use '../styles/breakpoints.scss' as br;
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -10,4 +12,12 @@
   width: 100%;
   flex-basis: 50px;
   min-height: 50px;
+}
+
+.stickyContainer {
+  @media (min-width: br.$desktop-width) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
 }

@@ -18,7 +18,7 @@ export function Layout({ ...props }: LayoutProps) {
         sx={{ flexGrow: 1 }}
       >
         <Grid item xs={12} md={3}>
-          {props.navigation}
+          <Box className={styles.stickyContainer}>{props.navigation}</Box>
         </Grid>
         <Grid item xs={12} md={6}>
           <Box>{props.content}</Box>
