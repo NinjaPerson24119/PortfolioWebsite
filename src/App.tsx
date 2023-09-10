@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { RouterProvider } from 'react-router-dom';
+import { BackgroundEllipse } from './BackgroundEllipse/BackgroundEllipse';
 import { Footer } from './footer/Footer';
 import { Layout } from './layout/Layout';
 import { Navigation } from './navigation/Navigation';
@@ -15,6 +16,8 @@ export function App() {
     <>
       <Theme>
         <RouterProvider router={router} />
+        <BackgroundEllipse diameter="250px" top="-100px" left="-100px" />
+        <BackgroundEllipse diameter="200px" bottom="-50px" right="-50px" />
       </Theme>
     </>
   );
