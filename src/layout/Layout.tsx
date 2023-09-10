@@ -21,13 +21,7 @@ export function Layout({ ...props }: LayoutProps) {
           {props.navigation}
         </Grid>
         <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              margin: '16px',
-            }}
-          >
-            {props.content}
-          </Box>
+          <Box>{props.content}</Box>
         </Grid>
       </Grid>
       <div className={styles.footerContainer}>{props.footer}</div>
