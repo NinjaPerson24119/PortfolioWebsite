@@ -23,6 +23,9 @@
       "LEARN_MORE": "Learn more!"
     }
   },
+  "EXPERIENCE": {
+    "HEADER": "Experience"
+  },
   "OTHER_PROJECTS": {
     "HEADER": "Other Projects",
     "FINANCE_AGGREGATOR": {

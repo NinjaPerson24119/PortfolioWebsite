@@ -65,14 +65,26 @@ function Overview() {
       </Button>
 
       <Typography variant="h2" sx={{ textAlign: 'center' }}>
+        {t('EXPERIENCE.HEADER')}
+      </Typography>
+
+      <Typography variant="h2" sx={{ textAlign: 'center' }}>
         {t('OTHER_PROJECTS.HEADER')}
       </Typography>
       <Box>
         <Grid container spacing={2}>
           {projects.map((project, index) => (
             <Grid item key={index} xs={12} md={6}>
-              <Link href={project.url}>
-                <Paper sx={{ padding: '8px', minHeight: '180px' }}>
+              <Link
+                href={project.url}
+                sx={{ textDecoration: 'none' }}
+                target="_blank"
+              >
+                <Paper
+                  sx={{ padding: '8px', minHeight: '180px' }}
+                  variant="outlined"
+                  elevation={8}
+                >
                   <Box
                     sx={{
                       display: 'flex',
