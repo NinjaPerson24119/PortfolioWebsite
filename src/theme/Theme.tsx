@@ -24,6 +24,7 @@ const darkPalette: PaletteOptions = {
   },
   background: {
     default: '#222222',
+    paper: '#363636',
   },
   text: {
     primary: '#dddddd',
@@ -99,6 +100,9 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
       [t.breakpoints.down('md')]: {
         fontSize: '1.125rem',
       },
+    };
+    t.typography.h3 = {
+      fontSize: '1rem',
     };
     return t;
   }, [colorMode]);

@@ -17,10 +17,33 @@
     "SUBHEADER": "Try again later."
   },
   "OVERVIEW": {
-    "ABOUT_ME": "I’m Nicholas, a full-stack software developer with experience in robotics and SaaS products! If you find me without a cup of coffee, it's because I haven't left the machine yet!",
+    "ABOUT_ME": "I'm Nicholas, a full-stack software developer with experience in robotics and SaaS products! If you find me without a cup of coffee, it's because I haven't left the machine yet!",
     "ARVP": {
       "HEADER": "Autonomous Robotic Vehicle Project",
       "LEARN_MORE": "Learn more!"
+    }
+  },
+  "OTHER_PROJECTS": {
+    "HEADER": "Other Projects",
+    "FINANCE_AGGREGATOR": {
+      "HEADER": "Finance Aggregator",
+      "DESCRIPTION": "Aggregates financial data from multiple sources. Can't handle the hassle of standardizing the umpteen CSV formats your banks use? This tool might be for you!"
+    },
+    "SHAPE_MATCHER": {
+      "HEADER": "Shape Matcher",
+      "DESCRIPTION": "A tool I wrote as a deep learning alternative for a computer vision task. It uses properties of contrast in underwater images (and shape priors) to identify objects of interest."
+    },
+    "ARVP_ONBOARDING_2019": {
+      "HEADER": "ARVP Onboarding 2019",
+      "DESCRIPTION": "A tutorial I wrote for new members of ARVP to get up to speed. It walks developers through commanding a simulated AUV to complete a simple obstacle course."
+    },
+    "YEET_MIND": {
+      "HEADER": "Yeet Mind / Neuro Car",
+      "DESCRIPTION": "At HackeEd 2019 my team wrote a tool that maps EKG signals through an SVM to control a car. We won 3rd place!"
+    },
+    "PRE_UNIVERSITY_PROJECTS": {
+      "HEADER": "Pre-University Projects",
+      "DESCRIPTION": "A collection of games I wrote to teach myself to code circa 2010-2017."
     }
   }
 }
