@@ -9,7 +9,11 @@ import { i18n } from './i18n';
 import { ARVP } from './pages/ARVP';
 import { Overview } from './pages/Overview';
 
-const DEFAULT_PAGE_URL = 'overview';
+export const ROUTES = {
+  OVERVIEW: 'overview',
+  ARVP: 'arvp',
+};
+const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
 
 export interface NavigationItem {
   text: string;
@@ -22,13 +26,13 @@ export const NavigationItems: NavigationItem[] = [
   {
     text: i18n.t('NAVIGATION.OVERVIEW'),
     icon: <HomeIcon fontSize="large" />,
-    href: DEFAULT_PAGE_URL,
+    href: ROUTES.OVERVIEW,
     component: <Overview />,
   },
   {
     text: i18n.t('NAVIGATION.ARVP'),
     icon: <SailingIcon fontSize="large" />,
-    href: 'arvp',
+    href: ROUTES.ARVP,
     component: <ARVP />,
   },
 ];
