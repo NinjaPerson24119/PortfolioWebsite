@@ -7,11 +7,15 @@ import {
   useTheme,
   Link,
   Grid,
+  Tabs,
+  Tab,
 } from '@mui/material';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import yolactAnimation from '../assets/images/arvp/yolact.webp';
 import { Header } from '../header/Header';
 import { ROUTES } from '../routing';
+import { MediaQueryIsDesktop } from '../theme/Theme';
 import styles from './Overview.module.scss';
 
 interface Project {
@@ -27,6 +31,7 @@ interface Project {
 function Overview() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const isDesktop = MediaQueryIsDesktop(theme);
 
   const projects: Project[] = [
     {
@@ -51,6 +56,13 @@ function Overview() {
     },
   ];
 
+  const [experienceTab, setExperienceTab] = useState(0);
+
+  const tabsStyles = {
+    borderRight: isDesktop ? 2 : 0,
+    borderColor: 'divider',
+  };
+
   return (
     <Box className={styles.container}>
       <Header></Header>
@@ -67,6 +79,30 @@ function Overview() {
       <Typography variant="h2" sx={{ textAlign: 'center' }}>
         {t('EXPERIENCE.HEADER')}
       </Typography>
+      <Paper
+        sx={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column' }}
+      >
+        <Tabs
+          textColor="secondary"
+          indicatorColor="secondary"
+          value={experienceTab}
+          onChange={(_, value: number) => setExperienceTab(value)}
+          centered
+          orientation={isDesktop ? 'vertical' : 'horizontal'}
+          sx={tabsStyles}
+        >
+          <Tab label="Vendasta" />
+          <Tab label="WCB Alberta" />
+          <Tab label="ARVP" />
+        </Tabs>
+        <div hidden={experienceTab !== 0}>
+          <Box sx={{ padding: '8px' }}>
+            <Typography variant="h3" sx={{ textAlign: 'center' }}>
+              Vendasta
+            </Typography>
+          </Box>
+        </div>
+      </Paper>
 
       <Typography variant="h2" sx={{ textAlign: 'center' }}>
         {t('OTHER_PROJECTS.HEADER')}
@@ -82,8 +118,7 @@ function Overview() {
               >
                 <Paper
                   sx={{ padding: '8px', minHeight: '180px' }}
-                  variant="outlined"
-                  elevation={8}
+                  elevation={3}
                 >
                   <Box
                     sx={{
