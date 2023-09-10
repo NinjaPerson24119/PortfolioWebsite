@@ -18,6 +18,9 @@
   },
   "OVERVIEW": {
     "ABOUT_ME": "I’m Nicholas, a full-stack software developer with experience in robotics and SaaS products! If you find me without a cup of coffee, it's because I haven't left the machine yet!",
-    "ARVP_LEARN_MORE": "Learn more!"
+    "ARVP": {
+      "HEADER": "Autonomous Robotic Vehicle Project",
+      "LEARN_MORE": "Learn more!"
+    }
   }
 }

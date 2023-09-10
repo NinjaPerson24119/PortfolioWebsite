@@ -12,8 +12,11 @@ function Overview() {
       <Header></Header>
       <Typography variant="body1">{t('OVERVIEW.ABOUT_ME')}</Typography>
       <img src={yolactAnimation} />
+      <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
+        {t('OVERVIEW.ARVP.HEADER')}
+      </Typography>
       <Button variant="contained" color="secondary" href={ROUTES.ARVP}>
-        {t('OVERVIEW.ARVP_LEARN_MORE')}
+        {t('OVERVIEW.ARVP.LEARN_MORE')}
       </Button>
     </Box>
   );
