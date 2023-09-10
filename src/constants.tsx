@@ -13,4 +13,7 @@ export const MEDIA_URLS = {
     'https://docs.google.com/presentation/d/1kmMbMbsBQIfZQ7aow6z44eJ3_zzTQ7BT/edit?usp=sharing&ouid=116338530486484625609&rtpof=true&sd=true',
 };
 
+export const SOURCE_CODE_URL =
+  'https://github.com/NinjaPerson24119/PortfolioWebsite';
+
 export const PUBLIC_EMAIL = 'todo@todo.com';

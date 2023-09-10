@@ -26,7 +26,7 @@ const darkPalette: PaletteOptions = {
     default: '#222222',
   },
   text: {
-    primary: '#ffffff',
+    primary: '#dddddd',
     link: '#ffffff',
   },
 };
