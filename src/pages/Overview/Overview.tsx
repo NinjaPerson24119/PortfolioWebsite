@@ -99,14 +99,16 @@ function Overview() {
       <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
         {t('OVERVIEW.ARVP.HEADER')}
       </Typography>
-      <Button
-        variant="contained"
-        color="secondary"
-        href={ROUTES.ARVP}
-        startIcon={<SailingIcon />}
-      >
-        {t('OVERVIEW.ARVP.LEARN_MORE')}
-      </Button>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Button
+          variant="contained"
+          color="secondary"
+          href={ROUTES.ARVP}
+          startIcon={<SailingIcon />}
+        >
+          {t('OVERVIEW.ARVP.LEARN_MORE')}
+        </Button>
+      </Box>
 
       <Typography variant="h2">{t('OVERVIEW.EXPERIENCE.HEADER')}</Typography>
       <Paper sx={{ display: 'flex', flexDirection: 'column' }}>
