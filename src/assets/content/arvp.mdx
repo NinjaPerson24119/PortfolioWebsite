@@ -10,7 +10,7 @@ The best decision of my degree was joining the [Autonomous Robotic Vehicle Proje
 
 ## What does ARVP do?
 
-![[auri-foggy-transdec.png]]
+![Foggy image of Auri robot at RoboSub competition](/arvp/auri-foggy-transdec.png)
 
 ARVP is an engineering club comprised of students and alumni at the University of Alberta. Every year they compete at the international [RoboSub](https://robonation.org/programs/robosub/) competition. The goal is to make an Autonomous Robotic Vehicle that can complete various tasks in an underwater obstacle course.
 ## Software Member
@@ -24,7 +24,7 @@ As a member of the software team, we had an incredibly complex basket of problem
 
 When I joined as a general member, I was immediately fascinated with computer vision: how to extract information about objects within images.
 
-![[histogram-technique-gate-detector.jpg]]
+![Histogram technique example](/arvp/histogram-technique-gate-detector.jpg)
 
 The team hadn't fully adopted machine learning yet, and had a number of prior attempts at classical computer vision. I had a lot to learn, so I toyed with my own ideas about how to isolate objects as I learned about OpenCV, various color spaces, and all the things that make computer vision really hard.
 ### Histogram Algorithm
@@ -35,7 +35,7 @@ My first algorithm took advantage of the fact that the background of an underwat
 3. Delete the largest connected node within the 2D histogram.
 4. Only the pixels that had high contrast to the background remain.
 
-![[ARVP_MemberOfMonth_November.png]]
+![Member of the month write-up](/arvp/ARVP_MemberOfMonth_November.png)
 
 There's a lot wrong with the histogram algorithm. A few problems include:
 - It doesn't work if objects to extract don't have high contrast with the background. Objects like the yellow and green buoys below don't get extracted.
@@ -54,9 +54,9 @@ In the context of the histogram algorithm this does two things:
 
 Since gSLICr's superpixels aren't exactly square, it also allows creating a decent outline of an object to extract. This works a lot better than applying a canny filter.
 
-![[gslicr-with-grid.png]]
+![Example of gSLICr with grid showing where superpixels are found](/arvp/gslicr-with-grid.png)
 
-![[superpixels-nice-output.png]]
+![Nice example of superpixels](/arvp/superpixels-nice-output.png)
 
 By running in sequence:
 1. gSLICr to emphasize colors
@@ -67,13 +67,13 @@ An additional challenge of the object below, was that I needed to know where it 
 
 I used OpenSceneGraph to render a 3D model of the "path" object at all the angles I was interested in. I then extracted monochrome masks to store in a database of known shape priors.
 
-![[shape-matcher-database-generator.png]]
+![Building the shape priors using the database generator](/arvp/shape-matcher-database-generator.png)
 
 Using a sliding window technique, the algorithm could detect:
 - Whether the mask produced by the histogram + superpixel algorithm matched a known shape
 - Which angle it matched
 
-![[path-detector-with-superpixels.png]]
+![Shape matcher detecting path](/arvp/path-detector-with-superpixels.png)
 
 This worked in well-behaved test cases, but was ultimately really ineffective in comparison to the deep learning methods.
 
@@ -87,14 +87,15 @@ I had a lot of fun reasoning through the vision problem with a procedural proces
 ## Mapping System
 The robot's mapping system used ROIs (rectangles) submitted from the vision system to continuously iterate towards a statistical estimate of where it thought objects were. As shown below, it would begin with a large sphere around an initial, hard-coded estimate, and slowly adjust the position and size of the spheres as it gained confidence.
 
-![[rviz-mapper.png]]
+![Gaussian estimates of object locations in RViz](/arvp/rviz-mapper.png)
 
 I As part of our testing process, I wrote some code that would project an estimate of each object's location over the live camera feed of the robot. Below is an example in the UWSim simulator. We were able to use this in the real pool to visually assess if the robot was correctly mapping props.
 
-![[mapping-object-projection.png]]
+![Projected position estimate overlays on underwater props](/arvp/mapping-object-projection.png)
 ## Deep Learning
 
 ### YOLO
+
 At the 2018 competition, we used [Darknet / YOLO](https://github.com/pjreddie/darknet). It's incredibly fast, even on the NVIDIA Jetson TX2 that the robot Auri used. Computational capabilities on the robot were extremely limited due to:
 - Battery life since the robot isn't tethered to any cables
 - Heat dissipation since the robot is underwater without an easy way to vent.
@@ -103,26 +104,35 @@ At the 2018 competition, we used [Darknet / YOLO](https://github.com/pjreddie/da
 I was part of the vision subteam that developed C/C++ code to run YOLO and submit resultant ROIs (rectangles) to the robot's mapping system.
 
 ### YOLACT
+
 While YOLO worked fantastic, it only produced rectangles. I decided to train an image segmentation model to solve some problems it wasn't sufficient for. This model was [YOLACT](https://github.com/dbolya/yolact)
 
 The team gathered footage at a local pool and labelled it with [LabelBox](https://labelbox.com/).
+
 ### Mapping Errors
+
 Since the mapping system used the size of an object to determine its distance, an unfortunate shaped rectangle could significantly impact the robot's knowledge about its surroundings.
+
 ### Sub-objects and Precise Interaction
+
 One of the challenges at RoboSub was to shoot a torpedo through a hole in a target. This required detecting not only the whole target to approach it, but also the ability to isolate a hole on it to fire through.
 
 The robot after Auri was supposed to have a mechanical claw for manipulating objects, like gripping a pipe to pick something up. This would require isolating the pipe to grip, rather than the entire rectangle representing the object to lift.
 
-![[yolact.webp]]
-![[yolact.png]]
+![Animation showing YOLACT image segmentation model detecting objects](/arvp/yolact.webp)
+![YOLACT image segmentation model detecting objects](/arvp/yolact.png)
+
 ## Software Team Co-Lead
+
 After a few years as a general member of the software team, myself and a friend were elected to co-lead the software team.
 
 The main projects I decided to take on were:
 - New onboarding process to increase the team's size
 - Better management of tasks and documentation using Trello and BookStack
 - Replace our [UWSim](http://www.irs.uji.es/uwsim/) simulator with a Gazebo simulator
+
 ### Onboarding
+
 When someone is interested in joining a robotics club, they want to see immediate results and picture themselves doing cool things with a robot.
 
 Before 2019 the club's onboarding focused on some programming basics using the Robot Operating System (ROS) to publish and subscribe to messages. It wasn't very visual. As a result, very few people held interest long enough to complete it.
@@ -133,13 +143,16 @@ Overall, it really helped engage people for longer.
 
 [You can find the complete document here](https://github.com/NinjaPerson24119/Onboarding2019/blob/master/(opensource)%202019%20Software%20Onboarding.pdf)
 
-![[2019-onboarding-cover.png]]
+![Cover of onboarding document](/arvp/2019-onboarding-cover.png)
+
 ### Task Management
 The team used to use GitHub issues for task management, but found it was really hard to keep track of progress, and that older issues would become stale.
 
 Trello was a great alternative that allowed us to see the project's direction at a glance.
-![[trello.png]]
+![Screenshot of Trello](/arvp/trello.png)
+
 ### Documentation
+
 Over time the team had scattered documentation across Google Drive documents and Markdown within our software repository.
 
 I decided to self-host BookStack on our website's server so that we could centralize our documentation in an easy to navigate format. It was a huge success initially.
@@ -147,22 +160,26 @@ I decided to self-host BookStack on our website's server so that we could centra
 However, it later became apparent that the club's biggest struggle with documentation was the intrinsic turnover of any student group: people graduate and move on.
 
 If I could go back in time, I would attempt to simplify our software to make it more approachable for the target audience. 
-![[bookstack.png]]
+![Screenshot of BookStack](/arvp/bookstack.png)
+
 ### Gazebo Simulator
+
 Our simulator in UWSim did not support collisions, and had recently been deprecated. I decided to move to Gazebo since it was well integrated with ROS. We needed collisions to be able to simulate claw tasks such as picking up props.
 
 I used [UUV Simulator](https://github.com/uuvsimulator/uuv_simulator) to provide all the water physics and sensors within the simulator.
 
-![[gazebo-underwater.png]]
-![[gazebo-over-gate.png]]
-![[arctos-motion-gazebo.ogv]]
+![Gazebo simulator showing underwater obstacle course](/arvp/gazebo-underwater.png)
+![Gazebo simulator showing view of gate prop](/arvp/gazebo-over-gate.png)
+![Gazebo simulator showing Arctos robot floating](/arvp/arctos-motion-gazebo.ogv)
+
 ## Project Co-Lead
+
 During my last year with ARVP, I experimented with the use stereo cameras and YOLACT to combine stereo images and image segmentation for the purpose of scene mapping.
 
-![[openchisel-3d-reconstruction.png]]
+![3D Reconstruction of scene using OpenChisel](/arvp/openchisel-3d-reconstruction.png)
 
 There was a lot going on in 2020-2021 due to COVID, so the project didn't make much progress. Above is a picture of a scene reconstruction that was generated by [OpenChisel](https://github.com/personalrobotics/OpenChisel).
 
-![[arvp-computer-vision-presentation.png]]
+![Powerpoint slide for computer vision presentation](/arvp/arvp-computer-vision-presentation.png)
 
 The culmination of this was a presentation that I delivered in person at UAlberta.

@@ -4,7 +4,7 @@ import { UserConfig, defineConfig } from 'vite';
 
 function configGenerator(dev: boolean): UserConfig {
   return {
-    plugins: [mdx(), react()],
+    plugins: [mdx({}), react()],
     build: {
       sourcemap: dev,
     },
