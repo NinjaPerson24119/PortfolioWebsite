@@ -20,12 +20,8 @@ import { ExperienceCard, ExperienceCardProps } from './ExperienceCard';
 import styles from './Overview.module.scss';
 
 interface Project {
-  rootKey:
-    | 'SHAPE_MATCHER'
-    | 'FINANCE_AGGREGATOR'
-    | 'ARVP_ONBOARDING_2019'
-    | 'YEET_MIND'
-    | 'PRE_UNIVERSITY_PROJECTS';
+  header: string;
+  description: string;
   url: string;
 }
 
@@ -35,23 +31,28 @@ function Overview() {
 
   const projects: Project[] = [
     {
-      rootKey: 'FINANCE_AGGREGATOR',
+      header: t('OTHER_PROJECTS.FINANCE_AGGREGATOR.HEADER'),
+      description: t('OTHER_PROJECTS.FINANCE_AGGREGATOR.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/FinanceAggregator',
     },
     {
-      rootKey: 'SHAPE_MATCHER',
+      header: t('OTHER_PROJECTS.SHAPE_MATCHER.HEADER'),
+      description: t('OTHER_PROJECTS.SHAPE_MATCHER.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/shape_matcher',
     },
     {
-      rootKey: 'ARVP_ONBOARDING_2019',
+      header: t('OTHER_PROJECTS.ARVP_ONBOARDING_2019.HEADER'),
+      description: t('OTHER_PROJECTS.ARVP_ONBOARDING_2019.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/Onboarding2019',
     },
     {
-      rootKey: 'YEET_MIND',
+      header: t('OTHER_PROJECTS.YEET_MIND.HEADER'),
+      description: t('OTHER_PROJECTS.YEET_MIND.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/neuro-car',
     },
     {
-      rootKey: 'PRE_UNIVERSITY_PROJECTS',
+      header: t('OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.HEADER'),
+      description: t('OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/Pre-University-Projects',
     },
   ];
@@ -158,16 +159,14 @@ function Overview() {
                       variant="h3"
                       sx={{ color: theme.palette.text.link }}
                     >
-                      {t(`OTHER_PROJECTS.${project.rootKey}.HEADER`)}
+                      {project.header}
                     </Typography>
                     <OpenInNewIcon
                       fontSize="small"
                       sx={{ color: theme.palette.text.link }}
                     />
                   </Box>
-                  <Typography variant="body2">
-                    {t(`OTHER_PROJECTS.${project.rootKey}.DESCRIPTION`)}
-                  </Typography>
+                  <Typography variant="body2">{project.description}</Typography>
                 </Paper>
               </Link>
             </Grid>
