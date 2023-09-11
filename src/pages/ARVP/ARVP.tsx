@@ -24,7 +24,7 @@ function StyledLink({ ...props }: StyledLinkProps) {
     <Link
       sx={{ textDecoration: 'none', color: theme.palette.text.link }}
       href={props.href}
-      target="_blank"
+      target={props.href.includes('#') ? '' : '_blank'}
     >
       {props.children}
     </Link>
