@@ -24,7 +24,15 @@
     }
   },
   "EXPERIENCE": {
-    "HEADER": "Experience"
+    "HEADER": "Experience",
+    "VENDASTA": {
+      "ORGANIZATION": "Vendasta",
+      "DESCRIPTION": "I did a lot of stuff :)"
+    },
+    "WCB_ALBERTA": {
+      "ORGANIZATION": "WCB Alberta",
+      "DESCRIPTION": "I did a lot of stuff :)"
+    }
   },
   "OTHER_PROJECTS": {
     "HEADER": "Other Projects",

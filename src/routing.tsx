@@ -6,8 +6,8 @@ import React from 'react';
 import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
 import { CenteredBanner } from './centered-banner/CenteredBanner';
 import { i18n } from './i18n';
-import { ARVP } from './pages/ARVP';
-import { Overview } from './pages/Overview';
+import { ARVP } from './pages/ARVP/ARVP';
+import { Overview } from './pages/Overview/Overview';
 
 export const ROUTES = {
   OVERVIEW: 'overview',

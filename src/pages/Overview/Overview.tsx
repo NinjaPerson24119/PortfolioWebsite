@@ -12,10 +12,11 @@ import {
 } from '@mui/material';
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import yolactAnimation from '../assets/images/arvp/yolact.webp';
-import { Header } from '../header/Header';
-import { ROUTES } from '../routing';
-import { MediaQueryIsDesktop } from '../theme/Theme';
+import yolactAnimation from '../../assets/images/arvp/yolact.webp';
+import { Header } from '../../header/Header';
+import { ROUTES } from '../../routing';
+import { MediaQueryIsDesktop } from '../../theme/Theme';
+import { ExperienceCard, ExperienceCardProps } from './ExperienceCard';
 import styles from './Overview.module.scss';
 
 interface Project {
@@ -68,6 +69,30 @@ function Overview() {
     }),
     [isDesktop, theme],
   );
+  const experienceCards: ExperienceCardProps[] = [
+    {
+      organization: t('EXPERIENCE.VENDASTA.ORGANIZATION'),
+      positions: ['Software Developer II', 'Software Developer Intern / I'],
+      dateRanges: ['Sep 2022 - Aug 2023', 'Sep 2020 - May 2021'],
+      description: t('EXPERIENCE.VENDASTA.DESCRIPTION'),
+      url: 'https://www.vendasta.com/',
+      skills: [
+        'Angular',
+        'Go',
+        'Python',
+        'Google Cloud Platform',
+        'ElasticSearch',
+      ],
+    },
+    {
+      organization: t('EXPERIENCE.WCB_ALBERTA.ORGANIZATION'),
+      positions: ['Software Developer'],
+      dateRanges: ['May 2018 - Sep 2018'],
+      description: t('EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
+      url: 'https://www.wcb.ab.ca/',
+      skills: ['C#', 'React', 'ASP.NET'],
+    },
+  ];
 
   return (
     <Box className={styles.container}>
@@ -97,17 +122,17 @@ function Overview() {
           orientation={isDesktop ? 'vertical' : 'horizontal'}
           sx={tabsStyles}
         >
-          <Tab label="Vendasta" />
-          <Tab label="WCB Alberta" />
-          <Tab label="ARVP" />
+          {experienceCards.map((experienceCard, index) => (
+            <Tab key={index} label={experienceCard.organization} />
+          ))}
         </Tabs>
-        <div hidden={experienceTab !== 0}>
-          <Box sx={{ padding: '8px' }}>
-            <Typography variant="h3" sx={{ textAlign: 'center' }}>
-              Vendasta
-            </Typography>
-          </Box>
-        </div>
+        {experienceCards.map((experienceCard, index) => (
+          <div key={index} hidden={experienceTab !== index}>
+            <Box sx={{ padding: '8px' }}>
+              <ExperienceCard {...experienceCard} />
+            </Box>
+          </div>
+        ))}
       </Paper>
 
       <Typography variant="h2" sx={{ textAlign: 'center' }}>
