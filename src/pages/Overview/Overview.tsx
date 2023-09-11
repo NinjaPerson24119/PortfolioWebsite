@@ -31,28 +31,32 @@ function Overview() {
 
   const projects: Project[] = [
     {
-      header: t('OTHER_PROJECTS.FINANCE_AGGREGATOR.HEADER'),
-      description: t('OTHER_PROJECTS.FINANCE_AGGREGATOR.DESCRIPTION'),
+      header: t('OVERVIEW.OTHER_PROJECTS.FINANCE_AGGREGATOR.HEADER'),
+      description: t('OVERVIEW.OTHER_PROJECTS.FINANCE_AGGREGATOR.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/FinanceAggregator',
     },
     {
-      header: t('OTHER_PROJECTS.SHAPE_MATCHER.HEADER'),
-      description: t('OTHER_PROJECTS.SHAPE_MATCHER.DESCRIPTION'),
+      header: t('OVERVIEW.OTHER_PROJECTS.SHAPE_MATCHER.HEADER'),
+      description: t('OVERVIEW.OTHER_PROJECTS.SHAPE_MATCHER.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/shape_matcher',
     },
     {
-      header: t('OTHER_PROJECTS.ARVP_ONBOARDING_2019.HEADER'),
-      description: t('OTHER_PROJECTS.ARVP_ONBOARDING_2019.DESCRIPTION'),
+      header: t('OVERVIEW.OTHER_PROJECTS.ARVP_ONBOARDING_2019.HEADER'),
+      description: t(
+        'OVERVIEW.OTHER_PROJECTS.ARVP_ONBOARDING_2019.DESCRIPTION',
+      ),
       url: 'https://github.com/NinjaPerson24119/Onboarding2019',
     },
     {
-      header: t('OTHER_PROJECTS.YEET_MIND.HEADER'),
-      description: t('OTHER_PROJECTS.YEET_MIND.DESCRIPTION'),
+      header: t('OVERVIEW.OTHER_PROJECTS.YEET_MIND.HEADER'),
+      description: t('OVERVIEW.OTHER_PROJECTS.YEET_MIND.DESCRIPTION'),
       url: 'https://github.com/NinjaPerson24119/neuro-car',
     },
     {
-      header: t('OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.HEADER'),
-      description: t('OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.DESCRIPTION'),
+      header: t('OVERVIEW.OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.HEADER'),
+      description: t(
+        'OVERVIEW.OTHER_PROJECTS.PRE_UNIVERSITY_PROJECTS.DESCRIPTION',
+      ),
       url: 'https://github.com/NinjaPerson24119/Pre-University-Projects',
     },
   ];
@@ -60,10 +64,10 @@ function Overview() {
   const [experienceTab, setExperienceTab] = useState(0);
   const experienceCards: ExperienceCardProps[] = [
     {
-      organization: t('EXPERIENCE.VENDASTA.ORGANIZATION'),
+      organization: t('OVERVIEW.EXPERIENCE.VENDASTA.ORGANIZATION'),
       positions: ['Software Developer II', 'Software Developer Intern / I'],
       dateRanges: ['Sep 2022 - Aug 2023', 'Sep 2020 - May 2021'],
-      description: t('EXPERIENCE.VENDASTA.DESCRIPTION'),
+      description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
       url: 'https://www.vendasta.com/',
       skills: [
         'Angular',
@@ -74,10 +78,10 @@ function Overview() {
       ],
     },
     {
-      organization: t('EXPERIENCE.WCB_ALBERTA.ORGANIZATION'),
+      organization: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.ORGANIZATION'),
       positions: ['Software Developer'],
       dateRanges: ['May 2018 - Sep 2018'],
-      description: t('EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
+      description: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
       url: 'https://www.wcb.ab.ca/',
       skills: ['C#', 'React', 'ASP.NET'],
     },
@@ -86,6 +90,9 @@ function Overview() {
   return (
     <Box className={styles.container}>
       <Header></Header>
+      <Typography variant="h2" color="secondary">
+        {t('OVERVIEW.INTRODUCTION')}
+      </Typography>
       <Typography variant="body1">{t('OVERVIEW.ABOUT_ME')}</Typography>
 
       <img src={yolactAnimation} />
@@ -101,9 +108,7 @@ function Overview() {
         {t('OVERVIEW.ARVP.LEARN_MORE')}
       </Button>
 
-      <Typography variant="h2" sx={{ textAlign: 'left' }}>
-        {t('EXPERIENCE.HEADER')}
-      </Typography>
+      <Typography variant="h2">{t('OVERVIEW.EXPERIENCE.HEADER')}</Typography>
       <Paper sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs
           textColor="secondary"
@@ -131,8 +136,8 @@ function Overview() {
         ))}
       </Paper>
 
-      <Typography variant="h2" sx={{ textAlign: 'left' }}>
-        {t('OTHER_PROJECTS.HEADER')}
+      <Typography variant="h2">
+        {t('OVERVIEW.OTHER_PROJECTS.HEADER')}
       </Typography>
       <Box>
         <Grid container spacing={2}>
