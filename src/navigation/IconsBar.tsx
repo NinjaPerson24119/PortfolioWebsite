@@ -58,7 +58,7 @@ export function IconsBar({ ...props }: IconsBarProps) {
 
   return (
     <Box className={styles.headerLinks}>
-      <ColorModeToggle className={styles.colorModeToggle} />
+      <ColorModeToggle />
       <Divider />
       {headerLinks.map((headerLink, index) => (
         <IconButton

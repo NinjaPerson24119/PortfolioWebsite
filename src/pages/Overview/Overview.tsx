@@ -120,7 +120,7 @@ function Overview() {
           centered
           orientation="horizontal"
           sx={{
-            '.MuiTab-root:not(.Mui-selected)': {
+            '& .MuiTab-root:not(.Mui-selected)': {
               color: theme.palette.text.primary,
             },
           }}
