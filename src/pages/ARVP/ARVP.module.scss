@@ -1,0 +1,30 @@
+@use '../../styles/breakpoints.scss' as br;
+
+.container {
+  padding: 16px 16px;
+
+  img,
+  video {
+    display: block;
+    margin: 16px auto;
+    width: 95%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 16px 0;
+  }
+
+  @media (min-width: br.$desktop-width) {
+    padding: 16px 0;
+    img,
+    video {
+      margin: 32px auto;
+      width: 80%;
+    }
+  }
+}
