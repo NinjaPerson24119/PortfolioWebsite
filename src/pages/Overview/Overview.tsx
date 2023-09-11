@@ -150,18 +150,8 @@ function Overview() {
                 sx={{ textDecoration: 'none' }}
                 target="_blank"
               >
-                <Paper
-                  sx={{ padding: '8px', minHeight: '180px' }}
-                  elevation={3}
-                >
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '4px',
-                    }}
-                  >
+                <Paper className={styles.projectCard} elevation={3}>
+                  <Box className={styles.projectCardHeader}>
                     <Typography
                       variant="h3"
                       sx={{ color: theme.palette.text.link }}
