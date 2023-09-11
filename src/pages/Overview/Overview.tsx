@@ -1,4 +1,5 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SailingIcon from '@mui/icons-material/Sailing';
 import {
   Typography,
   Box,
@@ -10,12 +11,11 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import yolactAnimation from '../../assets/images/arvp/yolact.webp';
 import { Header } from '../../header/Header';
 import { ROUTES } from '../../routing';
-import { MediaQueryIsDesktop } from '../../theme/Theme';
 import { ExperienceCard, ExperienceCardProps } from './ExperienceCard';
 import styles from './Overview.module.scss';
 
@@ -32,7 +32,6 @@ interface Project {
 function Overview() {
   const { t } = useTranslation();
   const theme = useTheme();
-  const isDesktop = MediaQueryIsDesktop(theme);
 
   const projects: Project[] = [
     {
@@ -58,17 +57,6 @@ function Overview() {
   ];
 
   const [experienceTab, setExperienceTab] = useState(0);
-
-  const tabsStyles = useMemo(
-    () => ({
-      borderRight: isDesktop ? 2 : 0,
-      borderColor: 'divider',
-      '.MuiTab-root:not(.Mui-selected)': {
-        color: theme.palette.text.primary,
-      },
-    }),
-    [isDesktop, theme],
-  );
   const experienceCards: ExperienceCardProps[] = [
     {
       organization: t('EXPERIENCE.VENDASTA.ORGANIZATION'),
@@ -103,24 +91,31 @@ function Overview() {
       <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
         {t('OVERVIEW.ARVP.HEADER')}
       </Typography>
-      <Button variant="contained" color="secondary" href={ROUTES.ARVP}>
+      <Button
+        variant="contained"
+        color="secondary"
+        href={ROUTES.ARVP}
+        startIcon={<SailingIcon />}
+      >
         {t('OVERVIEW.ARVP.LEARN_MORE')}
       </Button>
 
-      <Typography variant="h2" sx={{ textAlign: 'center' }}>
+      <Typography variant="h2" sx={{ textAlign: 'left' }}>
         {t('EXPERIENCE.HEADER')}
       </Typography>
-      <Paper
-        sx={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column' }}
-      >
+      <Paper sx={{ display: 'flex', flexDirection: 'column' }}>
         <Tabs
           textColor="secondary"
           indicatorColor="secondary"
           value={experienceTab}
           onChange={(_, value: number) => setExperienceTab(value)}
           centered
-          orientation={isDesktop ? 'vertical' : 'horizontal'}
-          sx={tabsStyles}
+          orientation="horizontal"
+          sx={{
+            '.MuiTab-root:not(.Mui-selected)': {
+              color: theme.palette.text.primary,
+            },
+          }}
         >
           {experienceCards.map((experienceCard, index) => (
             <Tab key={index} label={experienceCard.organization} />
@@ -135,7 +130,7 @@ function Overview() {
         ))}
       </Paper>
 
-      <Typography variant="h2" sx={{ textAlign: 'center' }}>
+      <Typography variant="h2" sx={{ textAlign: 'left' }}>
         {t('OTHER_PROJECTS.HEADER')}
       </Typography>
       <Box>
