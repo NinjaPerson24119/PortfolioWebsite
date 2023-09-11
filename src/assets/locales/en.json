@@ -9,11 +9,13 @@
     "ARVP": "Robotics (ARVP)"
   },
   "NOT_FOUND_PAGE": {
-    "HEADER": "Page not found"
+    "HEADER": "Page not found",
+    "REDIRECT_TEXT": "Return to overview"
   },
   "ERROR_PAGE": {
     "HEADER": "Something went wrong!",
-    "SUBHEADER": "Try again later."
+    "SUBHEADER": "Try again later.",
+    "REDIRECT_TEXT": "Return to overview"
   },
   "OVERVIEW": {
     "INTRODUCTION": "Nice to meet you!",

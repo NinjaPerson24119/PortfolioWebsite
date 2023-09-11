@@ -20,8 +20,8 @@ export function Layout({ ...props }: LayoutProps) {
         <Grid item xs={12} md={3}>
           <Box className={styles.stickyContainer}>{props.navigation}</Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Box>{props.content}</Box>
+        <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+          {props.content}
         </Grid>
       </Grid>
       <div className={styles.footerContainer}>{props.footer}</div>

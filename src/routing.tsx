@@ -4,7 +4,10 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import React from 'react';
 import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
-import { CenteredBanner } from './centered-banner/CenteredBanner';
+import {
+  ErrorPageTemplate,
+  IconProps,
+} from './error-page-template/ErrorPageTemplate';
 import { i18n } from './i18n';
 import { ARVP } from './pages/ARVP/ARVP';
 import { Overview } from './pages/Overview/Overview';
@@ -48,9 +51,15 @@ export function GenerateRouter(
     return (
       <Layout
         content={
-          <CenteredBanner
-            hero={<SentimentVeryDissatisfiedIcon />}
+          <ErrorPageTemplate
+            icon={(props: IconProps) => (
+              <SentimentVeryDissatisfiedIcon className={props.className} />
+            )}
             header={i18n.t('NOT_FOUND_PAGE.HEADER')}
+            redirectInfo={{
+              route: ROUTES.OVERVIEW,
+              text: i18n.t('NOT_FOUND_PAGE.REDIRECT_TEXT'),
+            }}
           />
         }
       ></Layout>
@@ -60,10 +69,16 @@ export function GenerateRouter(
     return (
       <Layout
         content={
-          <CenteredBanner
-            hero={<ErrorIcon />}
+          <ErrorPageTemplate
+            icon={(props: IconProps) => (
+              <ErrorIcon className={props.className} />
+            )}
             header={i18n.t('ERROR_PAGE.HEADER')}
             subheader={i18n.t('ERROR_PAGE.SUBHEADER')}
+            redirectInfo={{
+              route: ROUTES.OVERVIEW,
+              text: i18n.t('ERROR_PAGE.REDIRECT_TEXT'),
+            }}
           />
         }
       ></Layout>
