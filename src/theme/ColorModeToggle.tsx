@@ -15,7 +15,7 @@ const StyledSwitch = styled(Switch)(() => ({
   '& .MuiSwitch-switchBase': {
     margin: 1,
     padding: 0,
-    transform: 'translateX(6px)',
+    transform: 'translateX(3px)',
     '&.Mui-checked': {
       transform: 'translateX(22px)',
       '& .MuiSwitch-thumb:before': {
