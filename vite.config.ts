@@ -1,9 +1,10 @@
+import mdx from '@mdx-js/rollup';
 import react from '@vitejs/plugin-react-swc';
 import { UserConfig, defineConfig } from 'vite';
 
 function configGenerator(dev: boolean): UserConfig {
   return {
-    plugins: [react()],
+    plugins: [mdx(), react()],
     build: {
       sourcemap: dev,
     },

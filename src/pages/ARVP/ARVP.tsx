@@ -1,7 +1,7 @@
-import { Typography } from '@mui/material';
+import React from 'react';
+import ARVPContent from '../../assets/content/arvp/arvp.mdx';
 
-function ARVP() {
-  return <Typography variant="body1">ARVP</Typography>;
+export function ARVP() {
+  React.createElement(ARVPContent);
+  return <ARVPContent />;
 }
-
-export { ARVP };

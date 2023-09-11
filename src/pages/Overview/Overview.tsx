@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import yolactAnimation from '../../assets/images/arvp/yolact.webp';
+import yolactAnimation from '../../assets/content/arvp/yolact.webp';
 import { Header } from '../../header/Header';
 import { ROUTES } from '../../routing';
 import { ExperienceCard, ExperienceCardProps } from './ExperienceCard';

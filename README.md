@@ -22,6 +22,7 @@ Tools Index
 - [i18next](https://www.i18next.com/) helps centralize text neatly in a JSON file
   - [react-i18next](https://react.i18next.com/)
 - [react-router](https://reactrouter.com/en/main/start/tutorial)
+- [MDX](https://mdxjs.com/)
 
 ## Development
 
