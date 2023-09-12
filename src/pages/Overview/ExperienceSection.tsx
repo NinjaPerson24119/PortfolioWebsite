@@ -1,18 +1,30 @@
 import { Typography, Paper, Tabs, Tab, Box, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ExperienceCard, ExperienceCardProps } from './ExperienceCard';
+import { MediaQueryIsDesktop } from '../../theme/Theme';
+import { ExperienceCard, ExperienceGroup } from './ExperienceCard';
 
 export function ExperienceSection() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const isDesktop = MediaQueryIsDesktop(theme);
+
   const [experienceTab, setExperienceTab] = useState(0);
-  const experienceCards: ExperienceCardProps[] = [
+  const experienceGroups: ExperienceGroup[] = [
     {
       organization: t('OVERVIEW.EXPERIENCE.VENDASTA.ORGANIZATION'),
-      positions: ['Software Developer II', 'Software Developer Intern / I'],
-      dateRanges: ['Sep 2022 - Aug 2023', 'Sep 2020 - May 2021'],
-      description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
+      positions: [
+        {
+          title: 'Software Developer II',
+          dateRange: 'Sep 2022 - Aug 2023',
+          description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
+        },
+        {
+          title: 'Software Developer Intern / I',
+          dateRange: 'Sep 2020 - May 2021',
+          description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
+        },
+      ],
       url: 'https://www.vendasta.com/',
       skills: [
         'Angular',
@@ -24,9 +36,13 @@ export function ExperienceSection() {
     },
     {
       organization: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.ORGANIZATION'),
-      positions: ['Software Developer'],
-      dateRanges: ['May 2018 - Sep 2018'],
-      description: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
+      positions: [
+        {
+          title: 'Software Developer',
+          dateRange: 'May 2018 - Sep 2018',
+          description: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
+        },
+      ],
       url: 'https://www.wcb.ab.ca/',
       skills: ['C#', 'React', 'ASP.NET'],
     },
@@ -35,32 +51,40 @@ export function ExperienceSection() {
   return (
     <>
       <Typography variant="h2">{t('OVERVIEW.EXPERIENCE.HEADER')}</Typography>
-      <Paper sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Tabs
-          textColor="secondary"
-          indicatorColor="secondary"
-          value={experienceTab}
-          onChange={(_, value: number) => setExperienceTab(value)}
-          centered
-          orientation="horizontal"
-          sx={{
-            '& .MuiTab-root:not(.Mui-selected)': {
-              color: theme.palette.text.primary,
-            },
-          }}
+      <div>
+        <Paper
+          sx={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column' }}
         >
-          {experienceCards.map((experienceCard, index) => (
-            <Tab key={index} label={experienceCard.organization} />
-          ))}
-        </Tabs>
-        {experienceCards.map((experienceCard, index) => (
-          <div key={index} hidden={experienceTab !== index}>
-            <Box sx={{ padding: '8px' }}>
-              <ExperienceCard {...experienceCard} />
-            </Box>
-          </div>
-        ))}
-      </Paper>
+          <Tabs
+            textColor="secondary"
+            indicatorColor="secondary"
+            value={experienceTab}
+            onChange={(_, value: number) => setExperienceTab(value)}
+            centered
+            orientation={isDesktop ? 'vertical' : 'horizontal'}
+            sx={{
+              '& .MuiTab-root:not(.Mui-selected)': {
+                color: theme.palette.text.primary,
+              },
+            }}
+          >
+            {experienceGroups.map((group, index) => (
+              <Tab key={index} label={group.organization} />
+            ))}
+          </Tabs>
+        </Paper>
+      </div>
+      <Box sx={{ display: 'flex', gap: '16px' }}>
+        {experienceGroups.map((group, index1) => {
+          return group.positions.map((position, index2) => (
+            <ExperienceCard
+              key={`${index1}-${index2}`}
+              group={group}
+              position={position}
+            />
+          ));
+        })}
+      </Box>
     </>
   );
 }

@@ -1,59 +1,54 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { Chip, Typography, useTheme } from '@mui/material';
+import { Chip, Typography, useTheme, Box, Card } from '@mui/material';
 import styles from './ExperienceCard.module.scss';
 
 const middleDot = '\u00B7';
 
-export interface ExperienceCardProps {
+export interface ExperienceGroup {
   organization: string;
-  positions: string[];
-  dateRanges: string[];
-  description: string;
+  positions: ExperiencePosition[];
   url: string;
   skills: string[];
 }
 
+export interface ExperiencePosition {
+  title: string;
+  dateRange: string;
+  description: string;
+}
+
+export interface ExperienceCardProps {
+  group: ExperienceGroup;
+  position: ExperiencePosition;
+}
+
 export function ExperienceCard({ ...props }: ExperienceCardProps) {
   const theme = useTheme();
-
-  const headerPosition = props.positions.length
-    ? `${middleDot}${props.positions[0]}`
-    : '';
-  const header = `${props.organization} ${headerPosition}`;
+  const header = `${props.group.organization} ${middleDot} ${props.position.title}`;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.dateRangeContainer}>
-        {props.dateRanges.map((dateRange, index) => (
-          <Typography key={index} variant="body1">
-            {dateRange}
-          </Typography>
-        ))}
-      </div>
-      <div className={styles.detailsContainer}>
-        <div className={styles.headerContainer}>
-          <Typography
-            variant="h3"
-            sx={{
-              color: theme.palette.text.link,
-            }}
-          >
-            {header}
-          </Typography>
-          <OpenInNewIcon
-            fontSize="small"
-            sx={{ color: theme.palette.text.link }}
-          />
-        </div>
-        {props.positions.slice(1).map((position, index) => (
-          <Typography key={index} variant="h3">
-            {position}
-          </Typography>
-        ))}
-        <Typography variant="body1" sx={{ padding: '8px' }}>
-          {props.description}
-        </Typography>
-        {props.skills.map((skill, index) => (
+    <Card className={styles.container} sx={{ padding: '8px' }}>
+      <Box
+        sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}
+      >
+        <Typography variant="body1">{props.position.dateRange}</Typography>
+        <OpenInNewIcon
+          sx={{ color: theme.palette.text.link, alignSelf: 'flex-end' }}
+        />
+      </Box>
+      <Typography
+        variant="h3"
+        sx={{
+          color: theme.palette.text.link,
+        }}
+      >
+        {header}
+      </Typography>
+      <Typography variant="body1" sx={{ padding: '8px' }}>
+        {props.position.description}
+      </Typography>
+      <Box sx={{ display: 'flex', gap: '8px' }}>
+        {props.group.skills.map((skill, index) => (
           <Chip
             key={index}
             label={skill}
@@ -61,7 +56,7 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
             variant="outlined"
           />
         ))}
-      </div>
-    </div>
+      </Box>
+    </Card>
   );
 }

@@ -1,19 +1,6 @@
 .container {
   display: flex;
   gap: 8px;
-}
-
-.dateRangeContainer {
-  min-width: 100px;
-}
-
-.detailsContainer {
-  display: flex;
   flex-direction: column;
-  flex-grow: 1;
-}
-
-.headerContainer {
-  display: flex;
-  align-items: center;
+  width: 100%;
 }
