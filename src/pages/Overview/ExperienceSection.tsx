@@ -1,32 +1,43 @@
-import { Typography, Paper, Tabs, Tab, Box, useTheme } from '@mui/material';
-import { useState } from 'react';
+import { Typography, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { MediaQueryIsDesktop } from '../../theme/Theme';
+import ExperienceContentARVPProjectCoLead from '../../assets/content/experience/arvp-project-co-lead.mdx';
+import ExperienceContentARVPSoftwareCoLead from '../../assets/content/experience/arvp-software-co-lead.mdx';
+import ExperienceContentARVPSoftwareMember from '../../assets/content/experience/arvp-software-member.mdx';
+import ExperienceContentVendastaDeveloperII from '../../assets/content/experience/vendasta-developer-ii.mdx';
+import ExperienceContentVendastaDeveloperIntern from '../../assets/content/experience/vendasta-developer-intern.mdx';
+import ExperienceContentWCBAlbertaDeveloper from '../../assets/content/experience/wcb-alberta-developer.mdx';
+import { MDXComponentMapping } from '../markdown';
 import { ExperienceCard, ExperienceGroup } from './ExperienceCard';
 
 export function ExperienceSection() {
   const { t } = useTranslation();
-  const theme = useTheme();
-  const isDesktop = MediaQueryIsDesktop(theme);
 
-  const [experienceTab, setExperienceTab] = useState(0);
   const experienceGroups: ExperienceGroup[] = [
     {
-      organization: t('OVERVIEW.EXPERIENCE.VENDASTA.ORGANIZATION'),
+      organization: t('OVERVIEW.EXPERIENCE.VENDASTA'),
       positions: [
         {
           title: 'Software Developer II',
           dateRange: 'Sep 2022 - Aug 2023',
-          description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
+          description: (
+            <ExperienceContentVendastaDeveloperII
+              components={MDXComponentMapping()}
+            />
+          ),
         },
         {
           title: 'Software Developer Intern / I',
           dateRange: 'Sep 2020 - May 2021',
-          description: t('OVERVIEW.EXPERIENCE.VENDASTA.DESCRIPTION'),
+          description: (
+            <ExperienceContentVendastaDeveloperIntern
+              components={MDXComponentMapping()}
+            />
+          ),
         },
       ],
       url: 'https://www.vendasta.com/',
       skills: [
+        'TypeScript',
         'Angular',
         'Go',
         'Python',
@@ -35,55 +46,64 @@ export function ExperienceSection() {
       ],
     },
     {
-      organization: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.ORGANIZATION'),
+      organization: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA'),
       positions: [
         {
           title: 'Software Developer',
           dateRange: 'May 2018 - Sep 2018',
-          description: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.DESCRIPTION'),
+          description: (
+            <ExperienceContentWCBAlbertaDeveloper
+              components={MDXComponentMapping()}
+            />
+          ),
         },
       ],
       url: 'https://www.wcb.ab.ca/',
-      skills: ['C#', 'React', 'ASP.NET'],
+      skills: ['C#', 'React', 'Redux', 'ASP.NET', 'Microsoft SQL Server'],
+    },
+    {
+      organization: t('OVERVIEW.EXPERIENCE.ARVP'),
+      positions: [
+        {
+          title: 'Project Co-Lead',
+          dateRange: '2020 - 2021',
+          description: (
+            <ExperienceContentARVPProjectCoLead
+              components={MDXComponentMapping()}
+            />
+          ),
+        },
+        {
+          title: 'Software Team Co-Lead',
+          dateRange: '2019 - 2020',
+          description: (
+            <ExperienceContentARVPSoftwareCoLead
+              components={MDXComponentMapping()}
+            />
+          ),
+        },
+        {
+          title: 'Software Team Member',
+          dateRange: '2017 - 2019',
+          description: (
+            <ExperienceContentARVPSoftwareMember
+              components={MDXComponentMapping()}
+            />
+          ),
+        },
+      ],
+      url: 'https://www.arvp.org/',
+      skills: ['C++', 'ROS', 'OpenCV', 'Python'],
     },
   ];
 
   return (
     <>
       <Typography variant="h2">{t('OVERVIEW.EXPERIENCE.HEADER')}</Typography>
-      <div>
-        <Paper
-          sx={{ display: 'flex', flexDirection: isDesktop ? 'row' : 'column' }}
-        >
-          <Tabs
-            textColor="secondary"
-            indicatorColor="secondary"
-            value={experienceTab}
-            onChange={(_, value: number) => setExperienceTab(value)}
-            centered
-            orientation={isDesktop ? 'vertical' : 'horizontal'}
-            sx={{
-              '& .MuiTab-root:not(.Mui-selected)': {
-                color: theme.palette.text.primary,
-              },
-            }}
-          >
-            {experienceGroups.map((group, index) => (
-              <Tab key={index} label={group.organization} />
-            ))}
-          </Tabs>
-        </Paper>
-      </div>
-      <Box sx={{ display: 'flex', gap: '16px' }}>
-        {experienceGroups.map((group, index1) => {
-          return group.positions.map((position, index2) => (
-            <ExperienceCard
-              key={`${index1}-${index2}`}
-              group={group}
-              position={position}
-            />
-          ));
-        })}
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {experienceGroups.map((group, index) => (
+          <ExperienceCard key={index} group={group} />
+        ))}
       </Box>
     </>
   );
