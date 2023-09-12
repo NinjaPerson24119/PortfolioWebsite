@@ -1,3 +1,6 @@
+*.fig
+*.pdf
+
 # images
 *.svg
 *.jpeg
@@ -5,4 +8,6 @@
 *.png
 *.webp
 *.gif
+
+# video
 *.ogv
