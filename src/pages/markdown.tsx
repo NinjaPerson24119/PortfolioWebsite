@@ -1,4 +1,5 @@
 import { Typography, useTheme, Link } from '@mui/material';
+import type { MDXComponents } from 'mdx/types.js';
 
 function TypographyVariant(
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1',
@@ -10,25 +11,25 @@ function TypographyVariant(
   };
 }
 
-interface StyledLinkProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-function StyledLink({ ...props }: StyledLinkProps) {
+function StyledLink({
+  ...props
+}: React.DetailedHTMLProps<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>) {
   const theme = useTheme();
   return (
     <Link
       sx={{ textDecoration: 'none', color: theme.palette.text.link }}
       href={props.href}
-      target={props.href.includes('#') ? '' : '_blank'}
+      target={props.href?.includes('#') ? '' : '_blank'}
     >
       {props.children}
     </Link>
   );
 }
 
-export function MDXComponentMapping() {
+export function MDXComponentMapping(): MDXComponents {
   return {
     h1: TypographyVariant('h1'),
     h2: TypographyVariant('h2'),

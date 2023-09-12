@@ -23,7 +23,7 @@ export interface ExperienceGroup {
 export interface ExperiencePosition {
   title: string;
   dateRange: string;
-  description: React.ReactNode;
+  description: React.JSX.Element;
 }
 
 export interface ExperienceCardProps {
