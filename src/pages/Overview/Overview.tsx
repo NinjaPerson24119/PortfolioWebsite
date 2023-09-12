@@ -3,6 +3,7 @@ import { ExperienceSection } from './ExperienceSection';
 import { HeroSection } from './HeroSection';
 import styles from './Overview.module.scss';
 import { ProjectsSection } from './ProjectsSection';
+import { ReadingListSection } from './ReadingListSection';
 
 function Overview() {
   return (
@@ -11,6 +12,7 @@ function Overview() {
       <ARVPSection />
       <ExperienceSection />
       <ProjectsSection />
+      <ReadingListSection />
     </div>
   );
 }

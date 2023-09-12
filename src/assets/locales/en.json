@@ -57,6 +57,14 @@
         "HEADER": "Pre-University Projects",
         "DESCRIPTION": "A collection of games I wrote to teach myself to code circa 2010-2017."
       }
+    },
+    "READING_LIST": {
+      "HEADER": "Reading List",
+      "BOOK_READING_STATUS": {
+        "READING": "Reading",
+        "FINISHED": "Finished",
+        "TO_READ": "In the library"
+      }
     }
   }
 }
