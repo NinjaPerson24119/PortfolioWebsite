@@ -4,19 +4,24 @@ import { useTranslation } from 'react-i18next';
 import canadianMapleLeaf from '../assets/images/canadian-maple-leaf.svg';
 import { SOURCE_CODE_URL } from '../constants';
 import { LanguageSwitcher } from '../language-switcher/LanguageSwitcher';
+import { MediaQueryIsDesktop } from '../theme/Theme';
 import styles from './Footer.module.scss';
 
 export function Footer() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const isDesktop = MediaQueryIsDesktop(theme);
 
   return (
-    <Box className={styles.footer}>
+    <Box className={styles.footer} sx={{ bgcolor: theme.palette.primary.main }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
           justifyContent: 'center',
+          gap: '4px',
+          order: isDesktop ? undefined : 1,
         }}
       >
         <img
@@ -26,7 +31,7 @@ export function Footer() {
         ></img>
         <Typography variant="body2">{t('NATIONALITY')}</Typography>
       </Box>
-      <Box sx={{ bgcolor: theme.palette.primary.main }}>
+      <Box sx={{ order: isDesktop ? undefined : 3 }}>
         <Typography variant="body2">{t('COPYRIGHT')}</Typography>
         <Link
           href={SOURCE_CODE_URL}
@@ -35,6 +40,7 @@ export function Footer() {
             display: 'flex',
             gap: '4px',
             alignItems: 'center',
+            justifyContent: 'center',
           }}
           target="_blank"
         >
@@ -42,7 +48,9 @@ export function Footer() {
           <GitHub fontSize="small" sx={{ color: theme.palette.text.link }} />
         </Link>
       </Box>
-      <LanguageSwitcher />
+      <Box sx={{ order: isDesktop ? undefined : 2 }}>
+        <LanguageSwitcher />
+      </Box>
     </Box>
   );
 }

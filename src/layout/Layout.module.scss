@@ -10,8 +10,8 @@
 .footerContainer {
   display: flex;
   width: 100%;
-  flex-basis: 50px;
-  min-height: 50px;
+  flex-basis: auto;
+  min-height: auto;
 }
 
 .stickyContainer {
