@@ -19,7 +19,11 @@ export function Footer() {
           justifyContent: 'center',
         }}
       >
-        <img src={canadianMapleLeaf} alt="Canadian maple leaf"></img>
+        <img
+          className={styles.mapleLeaf}
+          src={canadianMapleLeaf}
+          alt="Canadian maple leaf"
+        ></img>
         <Typography variant="body2">{t('NATIONALITY')}</Typography>
       </Box>
       <Box sx={{ bgcolor: theme.palette.primary.main }}>
