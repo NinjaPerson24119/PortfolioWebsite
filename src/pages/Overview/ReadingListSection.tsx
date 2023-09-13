@@ -116,11 +116,8 @@ export function ReadingListSection() {
       <Typography variant="h2">{t('OVERVIEW.READING_LIST.HEADER')}</Typography>
       <Paper sx={{ padding: '8px' }}>
         {bookStatuses.map((status, bookStatusIndex) => (
-          <>
-            <Box
-              key={bookStatusIndex}
-              sx={{ display: 'flex', justifyContent: 'center' }}
-            >
+          <div key={bookStatusIndex}>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               {BookReadingStatusIcon(status)}
             </Box>
             <Divider
@@ -132,7 +129,7 @@ export function ReadingListSection() {
                 .filter((book) => book.status === status)
                 .map((book, bookIndex) => (
                   <Chip
-                    key={bookIndex}
+                    key={`${bookStatusIndex}-${bookIndex}`}
                     label={book.title}
                     color="secondary"
                     variant="outlined"
@@ -150,7 +147,7 @@ export function ReadingListSection() {
                   />
                 ))}
             </Box>
-          </>
+          </div>
         ))}
       </Paper>
     </>
