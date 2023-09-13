@@ -47,9 +47,7 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
           <Typography variant="body1">{position.dateRange}</Typography>
         </Box>
         <Typography variant="h3">{header}</Typography>
-        <Typography variant="body1" sx={{ padding: '8px 0' }}>
-          {position.description}
-        </Typography>
+        <Box sx={{ padding: '8px 0' }}>{position.description}</Box>
       </>
     );
   }
