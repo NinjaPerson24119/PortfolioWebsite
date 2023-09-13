@@ -1,10 +1,8 @@
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import DoneIcon from '@mui/icons-material/Done';
-import { Typography, Link, Paper, useTheme } from '@mui/material';
+import { Typography, Paper, useTheme, Box, Divider, Chip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-
-const middleDot = '\u00B7';
 
 type BookReadingStatus = 'reading' | 'finished' | 'to-read';
 
@@ -49,56 +47,110 @@ export function ReadingListSection() {
       url: 'https://www.amazon.ca/Engine-Architecture-Third-Jason-Gregory/dp/1138035459',
       status: 'reading',
     },
+    {
+      title: 'Mythical Man-Month, The: Essays on Software Engineering',
+      url: 'https://www.amazon.ca/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959',
+      status: 'to-read',
+    },
   ];
 
   function BookReadingStatusIcon(status: BookReadingStatus): React.ReactNode {
-    switch (status) {
-      case 'reading':
-        return (
-          <>
-            <AutoStoriesIcon color="secondary" />
-            <Typography variant="body1" sx={{ color: theme.palette.text.link }}>
-              {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.READING')}
-            </Typography>
-          </>
-        );
-      case 'finished':
-        return (
-          <>
-            <DoneIcon color="secondary" />
-            <Typography variant="body1" sx={{ color: theme.palette.text.link }}>
-              {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.FINISHED')}
-            </Typography>
-          </>
-        );
-      case 'to-read':
-        return (
-          <>
-            <BookmarkIcon color="secondary" />
-            <Typography variant="body1" sx={{ color: theme.palette.text.link }}>
-              {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.TO_READ')}
-            </Typography>
-          </>
-        );
+    function innerComponent(s: BookReadingStatus) {
+      switch (s) {
+        case 'reading':
+          return (
+            <>
+              <AutoStoriesIcon color="secondary" />
+              <Typography
+                variant="body1"
+                sx={{ color: theme.palette.text.link }}
+              >
+                {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.READING')}
+              </Typography>
+            </>
+          );
+        case 'finished':
+          return (
+            <>
+              <DoneIcon color="secondary" />
+              <Typography
+                variant="body1"
+                sx={{ color: theme.palette.text.link }}
+              >
+                {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.FINISHED')}
+              </Typography>
+            </>
+          );
+        case 'to-read':
+          return (
+            <>
+              <BookmarkIcon color="secondary" />
+              <Typography
+                variant="body1"
+                sx={{ color: theme.palette.text.link }}
+              >
+                {t('OVERVIEW.READING_LIST.BOOK_READING_STATUS.TO_READ')}
+              </Typography>
+            </>
+          );
+      }
     }
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          margin: '8px 0',
+          gap: '4px',
+        }}
+      >
+        {innerComponent(status)}
+      </Box>
+    );
   }
 
+  const bookStatuses: BookReadingStatus[] = ['reading', 'finished', 'to-read'];
   return (
     <>
       <Typography variant="h2">{t('OVERVIEW.READING_LIST.HEADER')}</Typography>
       <Paper sx={{ padding: '8px' }}>
-        {books.map((book, index) => (
-          <Link
-            key={index}
-            href={book.url}
-            sx={{ display: 'flex', alignItems: 'center', gap: '4px' }}
-          >
-            {BookReadingStatusIcon(book.status)}
-            <Typography
-              variant="body1"
-              sx={{ color: theme.palette.text.link }}
-            >{` ${middleDot} ${book.title}`}</Typography>
-          </Link>
+        {bookStatuses.map((status, bookStatusIndex) => (
+          <>
+            <Box
+              key={bookStatusIndex}
+              sx={{ display: 'flex', justifyContent: 'center' }}
+            >
+              {BookReadingStatusIcon(status)}
+            </Box>
+            <Divider
+              variant="middle"
+              sx={{ borderColor: theme.palette.secondary.main }}
+            ></Divider>
+            <Box sx={{ padding: '16px' }}>
+              {books
+                .filter((book) => book.status === status)
+                .map((book, bookIndex) => (
+                  <Chip
+                    key={bookIndex}
+                    label={book.title}
+                    color="secondary"
+                    variant="outlined"
+                    component="a"
+                    href={book.url}
+                    target="_blank"
+                    sx={{
+                      margin: '4px',
+                      height: 'auto',
+                      '& .MuiChip-label': {
+                        display: 'block',
+                        whiteSpace: 'normal',
+                      },
+                    }}
+                  />
+                ))}
+            </Box>
+          </>
         ))}
       </Paper>
     </>
