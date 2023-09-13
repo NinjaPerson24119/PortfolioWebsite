@@ -29,6 +29,15 @@ function StyledLink({
   );
 }
 
+function LazyLoadedImage({
+  ...props
+}: React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) {
+  return <img {...props} loading="lazy" />;
+}
+
 export function MDXComponentMapping(): MDXComponents {
   return {
     h1: TypographyVariant('h1'),
@@ -39,5 +48,6 @@ export function MDXComponentMapping(): MDXComponents {
     h6: TypographyVariant('h6'),
     p: TypographyVariant('body1'),
     a: StyledLink,
+    img: LazyLoadedImage,
   };
 }
