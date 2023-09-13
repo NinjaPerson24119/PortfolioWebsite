@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { RouterProvider } from 'react-router-dom';
 import { BackgroundEllipse } from './background-ellipse/BackgroundEllipse';
 import { Footer } from './footer/Footer';
@@ -28,11 +29,13 @@ export function App() {
 
   return (
     <LanguageContext.Provider value={languageContext}>
-      <Theme>
-        <RouterProvider router={router} />
-        <BackgroundEllipse diameter="250px" top="-100px" left="-100px" />
-        <BackgroundEllipse diameter="200px" bottom="-50px" right="-50px" />
-      </Theme>
+      <HelmetProvider>
+        <Theme>
+          <RouterProvider router={router} />
+          <BackgroundEllipse diameter="250px" top="-100px" left="-100px" />
+          <BackgroundEllipse diameter="200px" bottom="-50px" right="-50px" />
+        </Theme>
+      </HelmetProvider>
     </LanguageContext.Provider>
   );
 }

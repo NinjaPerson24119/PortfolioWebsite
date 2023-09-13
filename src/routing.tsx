@@ -3,14 +3,16 @@ import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
+import ARVPBlog from './assets/content/blog/arvp.mdx';
 import {
   ErrorPageTemplate,
   IconProps,
 } from './error-page-template/ErrorPageTemplate';
 import { i18n } from './i18n';
-import { ARVP } from './pages/arvp/ARVP';
+import { MDXComponentMapping } from './markdown';
+import { Blog } from './pages/blog/Blog';
 import { Overview } from './pages/overview/Overview';
 
 export const ROUTES = {
@@ -54,7 +56,11 @@ export const NavigationItems: NavigationItem[] = [
     text: i18n.t('NAVIGATION.ARVP'),
     icon: <SailingIcon fontSize="large" />,
     href: ROUTES.ARVP,
-    component: <ARVP />,
+    component: (
+      <Blog>
+        <ARVPBlog components={MDXComponentMapping()} />
+      </Blog>
+    ),
   },
 ];
 
