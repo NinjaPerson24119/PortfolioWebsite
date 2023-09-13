@@ -43,6 +43,7 @@ export function ExperienceSection() {
         'Python',
         'Google Cloud Platform',
         'ElasticSearch',
+        'Cypress',
       ],
     },
     {
@@ -93,7 +94,7 @@ export function ExperienceSection() {
         },
       ],
       url: 'https://www.arvp.org/',
-      skills: ['C++', 'ROS', 'OpenCV', 'Python'],
+      skills: ['C', 'C++', 'ROS', 'OpenCV', 'Python'],
     },
   ];
 
