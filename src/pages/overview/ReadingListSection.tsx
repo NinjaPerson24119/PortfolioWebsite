@@ -131,7 +131,7 @@ export function ReadingListSection() {
                   <Chip
                     key={`${bookStatusIndex}-${bookIndex}`}
                     label={book.title}
-                    color="secondary"
+                    color="default"
                     variant="outlined"
                     component="a"
                     href={book.url}
@@ -143,6 +143,7 @@ export function ReadingListSection() {
                         display: 'block',
                         whiteSpace: 'normal',
                       },
+                      fontSize: '1rem',
                     }}
                   />
                 ))}
