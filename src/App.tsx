@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { BackgroundEllipse } from './BackgroundEllipse/BackgroundEllipse';
+import { BackgroundEllipse } from './background-ellipse/BackgroundEllipse';
 import { Footer } from './footer/Footer';
 import { Layout } from './layout/Layout';
 import { Navigation } from './navigation/Navigation';

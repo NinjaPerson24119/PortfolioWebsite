@@ -6,7 +6,7 @@ import ExperienceContentARVPSoftwareMember from '../../assets/content/experience
 import ExperienceContentVendastaDeveloperII from '../../assets/content/experience/vendasta-developer-ii.mdx';
 import ExperienceContentVendastaDeveloperIntern from '../../assets/content/experience/vendasta-developer-intern.mdx';
 import ExperienceContentWCBAlbertaDeveloper from '../../assets/content/experience/wcb-alberta-developer.mdx';
-import { MDXComponentMapping } from '../markdown';
+import { MDXComponentMapping } from '../../markdown';
 import { ExperienceCard, ExperienceGroup } from './ExperienceCard';
 
 export function ExperienceSection() {

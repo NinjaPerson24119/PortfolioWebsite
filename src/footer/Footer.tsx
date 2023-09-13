@@ -1,9 +1,9 @@
 import GitHub from '@mui/icons-material/GitHub';
 import { Typography, Box, useTheme, Link } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
 import canadianMapleLeaf from '../assets/images/canadian-maple-leaf.svg';
 import { SOURCE_CODE_URL } from '../constants';
+import { LanguageSwitcher } from '../language-switcher/LanguageSwitcher';
 import styles from './Footer.module.scss';
 
 export function Footer() {

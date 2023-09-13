@@ -4,7 +4,6 @@ import englishTranslation from './assets/locales/en.json';
 import frenchTranslation from './assets/locales/fr.json';
 
 void i18n.use(initReactI18next).init({
-  fallbackLng: 'en',
   lng: 'en',
   resources: {
     en: {

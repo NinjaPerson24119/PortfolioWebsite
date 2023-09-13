@@ -9,8 +9,8 @@ import {
   IconProps,
 } from './error-page-template/ErrorPageTemplate';
 import { i18n } from './i18n';
-import { ARVP } from './pages/ARVP/ARVP';
-import { Overview } from './pages/Overview/Overview';
+import { ARVP } from './pages/arvp/ARVP';
+import { Overview } from './pages/overview/Overview';
 
 export const ROUTES = {
   OVERVIEW: 'overview',
