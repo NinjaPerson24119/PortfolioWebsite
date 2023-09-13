@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Typography variant="body2">{t('LANGUAGES.FRENCH')}</Typography>
       <Switch
-        value={languageContext.language === 'english'}
+        checked={languageContext.language === 'english'}
         onClick={switchLanguage}
         color="secondary"
       ></Switch>

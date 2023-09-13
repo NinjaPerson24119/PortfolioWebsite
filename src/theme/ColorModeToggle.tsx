@@ -51,9 +51,8 @@ export function ColorModeToggle() {
     <Box sx={{ display: 'inline-flex' }}>
       <StyledSwitch
         color="secondary"
-        defaultChecked
         onClick={colorModeContext.toggleColorMode}
-        value={colorModeContext.colorMode === 'dark'}
+        checked={colorModeContext.colorMode === 'dark'}
       />
     </Box>
   );
