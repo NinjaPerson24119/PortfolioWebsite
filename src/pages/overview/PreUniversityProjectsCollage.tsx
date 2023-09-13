@@ -8,19 +8,19 @@ interface ImageListItemData {
 export function PreUniversityProjectsCollage() {
   const imageListItemData: ImageListItemData[] = [
     {
-      src: '/pre-university-projects/c++-meteors.gif',
+      src: '/pre-university-projects/c++-meteors.webp',
       title: 'C++ Meteors Clone',
     },
     {
-      src: '/pre-university-projects/c++-snake-opengl.gif',
+      src: '/pre-university-projects/c++-snake-opengl.webp',
       title: 'C++ Snake Clone OpenGL',
     },
     {
-      src: '/pre-university-projects/c++-streak-space-invaders-clone.gif',
+      src: '/pre-university-projects/c++-streak-space-invaders-clone.webp',
       title: 'C++ Streak Space Invaders Clone',
     },
     {
-      src: '/pre-university-projects/csharp-forms-space-invaders.gif',
+      src: '/pre-university-projects/csharp-forms-space-invaders.webp',
       title: 'C# Forms Space Invaders Clone',
     },
     {
@@ -28,7 +28,7 @@ export function PreUniversityProjectsCollage() {
       title: 'C++ Molten Miner',
     },
     {
-      src: '/pre-university-projects/csharp-snake-ascii.gif',
+      src: '/pre-university-projects/csharp-snake-ascii.webp',
       title: 'C# Snake Clone ASCII',
     },
   ];
