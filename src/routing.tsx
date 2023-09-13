@@ -3,6 +3,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
 import {
   ErrorPageTemplate,
@@ -17,6 +18,23 @@ export const ROUTES = {
   ARVP: 'arvp',
 };
 const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
+
+const DEFAULT_PAGE_TITLE = i18n.t('TAB_TITLE');
+function WithHelmet({
+  ...props
+}: {
+  children: React.ReactNode;
+  title?: string;
+}) {
+  return (
+    <>
+      <Helmet>
+        <title>{props.title ?? DEFAULT_PAGE_TITLE}</title>
+      </Helmet>
+      {props.children}
+    </>
+  );
+}
 
 export interface NavigationItem {
   text: string;
@@ -98,7 +116,11 @@ export function GenerateRouter(
         ...NavigationItems.map((navigationItem) => {
           return {
             path: navigationItem.href,
-            element: navigationItem.component,
+            element: (
+              <WithHelmet title={navigationItem.text}>
+                {navigationItem.component}
+              </WithHelmet>
+            ),
           };
         }),
       ],
