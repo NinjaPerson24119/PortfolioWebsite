@@ -1,6 +1,7 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Typography, Box, Grid, Link, Paper, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { PreUniversityProjectsCollage } from './PreUniversityProjectsCollage';
 import styles from './ProjectsSection.module.scss';
 
 interface Project {
@@ -78,6 +79,9 @@ export function ProjectsSection() {
             </Grid>
           ))}
         </Grid>
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', margin: '32px' }}>
+        <PreUniversityProjectsCollage />
       </Box>
     </>
   );
