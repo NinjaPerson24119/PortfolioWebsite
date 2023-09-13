@@ -68,7 +68,7 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
           {props.group.positions.map((position, index) => (
             <PositionSection key={index} position={position} />
           ))}
-          <Box sx={{ display: 'flex', gap: '8px' }}>
+          <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {props.group.skills.map((skill, index) => (
               <Chip
                 key={index}
