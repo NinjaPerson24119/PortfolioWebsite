@@ -3,6 +3,11 @@
   "HEADLINE": "Software Developer",
   "COPYRIGHT": "Copyright © 2023 Nicholas Wengel",
   "BUILT_WITH": "Built with React and Vite",
+  "NATIONALITY": "Proudly Canadian",
+  "LANGUAGES": {
+    "ENGLISH": "En",
+    "FRENCH": "Fr"
+  },
   "NAVIGATION": {
     "OVERVIEW": "Overview",
     "PRE_UNIVERSITY_PROJECTS": "Pre-University Projects",

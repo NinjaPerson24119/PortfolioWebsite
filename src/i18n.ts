@@ -1,12 +1,18 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import translation from './assets/locales/en.json';
+import englishTranslation from './assets/locales/en.json';
+import frenchTranslation from './assets/locales/fr.json';
 
 void i18n.use(initReactI18next).init({
+  fallbackLng: 'en',
   lng: 'en',
   resources: {
     en: {
-      translation,
+      englishTranslation,
+    },
+    fr: {
+      // eslint-disable-next-line
+      frenchTranslation,
     },
   },
 });
