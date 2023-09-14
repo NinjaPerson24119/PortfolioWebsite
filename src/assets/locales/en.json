@@ -27,7 +27,10 @@
     "INTRODUCTION": "Nice to meet you!",
     "ABOUT_ME": "I'm Nicholas, a full-stack software developer with experience in robotics and SaaS products! If you find me without a cup of coffee, it's because I haven't left the machine yet!",
     "ARVP": {
-      "HEADER": "Autonomous Robotic Vehicle Project",
+      "HEADER": {
+        "LINE_1": "Autonomous Robotic",
+        "LINE_2": "Vehicle Project"
+      },
       "LEARN_MORE": "Learn more!"
     },
     "EXPERIENCE": {

@@ -1,0 +1,8 @@
+.avoidwrap {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.retainspaces {
+  white-space: pre-wrap;
+}

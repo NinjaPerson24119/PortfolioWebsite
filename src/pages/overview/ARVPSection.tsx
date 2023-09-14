@@ -2,6 +2,7 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import { Typography, Button, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { ROUTES } from '../../routing';
+import styles from './ARVPSection.module.scss';
 import yolactAnimation from '/arvp/yolact.webp';
 
 export function ARVPSection() {
@@ -10,7 +11,12 @@ export function ARVPSection() {
     <>
       <img src={yolactAnimation} />
       <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
-        {t('OVERVIEW.ARVP.HEADER')}
+        <span className={`${styles.avoidwrap} ${styles.retainspaces}`}>
+          {t('OVERVIEW.ARVP.HEADER.LINE_1')}{' '}
+        </span>
+        <span className={styles.avoidwrap}>
+          {t('OVERVIEW.ARVP.HEADER.LINE_2')}
+        </span>
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Button
