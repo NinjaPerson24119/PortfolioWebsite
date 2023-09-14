@@ -10,8 +10,7 @@ import {
   Link,
 } from '@mui/material';
 import React from 'react';
-
-const middleDot = '\u00B7';
+import styles from './ExperienceCard.module.scss';
 
 export interface ExperienceGroup {
   organization: string;
@@ -34,7 +33,6 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
   const theme = useTheme();
 
   function PositionSection({ position }: { position: ExperiencePosition }) {
-    const header = `${props.group.organization} ${middleDot} ${position.title}`;
     return (
       <>
         <Box
@@ -46,8 +44,8 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
         >
           <Typography variant="body1">{position.dateRange}</Typography>
         </Box>
-        <Typography variant="h3">{header}</Typography>
-        <Box sx={{ padding: '8px 0' }}>{position.description}</Box>
+        <Typography variant="h3">{position.title}</Typography>
+        <Box className={styles.positionDescription}>{position.description}</Box>
       </>
     );
   }
