@@ -12,7 +12,7 @@ import { ColorMode, ColorModeContext } from './color-mode-context';
 const darkPalette: PaletteOptions = {
   primary: {
     light: '#676767',
-    main: '#363636',
+    main: '#242424',
     dark: '#161616',
     contrastText: '#ffffff',
   },
@@ -24,7 +24,7 @@ const darkPalette: PaletteOptions = {
   },
   background: {
     default: '#000000',
-    paper: '#363636',
+    paper: '#242424',
   },
   text: {
     primary: '#dddddd',
