@@ -44,7 +44,9 @@ export function Footer() {
           }}
           target="_blank"
         >
-          <Typography variant="body2">{t('BUILT_WITH')}</Typography>
+          <Typography sx={{ textDecoration: 'underline' }} variant="body2">
+            {t('BUILT_WITH')}
+          </Typography>
           <GitHub fontSize="small" sx={{ color: theme.palette.text.link }} />
         </Link>
       </Box>
