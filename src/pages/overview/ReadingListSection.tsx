@@ -28,14 +28,14 @@ export function ReadingListSection() {
       status: 'reading',
     },
     {
-      title: 'Math 417: Honours Real Variables I',
-      url: 'https://www.math.ualberta.ca/~bowman/m417/m417.pdf',
+      title: 'Abstract Algebra',
+      url: 'https://www.amazon.ca/Abstract-Algebra-David-S-Dummit/dp/0471433349',
       status: 'finished',
     },
     {
-      title: 'Abstract Algebra',
-      url: 'https://www.amazon.ca/Abstract-Algebra-David-S-Dummit/dp/0471433349',
-      status: 'reading',
+      title: 'Math 417: Honours Real Variables I',
+      url: 'https://www.math.ualberta.ca/~bowman/m417/m417.pdf',
+      status: 'finished',
     },
     {
       title: 'Math 117/118: Honours Calculus',
@@ -45,7 +45,7 @@ export function ReadingListSection() {
     {
       title: 'Game Engine Architecture',
       url: 'https://www.amazon.ca/Engine-Architecture-Third-Jason-Gregory/dp/1138035459',
-      status: 'reading',
+      status: 'finished',
     },
     {
       title: 'Mythical Man-Month, The: Essays on Software Engineering',
