@@ -30,12 +30,13 @@
 .montageCrop {
   display: block;
   width: 75%;
-  margin: 32px auto;
+  margin: 32px auto !important;
   overflow: hidden;
 }
 
 .montage {
   width: 100%;
-  height: 101%;
+  height: 100%;
   margin-top: -3px;
+  margin-bottom: -3px;
 }

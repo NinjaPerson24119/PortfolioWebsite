@@ -6,7 +6,7 @@ import {
   PaletteOptions,
 } from '@mui/material/styles';
 import { useMemo, useState } from 'react';
-import { DESKTOP_WIDTH_PX } from '../constants';
+import { MD_WIDTH_PX } from '../constants';
 import { ColorMode, ColorModeContext } from './color-mode-context';
 
 const darkPalette: PaletteOptions = {
@@ -69,16 +69,12 @@ export function createMUITheme(colorMode: ColorMode): MUITheme {
       values: {
         xs: 0,
         sm: 600,
-        md: DESKTOP_WIDTH_PX,
+        md: MD_WIDTH_PX,
         lg: 1200,
         xl: 1536,
       },
     },
   });
-}
-
-export function MediaQueryIsDesktop(theme: MUITheme): boolean {
-  return useMediaQuery(theme.breakpoints.up('md'));
 }
 
 export function Theme(props: React.PropsWithChildren<unknown>) {

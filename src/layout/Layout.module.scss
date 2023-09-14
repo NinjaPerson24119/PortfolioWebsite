@@ -15,7 +15,7 @@
 }
 
 .stickyContainer {
-  @media (min-width: br.$desktop-width) {
+  @media (min-width: br.$md-width) {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;

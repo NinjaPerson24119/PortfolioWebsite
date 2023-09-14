@@ -1,6 +1,5 @@
-import { Grid, Box, useTheme } from '@mui/material';
+import { Grid, Box, useTheme, useMediaQuery } from '@mui/material';
 import { ReactNode } from 'react';
-import { MediaQueryIsDesktop } from '../theme/Theme';
 import styles from './Layout.module.scss';
 
 interface LayoutProps {
@@ -11,7 +10,7 @@ interface LayoutProps {
 
 export function Layout({ ...props }: LayoutProps) {
   const theme = useTheme();
-  const isDesktop = MediaQueryIsDesktop(theme);
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
   return (
     <div className={styles.layout}>
       <Grid
@@ -27,13 +26,9 @@ export function Layout({ ...props }: LayoutProps) {
           item
           xs={12}
           md={6}
-          sx={
-            isDesktop
-              ? { display: 'flex', justifyContent: 'center' }
-              : undefined
-          }
+          sx={isMd ? { display: 'flex', justifyContent: 'center' } : undefined}
         >
-          <Box sx={{ maxWidth: isDesktop ? '680px' : undefined }}>
+          <Box sx={{ maxWidth: isMd ? '680px' : undefined }}>
             {props.content}
           </Box>
         </Grid>

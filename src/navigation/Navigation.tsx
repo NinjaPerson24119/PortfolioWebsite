@@ -8,18 +8,18 @@ import {
   Box,
   Drawer,
   IconButton,
+  useMediaQuery,
 } from '@mui/material';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NavigationItems } from '../routing';
-import { MediaQueryIsDesktop } from '../theme/Theme';
 import { IconsBar } from './IconsBar';
 import styles from './Navigation.module.scss';
 
 export function Navigation() {
   const location = useLocation();
   const theme = useTheme();
-  const isMobile = !MediaQueryIsDesktop(theme);
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const navigationItems = (
@@ -37,7 +37,7 @@ export function Navigation() {
                 : undefined,
             }}
             onClick={() => {
-              if (isMobile) {
+              if (!isMd) {
                 setDrawerOpen(false);
               }
             }}
@@ -57,15 +57,15 @@ export function Navigation() {
   return (
     <Box
       className={styles.navigation}
-      sx={isMobile ? { bgcolor: theme.palette.primary.main } : {}}
+      sx={!isMd ? { bgcolor: theme.palette.primary.main } : {}}
     >
       <IconsBar toggleNavigation={() => setDrawerOpen(!drawerOpen)} />
-      {!isMobile && (
+      {!!isMd && (
         <div className={styles.navigationElementsContainer}>
           {navigationItems}
         </div>
       )}
-      {isMobile && (
+      {!isMd && (
         <Drawer
           anchor="right"
           open={drawerOpen}

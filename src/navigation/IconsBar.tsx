@@ -3,11 +3,10 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton, useTheme, Box } from '@mui/material';
+import { IconButton, useTheme, Box, useMediaQuery } from '@mui/material';
 import React from 'react';
 import { SOCIAL_URLS, PUBLIC_EMAIL } from '../constants';
 import { ColorModeToggle } from '../theme/ColorModeToggle';
-import { MediaQueryIsDesktop } from '../theme/Theme';
 import styles from './IconsBar.module.scss';
 
 interface HeaderLink {
@@ -22,7 +21,7 @@ interface IconsBarProps {
 
 export function IconsBar({ ...props }: IconsBarProps) {
   const theme = useTheme();
-  const isMobile = !MediaQueryIsDesktop(theme);
+  const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
   const headerLinks: HeaderLink[] = [
     {
@@ -70,7 +69,7 @@ export function IconsBar({ ...props }: IconsBarProps) {
           {headerLink.icon}
         </IconButton>
       ))}
-      {isMobile && (
+      {!isMd && (
         <>
           <Divider />
           <IconButton size="large" onClick={props.toggleNavigation}>

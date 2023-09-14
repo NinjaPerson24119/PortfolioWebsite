@@ -10,13 +10,13 @@
   gap: 8px;
   padding: 16px;
 
-  @media (min-width: br.$desktop-width) {
+  @media (min-width: br.$md-width) {
     width: auto;
     align-items: center;
     justify-content: flex-end;
   }
 
-  $mobile-exclusive: br.$desktop-width - 1px;
+  $mobile-exclusive: br.$md-width - 1px;
   @media (max-width: $mobile-exclusive) {
     @include sh.shadow-mixin(1);
   }

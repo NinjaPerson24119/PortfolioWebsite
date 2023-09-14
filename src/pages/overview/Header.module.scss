@@ -6,7 +6,7 @@
   gap: 16px;
   align-items: center;
 
-  @media (min-width: br.$desktop-width) {
+  @media (min-width: br.$lg-width) {
     flex-direction: row;
     justify-content: center;
   }
@@ -18,7 +18,7 @@
   align-items: center;
   gap: 2px;
 
-  @media (min-width: br.$desktop-width) {
+  @media (min-width: br.$lg-width) {
     align-items: flex-start;
   }
 }

@@ -7,7 +7,7 @@
   gap: 16px;
 
   margin: 32px 0;
-  @media (max-width: br.$desktop-width) {
+  @media (max-width: br.$md-width) {
     > *:not(img) {
       margin-left: 8px;
       margin-right: 8px;
