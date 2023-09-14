@@ -13,7 +13,8 @@ import React from 'react';
 import styles from './ExperienceCard.module.scss';
 
 export interface ExperienceGroup {
-  organization: string;
+  title: string;
+  subtitle?: string;
   positions: ExperiencePosition[];
   url: string;
   skills: string[];
@@ -60,8 +61,14 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
       >
         <CardHeader
           titleTypographyProps={{ variant: 'h2' }}
-          title={props.group.organization}
+          title={props.group.title}
+          subheader={props.group.subtitle}
           action={<OpenInNewIcon sx={{ color: theme.palette.text.link }} />}
+          color="inherit"
+          sx={{
+            '& .MuiCardHeader-title': { color: theme.palette.text.link },
+            '& .MuiCardHeader-subheader': { color: theme.palette.text.primary },
+          }}
         ></CardHeader>
         <CardContent>
           {props.group.positions.map((position, index) => (

@@ -14,7 +14,8 @@ export function ExperienceSection() {
 
   const experienceGroups: ExperienceGroup[] = [
     {
-      organization: t('OVERVIEW.EXPERIENCE.VENDASTA'),
+      title: t('OVERVIEW.EXPERIENCE.VENDASTA.TITLE'),
+      subtitle: t('OVERVIEW.EXPERIENCE.VENDASTA.SUBTITLE'),
       positions: [
         {
           title: 'Software Developer II',
@@ -47,7 +48,8 @@ export function ExperienceSection() {
       ],
     },
     {
-      organization: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA'),
+      title: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.TITLE'),
+      subtitle: t('OVERVIEW.EXPERIENCE.WCB_ALBERTA.SUBTITLE'),
       positions: [
         {
           title: 'Software Developer',
@@ -63,7 +65,8 @@ export function ExperienceSection() {
       skills: ['C#', 'React', 'Redux', 'ASP.NET', 'Microsoft SQL Server'],
     },
     {
-      organization: t('OVERVIEW.EXPERIENCE.ARVP'),
+      title: t('OVERVIEW.EXPERIENCE.ARVP.TITLE'),
+      subtitle: t('OVERVIEW.EXPERIENCE.ARVP.SUBTITLE'),
       positions: [
         {
           title: 'Project Co-Lead',

@@ -35,9 +35,18 @@
     },
     "EXPERIENCE": {
       "HEADER": "Experience",
-      "VENDASTA": "Vendasta",
-      "WCB_ALBERTA": "WCB Alberta",
-      "ARVP": "ARVP"
+      "VENDASTA": {
+        "TITLE": "Vendasta",
+        "SUBTITLE": "Remote · Saskatoon, SK"
+      },
+      "WCB_ALBERTA": {
+        "TITLE": "WCB Alberta",
+        "SUBTITLE": "Edmonton, AB"
+      },
+      "ARVP": {
+        "TITLE": "Autonomous Robotic Vehicle Project",
+        "SUBTITLE": "Engineering Club at the University of Alberta"
+      }
     },
     "OTHER_PROJECTS": {
       "HEADER": "Other Projects",
