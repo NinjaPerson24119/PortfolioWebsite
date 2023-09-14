@@ -1,12 +1,12 @@
 import mailchannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 
-export const onRequest = mailchannelsPlugin({
+const onRequestPost = mailchannelsPlugin({
   personalizations: [
     {
       to: [{ name: "Nicholas Wengel", email: "public@nicholaswengel.com" }],
     },
   ],
-  from: (r) => ({ name: r.formData['name'], email: "no-reply@nicholaswengel.com" }),
+  from: (r) => ({ name: r.formData['name'], email: r.formData['email'] }),
   subject: "Contact Form",
   content: (r) => r.formData['message'],
   respondWith: () =>

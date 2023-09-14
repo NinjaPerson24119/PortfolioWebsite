@@ -13,7 +13,7 @@ function Overview() {
       <ExperienceSection />
       <ProjectsSection />
       <ReadingListSection />
-      <form data-static-form-name="contact">
+      <form method="POST" action="/api/contact">
         <div>
           <label>
             Name
