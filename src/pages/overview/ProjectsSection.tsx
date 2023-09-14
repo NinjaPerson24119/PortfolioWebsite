@@ -1,8 +1,8 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Typography, Box, Grid, Link, Paper, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { PreUniversityProjectsCollage } from './PreUniversityProjectsCollage';
 import styles from './ProjectsSection.module.scss';
+import montage from '/public/pre-university-projects/montage.webp';
 
 interface Project {
   header: string;
@@ -80,9 +80,9 @@ export function ProjectsSection() {
           ))}
         </Grid>
       </Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', margin: '32px' }}>
-        <PreUniversityProjectsCollage />
-      </Box>
+      <div className={styles.montageCrop}>
+        <img src={montage} className={styles.montage} />
+      </div>
     </>
   );
 }
