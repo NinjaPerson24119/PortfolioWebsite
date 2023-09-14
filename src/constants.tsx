@@ -17,3 +17,5 @@ export const SOURCE_CODE_URL =
   'https://github.com/NinjaPerson24119/PortfolioWebsite';
 
 export const PUBLIC_EMAIL = 'todo@todo.com';
+
+export const API_PREFIX = 'https://nicholaswengel.com/api';

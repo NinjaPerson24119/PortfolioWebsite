@@ -1,8 +1,8 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Typography, Box, Grid, Link, Paper, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import montage from '../../assets/images/montage.webp';
 import styles from './ProjectsSection.module.scss';
-import montage from '/public/pre-university-projects/montage.webp';
 
 interface Project {
   header: string;

@@ -1,4 +1,5 @@
 import { ARVPSection } from './ARVPSection';
+import { ContactForm } from './ContactForm';
 import { ExperienceSection } from './ExperienceSection';
 import { HeroSection } from './HeroSection';
 import styles from './Overview.module.scss';
@@ -12,27 +13,8 @@ function Overview() {
       <ARVPSection />
       <ExperienceSection />
       <ProjectsSection />
+      <ContactForm />
       <ReadingListSection />
-      <form method="POST" action="/api/contact">
-        <div>
-          <label>
-            Name
-            <input type="text" name="name" />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email
-            <input type="email" name="email" />
-          </label>
-        </div>
-        <div>
-          <label>
-            Message<textarea name="message"></textarea>
-          </label>
-        </div>
-        <button type="submit">Send!</button>
-      </form>
     </div>
   );
 }

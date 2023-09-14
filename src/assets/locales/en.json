@@ -5,6 +5,16 @@
   "BUILT_WITH": "Built with React and Vite",
   "NATIONALITY": "Proudly Canadian",
   "TAB_TITLE": "Nicholas Wengel's Portfolio",
+  "CONTACT": {
+    "HEADER": "Send me a message!",
+    "FORM_LABEL": "Contact Form",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "SEND_MESSAGE": "Send Message",
+    "SUBMITTED_HEADER": "Message sent!",
+    "SUBMITTED_DETAILS": "You should receive a confirmation email. I'll get back to you as soon as I can!",
+    "SUBMITTED_ERROR": "Message not sent. Something went wrong."
+  },
   "LANGUAGES": {
     "ENGLISH": "En",
     "FRENCH": "Fr"
