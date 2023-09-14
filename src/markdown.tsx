@@ -3,11 +3,16 @@ import type { MDXComponents } from 'mdx/types.js';
 
 function TypographyVariant(
   variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1',
+  paragraph = false,
 ) {
   return function TypographyVariant({
     ...props
   }: React.PropsWithChildren<unknown>) {
-    return <Typography variant={variant}>{props.children}</Typography>;
+    return (
+      <Typography variant={variant} paragraph={paragraph}>
+        {props.children}
+      </Typography>
+    );
   };
 }
 
@@ -46,7 +51,7 @@ export function MDXComponentMapping(): MDXComponents {
     h4: TypographyVariant('h4'),
     h5: TypographyVariant('h5'),
     h6: TypographyVariant('h6'),
-    p: TypographyVariant('body1'),
+    p: TypographyVariant('body1', true),
     a: StyledLink,
     img: LazyLoadedImage,
   };
