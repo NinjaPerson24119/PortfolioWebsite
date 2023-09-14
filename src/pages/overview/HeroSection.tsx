@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { Header } from '../../header/Header';
+import { Header } from './Header';
 
 export function HeroSection() {
   const { t } = useTranslation();

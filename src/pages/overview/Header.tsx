@@ -1,7 +1,7 @@
 import { Avatar, Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import avatarImage from '../assets/images/avatar-jellyfish.jpeg';
-import { MediaQueryIsDesktop } from '../theme/Theme';
+import avatarImage from '../../assets/images/avatar-jellyfish.jpeg';
+import { MediaQueryIsDesktop } from '../../theme/Theme';
 import styles from './Header.module.scss';
 
 export function Header() {
