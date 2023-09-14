@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints.scss' as br;
+
 .projectCard {
   position: relative;
   padding: 8px;
@@ -32,6 +34,10 @@
   width: 75%;
   margin: 32px auto !important;
   overflow: hidden;
+
+  @media (max-width: br.$md-width) {
+    width: 90%;
+  }
 }
 
 .montage {
