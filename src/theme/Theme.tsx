@@ -57,6 +57,14 @@ const lightPalette: PaletteOptions = {
 export function createMUITheme(colorMode: ColorMode): MUITheme {
   return createTheme({
     palette: colorMode === 'dark' ? darkPalette : lightPalette,
+    typography: {
+      fontFamily: 'Roboto, Inter, system-ui, Helvetica, Arial, sans-serif',
+      htmlFontSize: 16,
+      fontSize: 14, // maps to 16px under MUI's equation with htmlFontSize = 16
+      fontWeightLight: 300,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+    },
     breakpoints: {
       values: {
         xs: 0,
@@ -88,21 +96,29 @@ export function Theme(props: React.PropsWithChildren<unknown>) {
   );
   const theme = useMemo(() => {
     const t = createMUITheme(colorMode);
-    t.typography.htmlFontSize = 16;
     t.typography.h1 = {
-      fontSize: '3rem',
+      fontSize: '3.25rem',
       [t.breakpoints.down('md')]: {
-        fontSize: '2.25rem',
+        fontSize: '2.5rem',
       },
     };
-    t.typography.h2 = {
-      fontSize: '1.25rem',
+    (t.typography.subtitle1 = {
+      fontSize: '2.25rem',
       [t.breakpoints.down('md')]: {
-        fontSize: '1.125rem',
+        fontSize: '1.75rem',
       },
-    };
+    }),
+      (t.typography.h2 = {
+        fontSize: '2rem',
+        [t.breakpoints.down('md')]: {
+          fontSize: '1.5rem',
+        },
+      });
     t.typography.h3 = {
-      fontSize: '1rem',
+      fontSize: '1.5rem',
+      [t.breakpoints.down('md')]: {
+        fontSize: '1.25rem',
+      },
     };
     return t;
   }, [colorMode]);

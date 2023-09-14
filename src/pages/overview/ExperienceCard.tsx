@@ -61,6 +61,7 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
         }}
       >
         <CardHeader
+          titleTypographyProps={{ variant: 'h2' }}
           title={props.group.organization}
           action={<OpenInNewIcon sx={{ color: theme.palette.text.link }} />}
         ></CardHeader>

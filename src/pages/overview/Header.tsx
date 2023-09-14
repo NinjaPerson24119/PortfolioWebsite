@@ -28,7 +28,7 @@ export function Header() {
       />
       <div className={styles.headerTextContainer}>
         <Typography variant="h1">{t('FULL_NAME')}</Typography>
-        <Typography variant="h2">{t('HEADLINE')}</Typography>
+        <Typography variant="subtitle1">{t('HEADLINE')}</Typography>
       </div>
     </div>
   );
