@@ -1,3 +1,4 @@
+import EmailIcon from '@mui/icons-material/Email';
 import {
   TextField,
   Button,
@@ -86,15 +87,27 @@ export function ContactForm() {
 
   return (
     <>
-      <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
-        {t('CONTACT.HEADER')}
-      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px',
+        }}
+      >
+        <EmailIcon color="secondary" />
+        <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
+          {t('CONTACT.HEADER')}
+        </Typography>
+        <EmailIcon color="secondary" />
+      </Box>
       <Paper
         sx={{
           borderRadius: '20px',
           border: '2px solid',
           padding: '16px',
           borderColor: theme.palette.secondary.main,
+          filter: `drop-shadow(1px 2px 16px ${theme.palette.secondary.main})`,
         }}
       >
         {submitted !== SubmissionState.SUBMITTED && (
