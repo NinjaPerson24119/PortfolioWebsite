@@ -24,6 +24,13 @@ export async function onRequestPost(request) {
       });
     }
 
+    console.log(
+      'params',
+      formData.get('email'),
+      formData.get('name'),
+      formData.get('message'),
+    );
+
     const messageBody = {
       personalizations: [
         {
@@ -45,6 +52,7 @@ export async function onRequestPost(request) {
     };
     const messageResp = await sendEmail(messageBody, 'message');
     if (messageResp.status !== 202) {
+      console.log('failed to send message');
       return messageResp;
     }
 
@@ -69,6 +77,7 @@ export async function onRequestPost(request) {
     };
     const confirmationResp = await sendEmail(confirmationBody, 'message');
     if (confirmationResp.status !== 202) {
+      console.log('failed to send confirmation');
       return confirmationResp;
     }
 
@@ -77,6 +86,7 @@ export async function onRequestPost(request) {
       statusText: 'Accepted',
     });
   } catch (error) {
+    console.log('error', error);
     return new Response(null, {
       status: 500,
       statusText: `Internal Server Error: ${error}`,
