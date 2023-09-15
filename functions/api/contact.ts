@@ -12,7 +12,7 @@ export async function onRequestPost(request) {
         });
       }
     } else {
-      console.log('hit POST guard');
+      console.log('hit POST guard', request.method);
       return new Response(null, {
         status: 405,
         statusText: 'Method Not Allowed',
