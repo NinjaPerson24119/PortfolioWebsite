@@ -78,7 +78,6 @@ export async function onRequestPost(context) {
     };
     const messageResp = await sendEmail(messageBody, 'message');
     if (messageResp.status !== 202) {
-      console.log('failed to send message');
       return messageResp;
     }
 
@@ -104,7 +103,6 @@ export async function onRequestPost(context) {
     };
     const confirmationResp = await sendEmail(confirmationBody, 'message');
     if (confirmationResp.status !== 202) {
-      console.log('failed to send confirmation');
       return confirmationResp;
     }
 
@@ -122,7 +120,6 @@ export async function onRequestPost(context) {
 }
 
 async function sendEmail(body: any, kind: string): Promise<Response> {
-  console.log('body', body, JSON.stringify(body));
   const messageRequest = new Request(
     'https://api.mailchannels.net/tx/v1/send',
     {
