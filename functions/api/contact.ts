@@ -1,4 +1,4 @@
-export async function onRequestPost(request) {
+export async function onRequest(request) {
   try {
     if (request.method !== 'POST') {
       console.log('hit POST guard', request.method, request);
