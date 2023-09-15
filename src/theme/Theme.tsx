@@ -22,6 +22,9 @@ const darkPalette: PaletteOptions = {
     dark: '#567ccc',
     contrastText: '#ffffff',
   },
+  tertiary: {
+    main: '#FFFFFF',
+  },
   background: {
     default: '#000000',
     paper: '#242424',
@@ -44,6 +47,9 @@ const lightPalette: PaletteOptions = {
     main: '#89a1dc',
     dark: '#567ccc',
     contrastText: '#0040aa',
+  },
+  tertiary: {
+    main: '#000000',
   },
   background: {
     default: '#ffffff',

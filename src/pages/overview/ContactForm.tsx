@@ -4,16 +4,18 @@ import {
   Paper,
   Typography,
   Alert,
-  FormLabel,
+  Box,
   Snackbar,
+  useTheme,
 } from '@mui/material';
-import { useState, FormEvent } from 'react';
+import { styled } from '@mui/material/styles';
+import { useState, FormEvent, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { API_PREFIX } from '../../constants';
-import styles from './ContactForm.module.scss';
 
 enum SubmissionState {
   NOT_SUBMITTED,
+  SUBMITTING,
   SUBMITTED,
   SUBMISSION_ERROR,
 }
@@ -21,11 +23,42 @@ enum SubmissionState {
 export function ContactForm() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(SubmissionState.NOT_SUBMITTED);
-  const [loading, setLoading] = useState(false);
+  const formDisabled = useMemo(
+    () =>
+      submitted === SubmissionState.SUBMITTING ||
+      submitted === SubmissionState.SUBMISSION_ERROR,
+    [submitted],
+  );
+  const theme = useTheme();
+
+  const StyledTextField = styled(TextField)({
+    '& label': {
+      color: theme.palette.tertiary.main,
+    },
+    '& label.Mui-focused': {
+      color: theme.palette.secondary.main,
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.palette.secondary.main,
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: theme.palette.tertiary.main,
+      },
+      '&:hover fieldset': {
+        borderColor: theme.palette.tertiary.main,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.secondary.main,
+      },
+    },
+    marginTop: '8px',
+    marginBottom: '8px',
+  });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoading(true);
+    setSubmitted(SubmissionState.SUBMITTING);
     const apiUrl = `${API_PREFIX}/contact`;
     const requestBody = {
       key1: 'value1',
@@ -43,16 +76,11 @@ export function ContactForm() {
         if (!response.ok) {
           throw new Error('Message submission failed.');
         }
-        return response.json();
-      })
-      .then(() => {
         setSubmitted(SubmissionState.SUBMITTED);
+        return response.json();
       })
       .catch(() => {
         setSubmitted(SubmissionState.SUBMISSION_ERROR);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   };
 
@@ -61,44 +89,56 @@ export function ContactForm() {
       <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
         {t('CONTACT.HEADER')}
       </Typography>
-      <Paper className={styles.formContainer}>
-        {(submitted === SubmissionState.NOT_SUBMITTED || loading) && (
-          <form onSubmit={handleSubmit} className={styles.contactForm}>
-            <FormLabel color="secondary">{t('CONTACT.FORM_LABEL')}</FormLabel>
-            <TextField
+      <Paper
+        sx={{
+          borderRadius: '20px',
+          border: '2px solid',
+          padding: '16px',
+          borderColor: theme.palette.secondary.main,
+        }}
+      >
+        {submitted !== SubmissionState.SUBMITTED && (
+          <Box component="form" onSubmit={handleSubmit}>
+            <StyledTextField
               label={t('CONTACT.NAME_LABEL')}
               variant="outlined"
               required
               type="text"
               fullWidth
-              color="secondary"
+              disabled={formDisabled}
             />
-            <TextField
+            <StyledTextField
               label="Email"
               variant="outlined"
               required
               type="email"
               fullWidth
-              color="secondary"
+              disabled={formDisabled}
             />
-            <TextField
+            <StyledTextField
               label={t('CONTACT.EMAIL_LABEL')}
               variant="outlined"
               required
               multiline
               minRows={4}
               fullWidth
-              color="secondary"
+              disabled={formDisabled}
             />
             <Button
               type="submit"
               color="secondary"
               variant="contained"
-              disabled={loading}
+              disabled={formDisabled}
+              sx={{
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: '16px',
+                display: 'block',
+              }}
             >
               {t('CONTACT.SEND_MESSAGE')}
             </Button>
-          </form>
+          </Box>
         )}
         {submitted === SubmissionState.SUBMITTED && (
           <>
@@ -111,7 +151,7 @@ export function ContactForm() {
       </Paper>
       <Snackbar
         open={submitted === SubmissionState.SUBMISSION_ERROR}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={() => setSubmitted(SubmissionState.NOT_SUBMITTED)}
       >
         <Alert severity="error">{t('CONTACT.SUBMITTED_ERROR')}</Alert>
