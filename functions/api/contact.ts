@@ -20,6 +20,17 @@ export async function onRequestPost(request) {
 
     const formData = await request.formData();
 
+    if (
+      !formData.get('email') ||
+      !formData.get('name') ||
+      !formData.get('message')
+    ) {
+      return new Response(null, {
+        status: 400,
+        statusText: 'Bad Request',
+      });
+    }
+
     const messageBody = {
       personalizations: [
         {
