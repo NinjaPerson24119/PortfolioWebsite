@@ -13,7 +13,8 @@
     "SEND_MESSAGE": "Submit",
     "SUBMITTED_HEADER": "Message sent!",
     "SUBMITTED_DETAILS": "You should receive a confirmation email. I'll get back to you as soon as I can!",
-    "SUBMITTED_ERROR": "Message not sent. Something went wrong."
+    "SUBMITTED_ERROR": "Message not sent. Something went wrong.",
+    "SUBMITTED_SUCCESS": "Successfully sent message!"
   },
   "LANGUAGES": {
     "ENGLISH": "En",

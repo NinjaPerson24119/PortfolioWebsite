@@ -78,7 +78,6 @@ export function ContactForm() {
           throw new Error('Message submission failed.');
         }
         setSubmitted(SubmissionState.SUBMITTED);
-        return response.json();
       })
       .catch(() => {
         setSubmitted(SubmissionState.SUBMISSION_ERROR);
@@ -168,6 +167,12 @@ export function ContactForm() {
         onClose={() => setSubmitted(SubmissionState.NOT_SUBMITTED)}
       >
         <Alert severity="error">{t('CONTACT.SUBMITTED_ERROR')}</Alert>
+      </Snackbar>
+      <Snackbar
+        open={submitted === SubmissionState.SUBMITTED}
+        autoHideDuration={5000}
+      >
+        <Alert severity="success">{t('CONTACT.SUBMITTED_SUCCESS')}</Alert>
       </Snackbar>
     </>
   );
