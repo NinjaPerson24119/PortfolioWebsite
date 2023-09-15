@@ -1,5 +1,16 @@
-export async function onRequestPost(request) {
+export async function onRequestPost(context) {
   try {
+    console.log('context', context);
+    const request = await context.request;
+    console.log('request', request);
+    if (request.method !== 'POST') {
+      console.log('hit POST guard', request.method, request);
+      return new Response(null, {
+        status: 405,
+        statusText: 'Method Not Allowed',
+      });
+    }
+
     const contentType = request.headers.get('content-type');
     if (
       !contentType ||
