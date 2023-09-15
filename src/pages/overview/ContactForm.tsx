@@ -60,10 +60,24 @@ export function ContactForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(SubmissionState.SUBMITTING);
+
     const apiUrl = `${API_PREFIX}/contact`;
+
     const requestBody = {
-      key1: 'value1',
-      key2: 'value2',
+      formData: {
+        name:
+          (event.currentTarget.elements.namedItem('name') as HTMLInputElement)
+            ?.value || '',
+        email:
+          (event.currentTarget.elements.namedItem('email') as HTMLInputElement)
+            ?.value || '',
+        message:
+          (
+            event.currentTarget.elements.namedItem(
+              'message',
+            ) as HTMLInputElement
+          )?.value || '',
+      },
     };
 
     fetch(apiUrl, {
@@ -112,6 +126,7 @@ export function ContactForm() {
         {submitted !== SubmissionState.SUBMITTED && (
           <Box component="form" onSubmit={handleSubmit}>
             <StyledTextField
+              name="name"
               label={t('CONTACT.NAME_LABEL')}
               variant="outlined"
               required
@@ -120,7 +135,8 @@ export function ContactForm() {
               disabled={formDisabled}
             />
             <StyledTextField
-              label="Email"
+              name="email"
+              label={t('CONTACT.EMAIL_LABEL')}
               variant="outlined"
               required
               type="email"
@@ -128,7 +144,8 @@ export function ContactForm() {
               disabled={formDisabled}
             />
             <StyledTextField
-              label={t('CONTACT.EMAIL_LABEL')}
+              name="message"
+              label={t('CONTACT.MESSAGE_LABEL')}
               variant="outlined"
               required
               multiline

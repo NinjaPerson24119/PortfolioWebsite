@@ -10,6 +10,7 @@
     "FORM_LABEL": "Contact Form",
     "NAME_LABEL": "Name",
     "EMAIL_LABEL": "Email",
+    "MESSAGE_LABEL": "Message",
     "SEND_MESSAGE": "Submit",
     "SUBMITTED_HEADER": "Message sent!",
     "SUBMITTED_DETAILS": "You should receive a confirmation email. I'll get back to you as soon as I can!",
