@@ -1,21 +1,21 @@
 export async function onRequestPost(request) {
   try {
-    if (request.method === 'POST') {
-      const contentType = request.headers.get('content-type');
-      if (
-        !contentType ||
-        !contentType.includes('application/x-www-form-urlencoded')
-      ) {
-        return new Response(null, {
-          status: 415,
-          statusText: 'Unsupported Media Type',
-        });
-      }
-    } else {
-      console.log('hit POST guard', request.method);
+    if (request.method !== 'POST') {
+      console.log('hit POST guard', request.method, request);
       return new Response(null, {
         status: 405,
         statusText: 'Method Not Allowed',
+      });
+    }
+
+    const contentType = request.headers.get('content-type');
+    if (
+      !contentType ||
+      !contentType.includes('application/x-www-form-urlencoded')
+    ) {
+      return new Response(null, {
+        status: 415,
+        statusText: 'Unsupported Media Type',
       });
     }
 
