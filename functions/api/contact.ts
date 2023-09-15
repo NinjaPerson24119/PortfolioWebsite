@@ -1,24 +1,28 @@
-import { json } from 'react-router-dom';
-
 export async function onRequestPost(context) {
   try {
-    if (!context.env.hasOwnProperty('CONTACT_FORM_EMAIL')) {
-      console.log('CONTACT_FORM_EMAIL environment variable not set');
-      return new Response(null, {
-        status: 500,
-        statusText: 'Internal Server Error',
-      });
+    const requiredEnvVars = [
+      'CONTACT_FORM_EMAIL',
+      'NO_REPLY_EMAIL',
+      'DKIM_DOMAIN',
+      'DKIM_SELECTOR',
+      'DKIM_PRIVATE_KEY',
+    ];
+    for (const envVar of requiredEnvVars) {
+      if (!context.env.hasOwnProperty(envVar)) {
+        console.log(`${envVar} environment variable not set`);
+        return new Response(null, {
+          status: 500,
+          statusText: 'Internal Server Error',
+        });
+      }
     }
     const CONTACT_FORM_EMAIL = context.env.CONTACT_FORM_EMAIL;
-
-    if (!context.env.hasOwnProperty('NO_REPLY_EMAIL')) {
-      console.log('NO_REPLY_EMAIL environment variable not set');
-      return new Response(null, {
-        status: 500,
-        statusText: 'Internal Server Error',
-      });
-    }
     const NO_REPLY_EMAIL = context.env.NO_REPLY_EMAIL;
+    const dkimProps = {
+      dkim_domain: context.env.DKIM_DOMAIN,
+      dkim_selector: context.env.DKIM_SELECTOR,
+      dkim_private_key: context.env.DKIM_PRIVATE_KEY,
+    };
 
     const request = await context.request;
     if (request.method !== 'POST') {
@@ -56,6 +60,7 @@ export async function onRequestPost(context) {
       personalizations: [
         {
           to: [{ name: 'Nicholas Wengel', email: CONTACT_FORM_EMAIL }],
+          ...dkimProps,
         },
       ],
       from: {
@@ -81,6 +86,7 @@ export async function onRequestPost(context) {
       personalizations: [
         {
           to: [{ email: formData.get('email')?.toString() ?? '' }],
+          ...dkimProps,
         },
       ],
       from: {
@@ -129,9 +135,9 @@ async function sendEmail(body: any, kind: string): Promise<Response> {
   );
   const resp = await fetch(messageRequest);
   if (!resp.ok) {
-    const json = await resp.json();
+    const j = await resp.json();
     console.log(
-      `Failed to send email (${kind}), status: ${resp.status}, json(): ${json}`,
+      `Failed to send email (${kind}), status: ${resp.status}, json(): ${j}`,
       JSON.stringify(resp),
     );
     return new Response(

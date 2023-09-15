@@ -37,3 +37,6 @@ pnpm run lint
 # Reformat
 pnpm exec prettier . --write
 ```
+
+## MailChannels setup with Cloudflare
+- https://developers.cloudflare.com/pages/platform/functions/plugins/mailchannels/
