@@ -24,6 +24,7 @@ enum SubmissionState {
 export function ContactForm() {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(SubmissionState.NOT_SUBMITTED);
+  const [successSnackOpen, setSuccessSnackOpen] = useState(false);
   const formDisabled = useMemo(
     () =>
       submitted === SubmissionState.SUBMITTING ||
@@ -94,6 +95,7 @@ export function ContactForm() {
           throw new Error('Message submission failed.');
         }
         setSubmitted(SubmissionState.SUBMITTED);
+        setSuccessSnackOpen(true);
       })
       .catch(() => {
         setSubmitted(SubmissionState.SUBMISSION_ERROR);
@@ -178,7 +180,9 @@ export function ContactForm() {
             <Typography variant="h2">
               {t('CONTACT.SUBMITTED_HEADER')}
             </Typography>
-            <Alert severity="success">{t('CONTACT.SUBMITTED_DETAILS')}</Alert>
+            <Alert severity="success" sx={{ marginTop: '8px' }}>
+              {t('CONTACT.SUBMITTED_DETAILS')}
+            </Alert>
           </>
         )}
       </Paper>
@@ -190,8 +194,9 @@ export function ContactForm() {
         <Alert severity="error">{t('CONTACT.SUBMITTED_ERROR')}</Alert>
       </Snackbar>
       <Snackbar
-        open={submitted === SubmissionState.SUBMITTED}
+        open={successSnackOpen}
         autoHideDuration={5000}
+        onClose={() => setSuccessSnackOpen(false)}
       >
         <Alert severity="success">{t('CONTACT.SUBMITTED_SUCCESS')}</Alert>
       </Snackbar>
