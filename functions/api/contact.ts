@@ -2,11 +2,26 @@ import { json } from 'react-router-dom';
 
 export async function onRequestPost(context) {
   try {
-    console.log('context', context);
+    if (!context.env.hasOwnProperty('CONTACT_FORM_EMAIL')) {
+      console.log('CONTACT_FORM_EMAIL environment variable not set');
+      return new Response(null, {
+        status: 500,
+        statusText: 'Internal Server Error',
+      });
+    }
+    const CONTACT_FORM_EMAIL = context.env.CONTACT_FORM_EMAIL;
+
+    if (!context.env.hasOwnProperty('NO_REPLY_EMAIL')) {
+      console.log('NO_REPLY_EMAIL environment variable not set');
+      return new Response(null, {
+        status: 500,
+        statusText: 'Internal Server Error',
+      });
+    }
+    const NO_REPLY_EMAIL = context.env.NO_REPLY_EMAIL;
+
     const request = await context.request;
-    console.log('request', request);
     if (request.method !== 'POST') {
-      console.log('hit POST guard', request.method, request);
       return new Response(null, {
         status: 405,
         statusText: 'Method Not Allowed',
@@ -37,22 +52,15 @@ export async function onRequestPost(context) {
       });
     }
 
-    console.log(
-      'params',
-      formData.get('email'),
-      formData.get('name'),
-      formData.get('message'),
-    );
-
     const messageBody = {
       personalizations: [
         {
-          to: [{ name: 'Nicholas Wengel', email: 'public@nicholaswengel.com' }],
+          to: [{ name: 'Nicholas Wengel', email: CONTACT_FORM_EMAIL }],
         },
       ],
       from: {
         name: formData.get('name')?.toString(),
-        email: 'no-reply@nicholaswengel.com',
+        email: NO_REPLY_EMAIL,
         reply_to: formData.get('email')?.toString() ?? '',
       },
       subject: 'Contact Form Submission',
@@ -77,7 +85,7 @@ export async function onRequestPost(context) {
       ],
       from: {
         name: formData.get('name')?.toString(),
-        email: 'no-reply@nicholaswengel.com',
+        email: NO_REPLY_EMAIL,
       },
       subject: 'Thanks for reaching out - Nicholas Wengel',
       content: [
@@ -99,7 +107,7 @@ export async function onRequestPost(context) {
       statusText: 'Accepted',
     });
   } catch (error) {
-    console.log('error', error);
+    console.log('Internal server error:', error);
     return new Response(null, {
       status: 500,
       statusText: `Internal Server Error: ${error}`,
@@ -120,10 +128,10 @@ async function sendEmail(body: any, kind: string): Promise<Response> {
     },
   );
   const resp = await fetch(messageRequest);
-  resp.json().then((data) => console.log('data', data));
   if (!resp.ok) {
+    const json = await resp.json();
     console.log(
-      `Failed to send email (${kind}), status: ${resp.status}`,
+      `Failed to send email (${kind}), status: ${resp.status}, json(): ${json}`,
       JSON.stringify(resp),
     );
     return new Response(
