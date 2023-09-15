@@ -1,6 +1,7 @@
 import mailchannelsPlugin, {
   Submission,
 } from '@cloudflare/pages-plugin-mailchannels';
+import { PagesFunction } from '@cloudflare/workers-types';
 
 export const onRequestPost: PagesFunction = mailchannelsPlugin({
   personalizations: [
