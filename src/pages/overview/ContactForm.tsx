@@ -12,7 +12,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { useState, FormEvent, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { API_PREFIX } from '../../constants';
+import { API_PREFIX, EMAIL_SECTION_ID } from '../../constants';
 
 enum SubmissionState {
   NOT_SUBMITTED,
@@ -101,7 +101,7 @@ export function ContactForm() {
   };
 
   return (
-    <Box sx={{ marginBottom: '32px' }}>
+    <Box sx={{ marginBottom: '32px' }} id={EMAIL_SECTION_ID}>
       <Box
         sx={{
           display: 'flex',
