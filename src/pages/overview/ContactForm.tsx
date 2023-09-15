@@ -101,13 +101,14 @@ export function ContactForm() {
   };
 
   return (
-    <>
+    <Box sx={{ marginBottom: '32px' }}>
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '8px',
+          marginBottom: '24px',
         }}
       >
         <EmailIcon color="secondary" />
@@ -121,6 +122,7 @@ export function ContactForm() {
           borderRadius: '20px',
           border: '2px solid',
           padding: '16px',
+          margin: '0 16px',
           borderColor: theme.palette.secondary.main,
           filter: `drop-shadow(1px 2px 16px ${theme.palette.secondary.main})`,
         }}
@@ -193,6 +195,6 @@ export function ContactForm() {
       >
         <Alert severity="success">{t('CONTACT.SUBMITTED_SUCCESS')}</Alert>
       </Snackbar>
-    </>
+    </Box>
   );
 }
