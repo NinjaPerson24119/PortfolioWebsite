@@ -63,29 +63,31 @@ export function ContactForm() {
 
     const apiUrl = `${API_PREFIX}/contact`;
 
-    const requestBody = {
-      formData: {
-        name:
-          (event.currentTarget.elements.namedItem('name') as HTMLInputElement)
-            ?.value || '',
-        email:
-          (event.currentTarget.elements.namedItem('email') as HTMLInputElement)
-            ?.value || '',
-        message:
-          (
-            event.currentTarget.elements.namedItem(
-              'message',
-            ) as HTMLInputElement
-          )?.value || '',
-      },
+    const formData: Record<string, string> = {
+      name:
+        (event.currentTarget.elements.namedItem('name') as HTMLInputElement)
+          ?.value || '',
+      email:
+        (event.currentTarget.elements.namedItem('email') as HTMLInputElement)
+          ?.value || '',
+      message:
+        (event.currentTarget.elements.namedItem('message') as HTMLInputElement)
+          ?.value || '',
     };
+
+    const formBody = Object.keys(formData)
+      .map(
+        (key) =>
+          encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]),
+      )
+      .join('&');
 
     fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
-      body: JSON.stringify(requestBody),
+      body: formBody,
     })
       .then((response) => {
         if (!response.ok) {
