@@ -12,6 +12,7 @@ export async function onRequestPost(request) {
         });
       }
     } else {
+      console.log('hit POST guard');
       return new Response(null, {
         status: 405,
         statusText: 'Method Not Allowed',
@@ -104,6 +105,7 @@ async function sendEmail(body: any, kind: string): Promise<Response> {
   );
   const resp = await fetch(messageRequest);
   if (!resp.ok) {
+    console.log(`Failed to send email (${kind}), status: ${resp.status}`);
     return new Response(
       JSON.stringify({ error: `Failed to send email (${kind})` }),
       {
