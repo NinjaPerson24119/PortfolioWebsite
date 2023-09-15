@@ -121,7 +121,7 @@ async function sendEmail(body: any, kind: string): Promise<Response> {
   );
   const resp = await fetch(messageRequest);
   if (!resp.ok) {
-    console.log(`Failed to send email (${kind}), status: ${resp.status}`);
+    console.log(`Failed to send email (${kind}), status: ${resp.status}`, resp);
     return new Response(
       JSON.stringify({ error: `Failed to send email (${kind})` }),
       {
