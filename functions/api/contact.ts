@@ -75,7 +75,7 @@ export async function onRequestPost(request) {
         },
       ],
     };
-    const confirmationResp = await sendEmail(messageBody, 'message');
+    const confirmationResp = await sendEmail(confirmationBody, 'message');
     if (confirmationResp.status !== 202) {
       return confirmationResp;
     }
