@@ -14,7 +14,7 @@ export function BackgroundEllipse({ ...props }: BackgroundEllipseProps) {
   return (
     <Box
       sx={{
-        zIndex: -1,
+        zIndex: -2,
         position: 'fixed',
         top: props.top,
         left: props.left,
