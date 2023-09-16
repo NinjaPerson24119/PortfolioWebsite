@@ -2,10 +2,16 @@ import ErrorIcon from '@mui/icons-material/Error';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Outlet, createBrowserRouter, Navigate } from 'react-router-dom';
+import {
+  Outlet,
+  createBrowserRouter,
+  Navigate,
+  useLocation,
+} from 'react-router-dom';
 import ARVPBlog from './assets/content/blog/arvp.mdx';
+import { CONTACT_FORM_ID } from './constants';
 import {
   ErrorPageTemplate,
   IconProps,
@@ -18,8 +24,31 @@ import { Overview } from './pages/overview/Overview';
 export const ROUTES = {
   OVERVIEW: 'overview',
   ARVP: 'arvp',
+  CONTACT: `overview#${CONTACT_FORM_ID}`,
 };
 const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
+
+export function ScrollToElementOnHashRouteEffect() {
+  // adapted from: https://stackoverflow.com/a/61311926
+  const { pathname, hash, key } = useLocation();
+  useEffect(() => {
+    // if not a hash link, scroll to top
+    if (hash === '') {
+      window.scrollTo(0, 0);
+    }
+    // else scroll to id
+    else {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  }, [pathname, hash, key]); // do this on route change
+  return <></>;
+}
 
 const DEFAULT_PAGE_TITLE = i18n.t('TAB_TITLE');
 function WithHelmet({

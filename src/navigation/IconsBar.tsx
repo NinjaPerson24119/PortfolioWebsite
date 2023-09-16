@@ -5,13 +5,14 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, useTheme, Box, useMediaQuery } from '@mui/material';
 import React from 'react';
-import { SOCIAL_URLS, EMAIL_SECTION_ID } from '../constants';
+import { SOCIAL_URLS } from '../constants';
+import { ROUTES } from '../routing';
 import { ColorModeToggle } from '../theme/ColorModeToggle';
 import styles from './IconsBar.module.scss';
 
 interface HeaderLink {
   icon: React.ReactNode;
-  href?: string;
+  href: string;
   newTab?: boolean;
 }
 
@@ -23,22 +24,12 @@ export function IconsBar({ ...props }: IconsBarProps) {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'));
 
-  const scrollToEmailSection = () => {
-    const section = document.getElementById(EMAIL_SECTION_ID);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const headerLinks: HeaderLink[] = [
     {
       icon: (
-        <EmailIcon
-          fontSize="large"
-          sx={{ color: theme.palette.text.link }}
-          onClick={scrollToEmailSection}
-        />
+        <EmailIcon fontSize="large" sx={{ color: theme.palette.text.link }} />
       ),
+      href: ROUTES.CONTACT,
     },
     {
       icon: (
@@ -70,20 +61,14 @@ export function IconsBar({ ...props }: IconsBarProps) {
       <ColorModeToggle />
       <Divider />
       {headerLinks.map((headerLink, index) => (
-        <>
-          {headerLink.href !== null ? (
-            <IconButton
-              key={index}
-              size="large"
-              href={headerLink.href!}
-              target={headerLink.newTab ? '_blank' : undefined}
-            >
-              {headerLink.icon}
-            </IconButton>
-          ) : (
-            <>{headerLink.icon}</>
-          )}
-        </>
+        <IconButton
+          key={index}
+          size="large"
+          href={headerLink.href}
+          target={headerLink.newTab ? '_blank' : undefined}
+        >
+          {headerLink.icon}
+        </IconButton>
       ))}
       {!isMd && (
         <>

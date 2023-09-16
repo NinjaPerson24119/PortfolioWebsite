@@ -18,4 +18,4 @@ export const SOURCE_CODE_URL =
 
 export const API_PREFIX = 'https://nicholaswengel.com/api';
 
-export const EMAIL_SECTION_ID = 'email-section';
+export const CONTACT_FORM_ID = 'contact-form';

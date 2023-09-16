@@ -14,7 +14,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { useState, FormEvent, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { API_PREFIX, EMAIL_SECTION_ID } from '../../constants';
+import { API_PREFIX, CONTACT_FORM_ID } from '../../constants';
 
 enum SubmissionState {
   NOT_SUBMITTED,
@@ -25,8 +25,7 @@ enum SubmissionState {
 
 export function ContactForm() {
   const { t } = useTranslation();
-  // TODO: unrig
-  const [submitted, setSubmitted] = useState(SubmissionState.SUBMISSION_ERROR);
+  const [submitted, setSubmitted] = useState(SubmissionState.NOT_SUBMITTED);
   const [successSnackOpen, setSuccessSnackOpen] = useState(false);
   const submissionProcessing = useMemo(
     () => submitted === SubmissionState.SUBMITTING,
@@ -177,7 +176,7 @@ export function ContactForm() {
   }
 
   return (
-    <Box sx={{ marginBottom: '32px' }} id={EMAIL_SECTION_ID}>
+    <Box sx={{ marginBottom: '32px' }} id={CONTACT_FORM_ID}>
       <Box
         sx={{
           display: 'flex',
