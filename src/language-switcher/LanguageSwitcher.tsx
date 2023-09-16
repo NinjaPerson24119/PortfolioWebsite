@@ -1,9 +1,10 @@
-import { Switch, Box, Typography } from '@mui/material';
+import { Switch, Box, Typography, useTheme } from '@mui/material';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LanguageContext, LanguageContextProps } from './language-context';
 
 export function LanguageSwitcher() {
+  const theme = useTheme();
   const { t, i18n } = useTranslation();
   const languageContext = useContext<LanguageContextProps>(LanguageContext);
   const switchLanguage = () => {
@@ -17,13 +18,17 @@ export function LanguageSwitcher() {
   };
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Typography variant="body2">{t('LANGUAGES.FRENCH')}</Typography>
+      <Typography variant="body2" sx={{ color: theme.palette.tertiary.main }}>
+        {t('LANGUAGES.FRENCH')}
+      </Typography>
       <Switch
         checked={languageContext.language === 'english'}
         onClick={switchLanguage}
         color="secondary"
       ></Switch>
-      <Typography variant="body2">{t('LANGUAGES.ENGLISH')}</Typography>
+      <Typography variant="body2" sx={{ color: theme.palette.tertiary.main }}>
+        {t('LANGUAGES.ENGLISH')}
+      </Typography>
     </Box>
   );
 }

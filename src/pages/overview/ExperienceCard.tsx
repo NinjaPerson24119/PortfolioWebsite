@@ -52,9 +52,12 @@ export function ExperienceCard({ ...props }: ExperienceCardProps) {
   }
 
   return (
-    <Link href={props.group.url} target="_blank">
+    <Link
+      href={props.group.url}
+      target="_blank"
+      sx={{ textDecoration: 'none' }}
+    >
       <Card
-        variant="outlined"
         sx={{
           '& .MuiCardHeader-root': { paddingBottom: 0 },
         }}

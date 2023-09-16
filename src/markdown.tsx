@@ -25,7 +25,7 @@ function StyledLink({
   const theme = useTheme();
   return (
     <Link
-      sx={{ color: theme.palette.text.link }}
+      sx={{ color: theme.palette.text.link, textDecoration: 'underline' }}
       href={props.href}
       target={props.href?.includes('#') ? '' : '_blank'}
     >

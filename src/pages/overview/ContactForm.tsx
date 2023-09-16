@@ -12,9 +12,13 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useState, FormEvent, useMemo } from 'react';
+import { useState, FormEvent, useMemo, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { API_PREFIX, CONTACT_FORM_ID } from '../../constants';
+import {
+  ColorModeContext,
+  ColorModeContextProps,
+} from '../../theme/color-mode-context';
 
 enum SubmissionState {
   NOT_SUBMITTED,
@@ -32,6 +36,7 @@ export function ContactForm() {
     [submitted],
   );
   const theme = useTheme();
+  const colorModeContext = useContext<ColorModeContextProps>(ColorModeContext);
 
   const StyledTextField = styled(TextField)({
     '& label': {
@@ -195,7 +200,8 @@ export function ContactForm() {
       <Paper
         sx={{
           borderRadius: '20px',
-          border: '2px solid',
+          border:
+            colorModeContext.colorMode === 'dark' ? '1px solid' : undefined,
           padding: '16px',
           margin: '0 16px',
           borderColor: theme.palette.secondary.main,

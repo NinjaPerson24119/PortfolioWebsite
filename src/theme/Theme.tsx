@@ -11,15 +11,11 @@ import { ColorMode, ColorModeContext } from './color-mode-context';
 
 const darkPalette: PaletteOptions = {
   primary: {
-    light: '#676767',
     main: '#242424',
-    dark: '#161616',
     contrastText: '#ffffff',
   },
   secondary: {
-    light: '#b9c5ea',
     main: '#03A9F4',
-    dark: '#567ccc',
     contrastText: '#ffffff',
   },
   tertiary: {
@@ -37,25 +33,21 @@ const darkPalette: PaletteOptions = {
 
 const lightPalette: PaletteOptions = {
   primary: {
-    light: '#676767',
-    main: '#363636',
-    dark: '#161616',
+    main: '#e8f8ff',
     contrastText: '#e5e5e5',
   },
   secondary: {
-    light: '#b9c5ea',
-    main: '#89a1dc',
-    dark: '#567ccc',
-    contrastText: '#0040aa',
+    main: '#000000',
   },
   tertiary: {
     main: '#000000',
   },
   background: {
-    default: '#ffffff',
+    default: '#f7fdff',
+    paper: '#e8f8ff',
   },
   text: {
-    primary: '#000000',
+    primary: '#212121',
     link: '#000000',
   },
 };
