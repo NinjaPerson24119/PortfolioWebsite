@@ -61,12 +61,12 @@ export async function onRequestPost(context) {
         {
           to: [{ name: 'Nicholas Wengel', email: CONTACT_FORM_EMAIL }],
           ...dkimProps,
+          reply_to: formData.get('email')?.toString() ?? '',
         },
       ],
       from: {
         name: formData.get('name')?.toString(),
         email: NO_REPLY_EMAIL,
-        reply_to: formData.get('email')?.toString() ?? '',
       },
       subject: 'Contact Form Submission',
       content: [
