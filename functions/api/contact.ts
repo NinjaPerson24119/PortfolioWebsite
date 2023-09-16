@@ -75,11 +75,7 @@ export async function onRequestPost(context) {
       content: [
         {
           type: 'text/plain',
-          value: message,
-        },
-        {
-          type: 'text/plain',
-          value: `Sent by ${name} <${email}>`,
+          value: `${message}\n\n---------------\nSent by ${name} <${email}>`,
         },
       ],
       reply_to: {
