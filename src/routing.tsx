@@ -2,7 +2,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   Outlet,
@@ -10,7 +10,6 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
-import ARVPBlog from './assets/content/blog/arvp.mdx';
 import { CONTACT_FORM_ID } from './constants';
 import {
   ErrorPageTemplate,
@@ -18,12 +17,14 @@ import {
 } from './error-page-template/ErrorPageTemplate';
 import { i18n } from './i18n';
 import { MDXComponentMapping } from './markdown';
-import { Blog } from './pages/blog/Blog';
-import { Overview } from './pages/overview/Overview';
+import { BlogPage } from './pages/blog/BlogPage';
+
+const OverviewPage = lazy(() => import('./pages/overview/OverviewPage'));
+const ARVPBlog = lazy(() => import('./assets/content/blog/arvp.mdx'));
 
 export const ROUTES = {
   OVERVIEW: '/overview',
-  ARVP: '/arvp',
+  ARVP: '/blog/arvp',
   CONTACT: `/overview#${CONTACT_FORM_ID}`,
 };
 const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
@@ -79,16 +80,16 @@ export const NavigationItems: NavigationItem[] = [
     text: i18n.t('NAVIGATION.OVERVIEW'),
     icon: <HomeIcon fontSize="large" />,
     href: ROUTES.OVERVIEW,
-    component: <Overview />,
+    component: <OverviewPage />,
   },
   {
     text: i18n.t('NAVIGATION.ARVP'),
     icon: <SailingIcon fontSize="large" />,
     href: ROUTES.ARVP,
     component: (
-      <Blog>
+      <BlogPage>
         <ARVPBlog components={MDXComponentMapping()} />
-      </Blog>
+      </BlogPage>
     ),
   },
 ];
