@@ -56,33 +56,35 @@ export async function onRequestPost(context) {
       });
     }
 
+    const name = formData.get('name')?.toString() ?? '';
+    const email = formData.get('email')?.toString() ?? '';
+    const message = formData.get('message')?.toString() ?? '';
+
     const messageBody = {
       personalizations: [
         {
           to: [{ name: 'Nicholas Wengel', email: CONTACT_FORM_EMAIL }],
           ...dkimProps,
-          reply_to: {
-            name: formData.get('name')?.toString() ?? '',
-            email: formData.get('email')?.toString() ?? '',
-          },
         },
       ],
       from: {
-        name: formData.get('name')?.toString() ?? '',
+        name: name,
         email: NO_REPLY_EMAIL,
       },
-      subject: `Portfolio - Contact Form Submission from ${
-        formData.get('name')?.toString() ?? ''
-      }`,
+      subject: `Contact Form Submission from ${name}`,
       content: [
         {
           type: 'text/plain',
-          value: formData.get('message')?.toString() ?? '',
+          value: message,
+        },
+        {
+          type: 'text/plain',
+          value: `Sent by ${name} <${email}>`,
         },
       ],
       reply_to: {
-        name: formData.get('name')?.toString() ?? '',
-        email: formData.get('email')?.toString() ?? '',
+        name: name,
+        email: email,
       },
     };
     const messageResp = await sendEmail(messageBody, 'message');
@@ -93,7 +95,7 @@ export async function onRequestPost(context) {
     const confirmationBody = {
       personalizations: [
         {
-          to: [{ email: formData.get('email')?.toString() ?? '' }],
+          to: [{ email: email }],
           ...dkimProps,
         },
       ],
@@ -106,7 +108,7 @@ export async function onRequestPost(context) {
         {
           type: 'text/plain',
           value:
-            'Thank you for contacting me. I will get back to you as soon as possible.',
+            'Thank you for contacting me. I will get back to you as soon as possible.\n\nBest Regards,\nNicholas Wengel\nSoftware Developer\nnicholaswengel.com',
         },
       ],
     };
