@@ -1,4 +1,5 @@
 import { Button, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import styles from './ErrorPageTemplate.module.scss';
 
 export interface RedirectInfo {
@@ -36,7 +37,8 @@ export function ErrorPageTemplate({ ...props }: ErrorPageTemplateProps) {
           <Button
             variant="contained"
             color="secondary"
-            href={props.redirectInfo.route}
+            to={props.redirectInfo.route}
+            component={RouterLink}
           >
             {props.redirectInfo.text}
           </Button>

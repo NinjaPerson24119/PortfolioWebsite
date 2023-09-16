@@ -1,6 +1,7 @@
 import SailingIcon from '@mui/icons-material/Sailing';
 import { Typography, Button, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { Link as RouterLink } from 'react-router-dom';
 import { ROUTES } from '../../routing';
 import styles from './ARVPSection.module.scss';
 import yolactAnimation from '/arvp/yolact.webp';
@@ -22,7 +23,8 @@ export function ARVPSection() {
         <Button
           variant="contained"
           color="secondary"
-          href={ROUTES.ARVP}
+          component={RouterLink}
+          to={ROUTES.ARVP}
           startIcon={<SailingIcon />}
         >
           {t('OVERVIEW.ARVP.LEARN_MORE')}

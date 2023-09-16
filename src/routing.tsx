@@ -22,9 +22,9 @@ import { Blog } from './pages/blog/Blog';
 import { Overview } from './pages/overview/Overview';
 
 export const ROUTES = {
-  OVERVIEW: 'overview',
-  ARVP: 'arvp',
-  CONTACT: `overview#${CONTACT_FORM_ID}`,
+  OVERVIEW: '/overview',
+  ARVP: '/arvp',
+  CONTACT: `/overview#${CONTACT_FORM_ID}`,
 };
 const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
 

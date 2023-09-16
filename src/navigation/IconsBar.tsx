@@ -5,6 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, useTheme, Box, useMediaQuery } from '@mui/material';
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { SOCIAL_URLS } from '../constants';
 import { ROUTES } from '../routing';
 import { ColorModeToggle } from '../theme/ColorModeToggle';
@@ -62,6 +63,7 @@ export function IconsBar({ ...props }: IconsBarProps) {
       <Divider />
       {headerLinks.map((headerLink, index) => (
         <IconButton
+          LinkComponent={RouterLink}
           key={index}
           size="large"
           href={headerLink.href}
