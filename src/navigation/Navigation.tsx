@@ -11,7 +11,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { NavigationItems } from '../routing';
 import { IconsBar } from './IconsBar';
 import styles from './Navigation.module.scss';
@@ -25,12 +25,12 @@ export function Navigation() {
   const navigationItems = (
     <List>
       {NavigationItems.map((navigationItem, index) => {
-        const routeActive = location.pathname === `/${navigationItem.href}`;
+        const routeActive = location.pathname === `${navigationItem.href}`;
         return (
           <ListItemButton
             key={index}
             to={navigationItem.href}
-            component={Link}
+            component={RouterLink}
             sx={{
               borderRight: routeActive
                 ? `2px solid ${theme.palette.text.link}`

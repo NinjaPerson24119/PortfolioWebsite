@@ -63,10 +63,10 @@ export function IconsBar({ ...props }: IconsBarProps) {
       <Divider />
       {headerLinks.map((headerLink, index) => (
         <IconButton
-          LinkComponent={RouterLink}
+          component={RouterLink}
           key={index}
           size="large"
-          href={headerLink.href}
+          to={headerLink.href}
           target={headerLink.newTab ? '_blank' : undefined}
         >
           {headerLink.icon}
