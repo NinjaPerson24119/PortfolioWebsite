@@ -61,14 +61,19 @@ export async function onRequestPost(context) {
         {
           to: [{ name: 'Nicholas Wengel', email: CONTACT_FORM_EMAIL }],
           ...dkimProps,
-          reply_to: formData.get('email')?.toString() ?? '',
+          reply_to: {
+            name: formData.get('name')?.toString() ?? '',
+            email: formData.get('email')?.toString() ?? '',
+          },
         },
       ],
       from: {
-        name: formData.get('name')?.toString(),
+        name: formData.get('name')?.toString() ?? '',
         email: NO_REPLY_EMAIL,
       },
-      subject: 'Contact Form Submission',
+      subject: `Portfolio - Contact Form Submission from ${
+        formData.get('name')?.toString() ?? ''
+      }`,
       content: [
         {
           type: 'text/plain',
@@ -89,7 +94,7 @@ export async function onRequestPost(context) {
         },
       ],
       from: {
-        name: formData.get('name')?.toString(),
+        name: 'Nicholas Wengel',
         email: NO_REPLY_EMAIL,
       },
       subject: 'Thanks for reaching out - Nicholas Wengel',
