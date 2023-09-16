@@ -1,7 +1,9 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Typography, Box, Grid, Link, Paper, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { ProgressiveImage } from '../../ProgressiveImage/ProgressiveImage';
 import montage from '../../assets/images/montage.webp';
+import montagePoster from '../../assets/images/montagePoster.webp';
 import styles from './ProjectsSection.module.scss';
 
 interface Project {
@@ -81,7 +83,12 @@ export function ProjectsSection() {
         </Grid>
       </Box>
       <div className={styles.montageCrop}>
-        <img src={montage} className={styles.montage} />
+        <ProgressiveImage
+          className={styles.montage}
+          src={montagePoster}
+          nextSrc={montage}
+          alt="Montage of projects I made before university"
+        />
       </div>
     </>
   );
