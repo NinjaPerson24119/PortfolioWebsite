@@ -28,14 +28,18 @@ export function Footer() {
           src={canadianMapleLeaf}
           alt="Canadian maple leaf"
         ></img>
-        <Typography variant="body2">{t('NATIONALITY')}</Typography>
+        <Typography variant="body2" sx={{ color: theme.palette.tertiary.main }}>
+          {t('NATIONALITY')}
+        </Typography>
       </Box>
       <Box sx={{ order: isMd ? undefined : 3 }}>
-        <Typography variant="body2">{t('COPYRIGHT')}</Typography>
+        <Typography variant="body2" sx={{ color: theme.palette.tertiary.main }}>
+          {t('COPYRIGHT')}
+        </Typography>
         <Link
           href={SOURCE_CODE_URL}
           sx={{
-            color: theme.palette.text.link,
+            color: theme.palette.tertiary.main,
             display: 'flex',
             gap: '4px',
             alignItems: 'center',
@@ -46,7 +50,10 @@ export function Footer() {
           <Typography sx={{ textDecoration: 'underline' }} variant="body2">
             {t('BUILT_WITH')}
           </Typography>
-          <GitHub fontSize="small" sx={{ color: theme.palette.text.link }} />
+          <GitHub
+            fontSize="small"
+            sx={{ color: theme.palette.tertiary.main }}
+          />
         </Link>
       </Box>
       <Box sx={{ order: isMd ? undefined : 2 }}>

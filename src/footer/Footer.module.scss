@@ -9,11 +9,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 8px 0 8px;
+  padding: 8px 16px 0 16px;
   margin-bottom: 8px;
 
   @media (min-width: br.$md-width) {
-    gap: 0;
     flex-direction: row;
     justify-content: space-between;
   }
