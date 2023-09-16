@@ -80,6 +80,10 @@ export async function onRequestPost(context) {
           value: formData.get('message')?.toString() ?? '',
         },
       ],
+      reply_to: {
+        name: formData.get('name')?.toString() ?? '',
+        email: formData.get('email')?.toString() ?? '',
+      },
     };
     const messageResp = await sendEmail(messageBody, 'message');
     if (messageResp.status !== 202) {
