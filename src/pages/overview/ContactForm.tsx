@@ -1,3 +1,4 @@
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import EmailIcon from '@mui/icons-material/Email';
 import {
   TextField,
@@ -8,6 +9,7 @@ import {
   Box,
   Snackbar,
   useTheme,
+  CircularProgress,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState, FormEvent, useMemo } from 'react';
@@ -23,12 +25,11 @@ enum SubmissionState {
 
 export function ContactForm() {
   const { t } = useTranslation();
-  const [submitted, setSubmitted] = useState(SubmissionState.NOT_SUBMITTED);
+  // TODO: unrig
+  const [submitted, setSubmitted] = useState(SubmissionState.SUBMISSION_ERROR);
   const [successSnackOpen, setSuccessSnackOpen] = useState(false);
-  const formDisabled = useMemo(
-    () =>
-      submitted === SubmissionState.SUBMITTING ||
-      submitted === SubmissionState.SUBMISSION_ERROR,
+  const submissionProcessing = useMemo(
+    () => submitted === SubmissionState.SUBMITTING,
     [submitted],
   );
   const theme = useTheme();
@@ -91,16 +92,89 @@ export function ContactForm() {
       body: formBody,
     })
       .then((response) => {
+        console.log(response);
         if (!response.ok) {
           throw new Error('Message submission failed.');
         }
         setSubmitted(SubmissionState.SUBMITTED);
         setSuccessSnackOpen(true);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log('error submitting message', error);
         setSubmitted(SubmissionState.SUBMISSION_ERROR);
       });
   };
+
+  function Form() {
+    return (
+      <Box component="form" onSubmit={handleSubmit}>
+        <StyledTextField
+          name="name"
+          label={t('CONTACT.NAME_LABEL')}
+          variant="outlined"
+          required
+          type="text"
+          fullWidth
+        />
+        <StyledTextField
+          name="email"
+          label={t('CONTACT.EMAIL_LABEL')}
+          variant="outlined"
+          required
+          type="email"
+          fullWidth
+        />
+        <StyledTextField
+          name="message"
+          label={t('CONTACT.MESSAGE_LABEL')}
+          variant="outlined"
+          required
+          multiline
+          minRows={4}
+          fullWidth
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            padding: '8px',
+          }}
+        >
+          {submissionProcessing ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <Button type="submit" color="secondary" variant="contained">
+              {t('CONTACT.SEND_MESSAGE')}
+            </Button>
+          )}
+        </Box>
+      </Box>
+    );
+  }
+
+  function FormSuccess() {
+    return (
+      <>
+        <Typography variant="h2" sx={{ textAlign: 'center', marginTop: '0' }}>
+          {t('CONTACT.SUBMITTED_HEADER')}
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <CheckCircleOutlineIcon color="inherit" sx={{ marginRight: '8px' }} />
+          <Typography variant="body1">
+            {t('CONTACT.SUBMITTED_DETAILS')}
+          </Typography>
+        </Box>
+      </>
+    );
+  }
 
   return (
     <Box sx={{ marginBottom: '32px' }} id={EMAIL_SECTION_ID}>
@@ -129,62 +203,8 @@ export function ContactForm() {
           filter: `drop-shadow(1px 2px 16px ${theme.palette.secondary.main})`,
         }}
       >
-        {submitted !== SubmissionState.SUBMITTED && (
-          <Box component="form" onSubmit={handleSubmit}>
-            <StyledTextField
-              name="name"
-              label={t('CONTACT.NAME_LABEL')}
-              variant="outlined"
-              required
-              type="text"
-              fullWidth
-              disabled={formDisabled}
-            />
-            <StyledTextField
-              name="email"
-              label={t('CONTACT.EMAIL_LABEL')}
-              variant="outlined"
-              required
-              type="email"
-              fullWidth
-              disabled={formDisabled}
-            />
-            <StyledTextField
-              name="message"
-              label={t('CONTACT.MESSAGE_LABEL')}
-              variant="outlined"
-              required
-              multiline
-              minRows={4}
-              fullWidth
-              disabled={formDisabled}
-            />
-            <Button
-              type="submit"
-              color="secondary"
-              variant="contained"
-              disabled={formDisabled}
-              sx={{
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                marginTop: '16px',
-                display: 'block',
-              }}
-            >
-              {t('CONTACT.SEND_MESSAGE')}
-            </Button>
-          </Box>
-        )}
-        {submitted === SubmissionState.SUBMITTED && (
-          <>
-            <Typography variant="h2">
-              {t('CONTACT.SUBMITTED_HEADER')}
-            </Typography>
-            <Alert severity="success" sx={{ marginTop: '8px' }}>
-              {t('CONTACT.SUBMITTED_DETAILS')}
-            </Alert>
-          </>
-        )}
+        {submitted !== SubmissionState.SUBMITTED && <Form />}
+        {submitted === SubmissionState.SUBMITTED && <FormSuccess />}
       </Paper>
       <Snackbar
         open={submitted === SubmissionState.SUBMISSION_ERROR}
