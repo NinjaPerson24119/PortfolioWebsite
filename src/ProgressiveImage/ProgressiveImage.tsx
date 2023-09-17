@@ -4,14 +4,14 @@ interface ProgressiveImageProps extends React.ComponentProps<'img'> {
   nextSrc: string;
 }
 
-export function ProgressiveImage({ ...props }: ProgressiveImageProps) {
+export function ProgressiveImage({ nextSrc, ...props }: ProgressiveImageProps) {
   const [imgSrc, setImgSrc] = useState(props.src);
 
   useEffect(() => {
     const img = new Image();
-    img.src = props.nextSrc;
-    img.onload = () => setImgSrc(props.nextSrc);
-  }, [props.nextSrc]);
+    img.src = nextSrc;
+    img.onload = () => setImgSrc(nextSrc);
+  }, [nextSrc]);
 
   return <img {...props} src={imgSrc}></img>;
 }
