@@ -5,8 +5,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import { ProgressiveImage } from '../../ProgressiveImage/ProgressiveImage';
 import { ROUTES } from '../../routing';
 import styles from './ARVPSection.module.scss';
-import yolactAnimation from '/arvp/yolact.webp';
-import yolactAnimationPoster from '/arvp/yolactPoster.webp';
+import yolactAnimation from '/arvp/yolactAnimation.webp';
+import yolactAnimationPoster from '/arvp/yolactAnimationPoster.webp';
 
 export function ARVPSection() {
   const { t } = useTranslation();
