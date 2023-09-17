@@ -5,7 +5,9 @@ import {
   alpha,
   useMediaQuery,
 } from '@mui/material';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import avatarImageBlurred from '../../assets/images/avatar-jellyfish-blurred.webp';
 import avatarImage from '../../assets/images/avatar-jellyfish.webp';
 import styles from './Header.module.scss';
 
@@ -16,11 +18,16 @@ export function Header() {
   const avatarSize = isMd ? 164 : 196;
   const shadowColor = alpha(theme.palette.secondary.main, 0.3);
 
+  const [imgSrc, setImgSrc] = useState(avatarImageBlurred);
+  const img = new Image();
+  img.src = avatarImage;
+  img.onload = () => setImgSrc(avatarImage);
+
   return (
     <div className={styles.header}>
       <Avatar
         alt={t('FULL_NAME')}
-        src={avatarImage}
+        src={imgSrc}
         className={styles.avatar}
         sx={{
           width: avatarSize,
