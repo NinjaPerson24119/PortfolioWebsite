@@ -23,7 +23,7 @@ The best decision of my degree was joining the [Autonomous Robotic Vehicle Proje
 
 ## What does ARVP do?
 
-![Foggy image of Auri robot at RoboSub competition](/arvp/auri-foggy-transdec.png)
+![Foggy image of Auri robot at RoboSub competition](/arvp/auri-foggy-transdec.webp)
 
 ARVP is an engineering club comprised of students and alumni at the University of Alberta. Every year they compete at the international [RoboSub](https://robonation.org/programs/robosub/) competition. The goal is to make an Autonomous Robotic Vehicle that can complete various tasks in an underwater obstacle course.
 
@@ -39,7 +39,7 @@ As a member of the software team, we had an incredibly complex basket of problem
 
 When I joined as a general member, I was immediately fascinated with computer vision: how to extract information about objects within images.
 
-![Histogram technique example](/arvp/histogram-technique-gate-detector.jpg)
+![Histogram technique example](/arvp/histogram-technique-gate-detector.webp)
 
 The team hadn't fully adopted machine learning yet, and had a number of prior attempts at classical computer vision. I had a lot to learn, so I toyed with my own ideas about how to isolate objects as I learned about OpenCV, various color spaces, and all the things that make computer vision really hard.
 
@@ -51,7 +51,7 @@ My first algorithm took advantage of the fact that the background of an underwat
 3. Delete the largest connected node within the 2D histogram.
 4. Only the pixels that had high contrast to the background remain.
 
-![Member of the month write-up](/arvp/ARVP_MemberOfMonth_November.png)
+![Member of the month write-up](/arvp/ARVP_MemberOfMonth_November.webp)
 
 There's a lot wrong with the histogram algorithm. A few problems include:
 - It doesn't work if objects to extract don't have high contrast with the background. Objects like the yellow and green buoys below don't get extracted.
@@ -70,9 +70,9 @@ In the context of the histogram algorithm this does two things:
 
 Since gSLICr's superpixels aren't exactly square, it also allows creating a decent outline of an object to extract. This works a lot better than applying a canny filter.
 
-![Example of gSLICr with grid showing where superpixels are found](/arvp/gslicr-with-grid.png)
+![Example of gSLICr with grid showing where superpixels are found](/arvp/gslicr-with-grid.webp)
 
-![Nice example of superpixels](/arvp/superpixels-nice-output.png)
+![Nice example of superpixels](/arvp/superpixels-nice-output.webp)
 
 By running in sequence:
 1. gSLICr to emphasize colors
@@ -83,13 +83,13 @@ An additional challenge of the object below, was that I needed to know where it 
 
 I used OpenSceneGraph to render a 3D model of the "path" object at all the angles I was interested in. I then extracted monochrome masks to store in a database of known shape priors.
 
-![Building the shape priors using the database generator](/arvp/shape-matcher-database-generator.png)
+![Building the shape priors using the database generator](/arvp/shape-matcher-database-generator.webp)
 
 Using a sliding window technique, the algorithm could detect:
 - Whether the mask produced by the histogram + superpixel algorithm matched a known shape
 - Which angle it matched
 
-![Shape matcher detecting path](/arvp/path-detector-with-superpixels.png)
+![Shape matcher detecting path](/arvp/path-detector-with-superpixels.webp)
 
 This worked in well-behaved test cases, but was ultimately really ineffective in comparison to the deep learning methods.
 
@@ -104,11 +104,11 @@ I had a lot of fun reasoning through the vision problem with a procedural proces
 
 The robot's mapping system used ROIs (rectangles) submitted from the vision system to continuously iterate towards a statistical estimate of where it thought objects were. As shown below, it would begin with a large sphere around an initial, hard-coded estimate, and slowly adjust the position and size of the spheres as it gained confidence.
 
-![Gaussian estimates of object locations in RViz](/arvp/rviz-mapper.png)
+![Gaussian estimates of object locations in RViz](/arvp/rviz-mapper.webp)
 
 As part of our testing process, I wrote some code that would project an estimate of each object's location over the live camera feed of the robot. Below is an example in the UWSim simulator. We were able to use this in the real pool to visually assess if the robot was correctly mapping props.
 
-![Projected position estimate overlays on underwater props](/arvp/mapping-object-projection.png)
+![Projected position estimate overlays on underwater props](/arvp/mapping-object-projection.webp)
 
 ## Deep Learning
 
@@ -137,8 +137,8 @@ One of the challenges at RoboSub was to shoot a torpedo through a hole in a targ
 
 The robot after Auri was supposed to have a mechanical claw for manipulating objects, like gripping a pipe to pick something up. This would require isolating the pipe to grip, rather than the entire rectangle representing the object to lift.
 
-![Animation showing YOLACT image segmentation model detecting objects](/arvp/yolact.webp)
-![YOLACT image segmentation model detecting objects](/arvp/yolact.png)
+![Animation showing YOLACT image segmentation model detecting objects](/arvp/yolactAnimation.webp)
+![YOLACT image segmentation model detecting objects](/arvp/yolact.webp)
 
 <a id="role-software-team-co-lead"></a>
 ## Software Team Co-Lead
@@ -162,14 +162,14 @@ Overall, it really helped engage people for longer.
 
 [You can find the complete document here](https://drive.google.com/file/d/17Q1AsXiFBKt4f7ZhbChZ5widCh8Eg2Az/view?usp=sharing)
 
-![Cover of onboarding document](/arvp/2019-onboarding-cover.png)
+![Cover of onboarding document](/arvp/2019-onboarding-cover.webp)
 
 ### Task Management
 
 The team used to use GitHub issues for task management, but found it was really hard to keep track of progress, and that older issues would become stale.
 
 Trello was a great alternative that allowed us to see the project's direction at a glance.
-![Screenshot of Trello](/arvp/trello.png)
+![Screenshot of Trello](/arvp/trello.webp)
 
 ### Documentation
 
@@ -180,7 +180,7 @@ I decided to self-host BookStack on our website's server so that we could centra
 However, it later became apparent that the club's biggest struggle with documentation was the intrinsic turnover of any student group: people graduate and move on.
 
 If I could go back in time, I would attempt to simplify our software to make it more approachable for the target audience. 
-![Screenshot of BookStack](/arvp/bookstack.png)
+![Screenshot of BookStack](/arvp/bookstack.webp)
 
 ### Gazebo Simulator
 
@@ -188,10 +188,10 @@ Our simulator in UWSim did not support collisions, and had recently been depreca
 
 I used [UUV Simulator](https://github.com/uuvsimulator/uuv_simulator) to provide all the water physics and sensors within the simulator.
 
-![Gazebo simulator showing underwater obstacle course](/arvp/gazebo-underwater.png)
-![Gazebo simulator showing view of gate prop](/arvp/gazebo-over-gate.png)
+![Gazebo simulator showing underwater obstacle course](/arvp/gazebo-underwater.webp)
+![Gazebo simulator showing view of gate prop](/arvp/gazebo-over-gate.webp)
 
-<video controls preload="none" poster="/arvp/arctos-motion-gazebo-poster.png">
+<video controls preload="none" poster="/arvp/arctos-motion-gazebo-poster.webp">
   <source src="/arvp/arctos-motion-gazebo.mp4" type="video/ogg" alt="Gazebo simulator showing Arctos robot floating" />
   Your browser does not support the video tag.
 </video>
@@ -201,10 +201,10 @@ I used [UUV Simulator](https://github.com/uuvsimulator/uuv_simulator) to provide
 
 During my last year with ARVP, I experimented with the use stereo cameras and YOLACT to combine stereo images and image segmentation for the purpose of scene mapping.
 
-![3D Reconstruction of scene using OpenChisel](/arvp/openchisel-3d-reconstruction.png)
+![3D Reconstruction of scene using OpenChisel](/arvp/openchisel-3d-reconstruction.webp)
 
 There was a lot going on in 2020-2021 due to COVID, so the project didn't make much progress. Above is a picture of a scene reconstruction that was generated by [OpenChisel](https://github.com/personalrobotics/OpenChisel).
 
-![Powerpoint slide for computer vision presentation](/arvp/arvp-computer-vision-presentation.png)
+![Powerpoint slide for computer vision presentation](/arvp/arvp-computer-vision-presentation.webp)
 
 [The culmination of this was a presentation that I delivered in person at UAlberta.](https://docs.google.com/presentation/d/1kmMbMbsBQIfZQ7aow6z44eJ3_zzTQ7BT/edit?usp=sharing&ouid=116338530486484625609&rtpof=true&sd=true)
