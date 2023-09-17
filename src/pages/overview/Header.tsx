@@ -37,6 +37,7 @@ export function Header() {
           drop-shadow(2px 4px 6px ${shadowColor})
           drop-shadow(4px 8px 12px ${shadowColor})`,
         }}
+        imgProps={{ width: 375, height: 499 }}
       />
       <div className={styles.headerTextContainer}>
         <Typography variant="h1">{t('FULL_NAME')}</Typography>

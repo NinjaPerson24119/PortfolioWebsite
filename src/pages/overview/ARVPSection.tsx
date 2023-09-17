@@ -16,6 +16,8 @@ export function ARVPSection() {
         src={yolactAnimationPoster}
         nextSrc={yolactAnimation}
         alt="YOLACT image segmentation model detecting pool props"
+        width="100%"
+        height="auto"
       />
       <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
         <span className={`${styles.avoidwrap} ${styles.retainspaces}`}>

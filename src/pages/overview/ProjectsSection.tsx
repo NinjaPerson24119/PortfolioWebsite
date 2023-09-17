@@ -88,6 +88,8 @@ export function ProjectsSection() {
           src={montagePoster}
           nextSrc={montage}
           alt="Montage of projects I made before university"
+          width="100%"
+          height="auto"
         />
       </div>
     </>
