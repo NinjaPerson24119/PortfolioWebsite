@@ -1,4 +1,4 @@
-import { useMediaQuery, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import {
   Theme as MUITheme,
   createTheme,
@@ -80,7 +80,9 @@ export function createMUITheme(colorMode: ColorMode): MUITheme {
 }
 
 export function Theme(props: React.PropsWithChildren<unknown>) {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  // website looks better on dark mode, and I want to showcase it, so ignore user preferences
+  //const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkMode = true;
   const [colorMode, setColorMode] = useState<ColorMode>(
     prefersDarkMode ? 'dark' : 'light',
   );
