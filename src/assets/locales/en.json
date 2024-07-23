@@ -24,7 +24,8 @@
   "NAVIGATION": {
     "OVERVIEW": "Overview",
     "PRE_UNIVERSITY_PROJECTS": "Pre-University Projects",
-    "ARVP": "Robotics (ARVP)"
+    "ARVP": "Robotics (ARVP)",
+    "FISHING_GAME": "Fishing Game (Godot)"
   },
   "NOT_FOUND_PAGE": {
     "HEADER": "Page not found",
@@ -44,6 +45,10 @@
         "LINE_2": "Vehicle Project"
       },
       "LEARN_MORE": "Learn more!"
+    },
+    "FISHING_GAME": {
+      "HEADER": "Fishing Game - Build with Godot",
+      "LEARN_MORE": "Check it out!"
     },
     "EXPERIENCE": {
       "HEADER": "Experience",

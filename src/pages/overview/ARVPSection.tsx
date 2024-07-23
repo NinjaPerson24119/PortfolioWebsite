@@ -11,7 +11,7 @@ import yolactAnimationPoster from '/arvp/yolactAnimationPoster.webp';
 export function ARVPSection() {
   const { t } = useTranslation();
   return (
-    <>
+    <Box>
       <ProgressiveImage
         src={yolactAnimationPoster}
         nextSrc={yolactAnimation}
@@ -19,7 +19,12 @@ export function ARVPSection() {
         width="100%"
         height="auto"
       />
-      <Typography variant="h2" color="secondary" sx={{ textAlign: 'center' }}>
+      <Typography
+        component="h2"
+        variant="h3"
+        color="secondary"
+        sx={{ textAlign: 'center' }}
+      >
         <span className={`${styles.avoidwrap} ${styles.retainspaces}`}>
           {t('OVERVIEW.ARVP.HEADER.LINE_1')}{' '}
         </span>
@@ -38,6 +43,6 @@ export function ARVPSection() {
           {t('OVERVIEW.ARVP.LEARN_MORE')}
         </Button>
       </Box>
-    </>
+    </Box>
   );
 }

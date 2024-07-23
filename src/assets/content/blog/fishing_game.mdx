@@ -1,0 +1,73 @@
+---
+title: "Fishing Game in Godot"
+shortTitle: "Fishing Game"
+description: "I built a fishing game prototype in Godot."
+---
+
+# Fishing Game Prototype
+
+At the time, I was really enjoying the game [Dredge](https://www.dredge.game/), so built a similar prototype in Godot.
+
+## Videos
+
+### Ray-tracing for camera clipping
+<video controls preload="none" poster="/fishing_game/raytracing.webp">
+  <source src="/fishing_game/FishingGame_CameraRaytracing_2023-10-12.mp4" type="video/ogg" alt="Camera ray tracing" />
+  Your browser does not support the video tag.
+</video>
+
+### Tiled Inventory
+<video controls preload="none" poster="/fishing_game/tiled_inventory.webp">
+  <source src="/fishing_game/FishingGame_InitialInventoryBuild_2023-10-11.mp4" type="video/ogg" alt="Tiled inventory" />
+  Your browser does not support the video tag.
+</video>
+
+### Boat moving a floating chest onto a beach
+<video controls preload="none" poster="/fishing_game/pushing_chest.webp">
+  <source src="/fishing_game/FishingGame_PushingChestOntoBeach_2023-10-14.mp4" type="video/ogg" alt="Boat moving a chest onto a beach" />
+  Your browser does not support the video tag.
+</video>
+
+## Why Godot?
+
+At first glance, Godot didn't look like something I wanted to develop in.
+
+Working in a proprietary language like GDScript doesn't stand out to me as it has no transferrable skills.
+
+But then the Unity fiasco happened where they tried to change their licensing on game developers, and
+Godot was put under the spotlight.
+
+I realized that you could build in .NET C#, and that's a language I wanted experience with.
+
+It turned out that the engine is incredibly fun to work with in C#, and when I've encountered errors
+or limitations in the engine, I've been able to inspect the source code.
+
+Godot is a huge win for open source software.
+
+## The hardest features
+
+Many of the things that looked simple turned out not to be.
+
+But this is how software usually goes.
+
+### Multiple Input Methods
+
+Support for both Keyboard/Mouse and Controller takes some abstraction in any object that listens for events.
+
+### Split-screen
+
+I had to refactor all my components so they didn't make any assumptions about their parents, or which player they correspond to.
+
+### Waves and buoyancy
+
+The math is a bit hard to read about and implement.
+
+### Inventory
+
+There's a surprising amount of edge cases when it comes to snapping items to a grid.
+
+This gets more complicated when we consider how to move a grabbed item from one grid to another.
+
+Then add on another layer where items are different shapes, sizes, and can be rotated.
+
+The UI needs to reject an attempt to move a 3x3 object to a 2x2 grid, for example.
