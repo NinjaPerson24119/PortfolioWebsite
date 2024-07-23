@@ -47,6 +47,10 @@
     },
     "EXPERIENCE": {
       "HEADER": "Experience",
+      "FRENTER": {
+        "TITLE": "Frenter",
+        "SUBTITLE": "Remote · Halifax, Nova Scotia"
+      },
       "VENDASTA": {
         "TITLE": "Vendasta",
         "SUBTITLE": "Remote · Saskatoon, SK"
