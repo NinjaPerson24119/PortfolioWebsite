@@ -2,6 +2,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import HomeIcon from '@mui/icons-material/Home';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import React, { useEffect, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -21,10 +22,14 @@ import { BlogPage } from './pages/blog/BlogPage';
 
 const OverviewPage = lazy(() => import('./pages/overview/OverviewPage'));
 const ARVPBlog = lazy(() => import('./assets/content/blog/arvp.mdx'));
+const FishingGameBlog = lazy(
+  () => import('./assets/content/blog/fishing_game.mdx'),
+);
 
 export const ROUTES = {
   OVERVIEW: '/overview',
   ARVP: '/blog/arvp',
+  FISHING_GAME: '/blog/fishing_game',
   CONTACT: `/overview#${CONTACT_FORM_ID}`,
 };
 const DEFAULT_PAGE_URL = ROUTES.OVERVIEW;
@@ -89,6 +94,16 @@ export const NavigationItems: NavigationItem[] = [
     component: (
       <BlogPage>
         <ARVPBlog components={MDXComponentMapping()} />
+      </BlogPage>
+    ),
+  },
+  {
+    text: i18n.t('NAVIGATION.FISHING_GAME'),
+    icon: <VideogameAssetIcon fontSize="large" />,
+    href: ROUTES.FISHING_GAME,
+    component: (
+      <BlogPage>
+        <FishingGameBlog components={MDXComponentMapping()} />
       </BlogPage>
     ),
   },
