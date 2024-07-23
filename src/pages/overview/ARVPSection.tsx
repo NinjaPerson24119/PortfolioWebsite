@@ -12,13 +12,15 @@ export function ARVPSection() {
   const { t } = useTranslation();
   return (
     <Box>
-      <ProgressiveImage
-        src={yolactAnimationPoster}
-        nextSrc={yolactAnimation}
-        alt="YOLACT image segmentation model detecting pool props"
-        width="100%"
-        height="auto"
-      />
+      <Box sx={{ margin: '4px' }}>
+        <ProgressiveImage
+          src={yolactAnimationPoster}
+          nextSrc={yolactAnimation}
+          alt="YOLACT image segmentation model detecting pool props"
+          width="100%"
+          height="auto"
+        />
+      </Box>
       <Typography
         component="h2"
         variant="h3"
@@ -39,6 +41,7 @@ export function ARVPSection() {
           component={RouterLink}
           to={ROUTES.ARVP}
           startIcon={<SailingIcon />}
+          sx={{ margin: '4px' }}
         >
           {t('OVERVIEW.ARVP.LEARN_MORE')}
         </Button>
