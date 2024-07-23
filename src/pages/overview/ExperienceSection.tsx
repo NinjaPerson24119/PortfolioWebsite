@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ExperienceContentARVPProjectCoLead from '../../assets/content/experience/arvp-project-co-lead.mdx';
 import ExperienceContentARVPSoftwareCoLead from '../../assets/content/experience/arvp-software-co-lead.mdx';
 import ExperienceContentARVPSoftwareMember from '../../assets/content/experience/arvp-software-member.mdx';
+import ExperienceContentFrenterDeveloperIII from '../../assets/content/experience/frenter-developer-iii.mdx';
 import ExperienceContentVendastaDeveloperII from '../../assets/content/experience/vendasta-developer-ii.mdx';
 import ExperienceContentVendastaDeveloperIntern from '../../assets/content/experience/vendasta-developer-intern.mdx';
 import ExperienceContentWCBAlbertaDeveloper from '../../assets/content/experience/wcb-alberta-developer.mdx';
@@ -13,6 +14,42 @@ export function ExperienceSection() {
   const { t } = useTranslation();
 
   const experienceGroups: ExperienceGroup[] = [
+    {
+      title: t('OVERVIEW.EXPERIENCE.FRENTER.TITLE'),
+      subtitle: t('OVERVIEW.EXPERIENCE.FRENTER.SUBTITLE'),
+      positions: [
+        {
+          title: 'Software Developer III',
+          dateRange: 'Oct 2023 - July 2024',
+          description: (
+            <ExperienceContentFrenterDeveloperIII
+              components={MDXComponentMapping()}
+            />
+          ),
+        },
+      ],
+      url: 'https://frenter.com/',
+      skills: [
+        'TypeScript',
+        'React',
+        'Redux',
+        'Go',
+        'SQLC',
+        'Python',
+        'FastAPI',
+        'SQLAlchemy',
+        'PostgreSQL',
+        'TimescaleDB',
+        'OpenTelemetry',
+        'Grafana',
+        'Loki',
+        'Prometheus',
+        'Kubernetes',
+        'Helm',
+        'Terraform',
+        'AWS (EKS/ECS)',
+      ],
+    },
     {
       title: t('OVERVIEW.EXPERIENCE.VENDASTA.TITLE'),
       subtitle: t('OVERVIEW.EXPERIENCE.VENDASTA.SUBTITLE'),
